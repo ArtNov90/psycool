@@ -40,3 +40,186 @@
 .read-the-docs {
   color: #888;
 }
+
+.home { width: 100%; }
+
+/* HERO banner */
+.heroBanner{
+  position: relative;
+  height: clamp(360px, 62vh, 620px);
+  overflow: hidden;
+  border-top: 14px solid #e6cfd2; /* bande rose */
+  border-bottom: 14px solid #e6cfd2;
+  background:
+    url("/image_therapie_consultation.jpeg")
+    center/cover no-repeat;
+}
+
+.heroOverlay{
+  position:absolute; inset:0;
+  background: rgba(0,0,0,0.35);
+}
+
+.heroContent{
+  position: relative;
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 24px 0;
+}
+
+.heroTitle{
+  margin: 0;
+  color: #f1d6d8;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  font-size: clamp(26px, 4vw, 44px);
+  line-height: 1.15;
+  text-shadow: 0 10px 24px rgba(0,0,0,0.45);
+}
+
+.heroTitle .small{
+  font-size: 0.55em;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.accent { color: #f1d6d8; }
+.accentText { color: #b14a4f; font-weight: 700; }
+
+.heroBtn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border: 2px solid rgba(255,255,255,0.75);
+  color: #fff;
+  background: transparent;
+  border-radius: 3px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+.heroBtn:hover{
+  background: rgba(255,255,255,0.12);
+}
+
+/* White intro block */
+.introWhite{
+  background: #ffffff;
+  color: #151515;
+  padding: 54px 0;
+}
+
+.introInner{
+  width: min(980px, 92%);
+  margin: 0 auto;
+  text-align: center;
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+}
+
+.avatar{
+  width: 110px;
+  height: 110px;
+  border-radius: 999px;
+  background:
+    url("https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=70")
+    center/cover no-repeat;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.18);
+  border: 4px solid #fff;
+  transform: translateY(-8px);
+}
+
+.introText{
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.75;
+  font-family: Georgia, "Times New Roman", serif; /* effet “site vitrine” */
+}
+
+/* Pink parcours section */
+.parcoursPink{
+  background: #e6cfd2;
+  color: #151515;
+  padding: 64px 0;
+}
+
+.parcoursInner{
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 38px;
+  align-items: start;
+}
+
+.parcoursTitle{
+  margin: 0 0 22px;
+  font-size: clamp(28px, 3vw, 44px);
+  letter-spacing: 1px;
+  font-weight: 900;
+}
+
+.parcoursImage{
+  width: min(420px, 100%);
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  background:
+    url("https://images.unsplash.com/photo-1521939094609-93aba1af40d2?auto=format&fit=crop&w=900&q=70")
+    center/cover no-repeat;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.18);
+}
+
+.parcoursP{
+  margin: 0 0 12px;
+  line-height: 1.8;
+}
+
+.parcoursList{
+  margin: 14px 0 0;
+  padding-left: 18px;
+  line-height: 2;
+}
+
+.parcoursCtas{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.ghostBtn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.25);
+  background: rgba(255,255,255,0.25);
+  color: #151515;
+  font-weight: 700;
+}
+.ghostBtn:hover{
+  background: rgba(255,255,255,0.45);
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .parcoursInner{
+    grid-template-columns: 1fr;
+  }
+  .parcoursImage{
+    margin: 0 auto;
+  }
+  .heroContent{
+    align-items: center;
+    text-align: center;
+  }
+}
