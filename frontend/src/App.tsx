@@ -7,6 +7,10 @@ import Consultations from "./pages/Consultations.tsx";
 import Conferences from "./pages/Conferences.tsx";
 import Contact from "./pages/Contact.tsx";
 
+import AdminLogin from "./pages/AdminLogin.tsx";
+import AdminEvents from "./pages/AdminEvents.tsx";
+import RequireAuth from "./pages/RequireAuth.tsx";
+
 import "./App.css";
 
 export default function App() {
@@ -20,6 +24,18 @@ export default function App() {
             <Route path="/consultations" element={<Consultations />} />
             <Route path="/conferences" element={<Conferences />} />
             <Route path="/contact" element={<Contact />} />
+
+             {/* Admin */}
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route
+              path="/admin"
+              element={
+                <RequireAuth>
+                  <AdminEvents />
+                </RequireAuth>
+              }
+            />
+
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
