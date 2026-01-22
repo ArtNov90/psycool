@@ -10,7 +10,7 @@ import {
 } from "firebase/firestore";
 import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { auth, db } from "./firebase";
+import { auth, db } from "../firebase";
 
 type EventItem = {
   id: string;
