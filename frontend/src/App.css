@@ -11,3 +11,222 @@ body{
 
 /* si tu as une classe container dans App.tsx */
 .main { width: 100%; }
+
+.siteHeader {
+  width: 100%;
+  background: #0f0f0f;
+  color: #fff;
+}
+
+/* Bandeau top */
+.headerTop {
+  font-size: 14px;
+  opacity: 0.95;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.headerTopInner {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.headerTopLink {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+}
+.headerTopLink:hover {
+  color: #fff;
+}
+
+.headerSep {
+  margin: 0 10px;
+  color: rgba(255,255,255,0.5);
+}
+
+/* Nom */
+.headerBrand {
+  padding: 14px 0 10px;
+}
+
+.headerBrandInner {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.brandName {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* Nav */
+.headerNav {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.headerNavInner {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  padding: 12px 0;
+  flex-wrap: wrap;
+}
+
+.navLink {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.navLink:hover {
+  color: #fff;
+}
+
+.navLink.active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+.siteHeader {
+  width: 100%;
+  background: #0f0f0f;
+  color: #fff;
+}
+
+/* Bandeau top */
+.headerTop {
+  font-size: 14px;
+  opacity: 0.95;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.headerTopInner {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.headerTopLink {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+}
+.headerTopLink:hover {
+  color: #fff;
+}
+
+.headerSep {
+  margin: 0 10px;
+  color: rgba(255,255,255,0.5);
+}
+
+/* Nom */
+.headerBrand {
+  padding: 14px 0 10px;
+}
+
+.headerBrandInner {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.brandName {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* Nav */
+.headerNav {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.headerNavInner {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  padding: 12px 0;
+  flex-wrap: wrap;
+}
+
+.navLink {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.navLink:hover {
+  color: #fff;
+}
+
+.navLink.active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+.siteFooter {
+  background: #0f0f0f;
+  color: rgba(255,255,255,0.85);
+  padding: 28px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footerInner {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  text-align: center;          /* 👉 clé : centre tout */
+  display: flex;
+  flex-direction: column;      /* empile verticalement */
+  gap: 8px;
+}
+
+.footerBrand {
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+.footerMeta {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 14px;
+  justify-content: center;     /* 👉 centre les liens */
+  flex-wrap: wrap;
+}
+
+.footerRight {
+  display: flex;
+  gap: 14px;
+  justify-content: center;     /* 👉 centre tel/email */
+  flex-wrap: wrap;
+}
+
+.footerLink {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.footerLink:hover {
+  color: #fff;
+}
