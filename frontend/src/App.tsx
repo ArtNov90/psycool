@@ -18,7 +18,7 @@ export default function App() {
     <BrowserRouter>
       <div className="page">
         <Header />
-        <main className="container">
+        <main className="main">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/consultations" element={<Consultations />} />

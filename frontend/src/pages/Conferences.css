@@ -1,0 +1,143 @@
+.confPage {
+  width: 100%;
+}
+
+/* ===== HERO (haut de page) ===== */
+.confIntro {
+  background: #ffffff;
+  color: #151515;
+  padding: 90px 0 60px;
+}
+
+.confIntroInner {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.confIntroInner h1 {
+  margin: 0 0 14px;
+  font-size: clamp(34px, 4vw, 62px);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.confIntroText {
+  margin: 0;
+  font-size: clamp(16px, 1.4vw, 22px);
+  font-weight: 700;
+}
+
+.confDivider {
+  width: 96px;
+  height: 4px;
+  background: #151515;
+  margin: 18px auto 0;
+}
+
+/* ===== LISTE / 4 SECTIONS ===== */
+.confList {
+  padding: 0; /* full width */
+}
+
+.confInner {
+  width: 100%;      /* 👈 full width */
+  margin: 0;
+}
+
+/* Les 4 sections : on les empile en pleine largeur */
+.confBlocks {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* pas d’espace entre bandes */
+}
+
+/* Chaque bloc = une bande couleur pleine largeur */
+.confBlock {
+  width: 100%;
+  padding: 70px 0; /* hauteur “affiche” */
+  border: 0;
+  border-radius: 0;
+  background: #cfe5e2; /* couleur par défaut */
+}
+
+/* Alternance de couleurs (tu ajustes les teintes comme tu veux) */
+.confBlock:nth-child(1) { background: #cfe5e2; } /* vert pastel */
+.confBlock:nth-child(2) { background: #f2e7d5; } /* beige doux */
+.confBlock:nth-child(3) { background: #dfe7f7; } /* bleu clair */
+.confBlock:nth-child(4) { background: #f6d9e3; } /* rose pâle */
+
+/* Conteneur des events dans le bloc */
+.confBlockEvents {
+  display: grid;
+  gap: 28px;
+  padding: 0 24px;
+}
+
+/* Une "affiche" par événement */
+.eventPoster {
+  width: 100%;
+}
+
+/* L’intérieur est centré et lisible (comme ta capture) */
+.eventPosterInner {
+  width: min(980px, 92vw);
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Typo style "CAFÉ PSY RIGOLO" */
+.eventTitle {
+  margin: 0 0 12px;
+  font-size: clamp(34px, 4.2vw, 64px);
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #b03a3a; /* rouge brique */
+}
+
+/* Date / heure */
+.eventMeta {
+  margin: 0;
+  font-size: clamp(18px, 2vw, 28px);
+  font-weight: 800;
+  color: #b03a3a;
+}
+
+/* Lieu */
+.eventPlace {
+  margin: 16px 0 0;
+  font-size: clamp(16px, 1.4vw, 22px);
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* Optionnel : ligne "Thème" si tu l’ajoutes */
+.eventTheme {
+  margin: 34px 0 0;
+  font-size: clamp(18px, 2vw, 28px);
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.eventTheme strong {
+  color: #b03a3a;
+  text-transform: uppercase;
+}
+
+.eventDescription {
+  margin-top: 26px;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.75);
+  text-align: center;
+}
+
+/* Mobile : on réduit un peu le padding vertical */
+@media (max-width: 720px) {
+  .confBlock { padding: 50px 0; }
+}
