@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 
-
 export default function Header() {
   return (
     <header className="siteHeader">
@@ -24,19 +23,32 @@ export default function Header() {
 
       <nav className="headerNav">
         <div className="headerNavInner">
-          <NavLink to="/" end className={({ isActive }) => (isActive ? "navLink active" : "navLink")}>
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
+          >
             Accueil
           </NavLink>
 
-          <NavLink to="/consultations" className={({ isActive }) => (isActive ? "navLink active" : "navLink")}>
+          <NavLink
+            to="/consultations"
+            className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
+          >
             Consultations
           </NavLink>
 
-          <NavLink to="/conferences" className={({ isActive }) => (isActive ? "navLink active" : "navLink")}>
+          <NavLink
+            to="/conferences"
+            className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
+          >
             Conférences
           </NavLink>
 
-          <NavLink to="/contact" className={({ isActive }) => (isActive ? "navLink active" : "navLink")}>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
+          >
             Contact
           </NavLink>
         </div>

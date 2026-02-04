@@ -9,7 +9,6 @@ body{
   margin: 0;
 }
 
-/* si tu as une classe container dans App.tsx */
 .main { width: 100%; }
 
 .siteHeader {
@@ -18,7 +17,7 @@ body{
   color: #fff;
 }
 
-/* Bandeau top */
+/* Header top */
 .headerTop {
   font-size: 14px;
   opacity: 0.95;
@@ -45,91 +44,7 @@ body{
   color: rgba(255,255,255,0.5);
 }
 
-/* Nom */
-.headerBrand {
-  padding: 14px 0 10px;
-}
-
-.headerBrandInner {
-  width: min(1200px, 92%);
-  margin: 0 auto;
-  text-align: center;
-}
-
-.brandName {
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-}
-
-/* Nav */
-.headerNav {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.headerNavInner {
-  width: min(1200px, 92%);
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  padding: 12px 0;
-  flex-wrap: wrap;
-}
-
-.navLink {
-  color: rgba(255,255,255,0.8);
-  text-decoration: none;
-  font-weight: 700;
-  letter-spacing: 0.4px;
-  padding: 6px 2px;
-  border-bottom: 2px solid transparent;
-}
-
-.navLink:hover {
-  color: #fff;
-}
-
-.navLink.active {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-
-.siteHeader {
-  width: 100%;
-  background: #0f0f0f;
-  color: #fff;
-}
-
-/* Bandeau top */
-.headerTop {
-  font-size: 14px;
-  opacity: 0.95;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.headerTopInner {
-  width: min(1200px, 92%);
-  margin: 0 auto;
-  text-align: center;
-}
-
-.headerTopLink {
-  color: rgba(255,255,255,0.85);
-  text-decoration: none;
-}
-.headerTopLink:hover {
-  color: #fff;
-}
-
-.headerSep {
-  margin: 0 10px;
-  color: rgba(255,255,255,0.5);
-}
-
-/* Nom */
+/* Brand */
 .headerBrand {
   padding: 14px 0 10px;
 }
@@ -190,9 +105,9 @@ body{
 .footerInner {
   width: min(1200px, 92%);
   margin: 0 auto;
-  text-align: center;          /* 👉 clé : centre tout */
+  text-align: center;
   display: flex;
-  flex-direction: column;      /* empile verticalement */
+  flex-direction: column;
   gap: 8px;
 }
 
@@ -210,14 +125,14 @@ body{
 .footerLinks {
   display: flex;
   gap: 14px;
-  justify-content: center;     /* 👉 centre les liens */
+  justify-content: center;
   flex-wrap: wrap;
 }
 
 .footerRight {
   display: flex;
   gap: 14px;
-  justify-content: center;     /* 👉 centre tel/email */
+  justify-content: center;
   flex-wrap: wrap;
 }
 
