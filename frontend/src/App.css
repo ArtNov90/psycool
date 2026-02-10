@@ -13,8 +13,8 @@ body{
 
 .siteHeader {
   width: 100%;
-  background: #0f0f0f;
-  color: #fff;
+  background: #e6cfd2;
+  color: #120120;
 }
 
 /* Header top */
@@ -22,7 +22,7 @@ body{
   font-size: 14px;
   opacity: 0.95;
   padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(18,1,32,0.14);
 }
 
 .headerTopInner {
@@ -32,16 +32,16 @@ body{
 }
 
 .headerTopLink {
-  color: rgba(255,255,255,0.85);
+  color: #120120;
   text-decoration: none;
 }
 .headerTopLink:hover {
-  color: #fff;
+  color: #120120;
 }
 
 .headerSep {
   margin: 0 10px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(18,1,32,0.55);
 }
 
 /* Brand */
@@ -63,8 +63,8 @@ body{
 
 /* Nav */
 .headerNav {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(18,1,32,0.14);
+  border-bottom: 1px solid rgba(18,1,32,0.14);
 }
 
 .headerNavInner {
@@ -78,7 +78,7 @@ body{
 }
 
 .navLink {
-  color: rgba(255,255,255,0.8);
+  color: #120120;
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.4px;
@@ -87,19 +87,19 @@ body{
 }
 
 .navLink:hover {
-  color: #fff;
+  color: #120120;
 }
 
 .navLink.active {
-  color: #fff;
-  border-bottom-color: #fff;
+  color: #120120;
+  border-bottom-color: #120120;
 }
 
 .siteFooter {
-  background: #0f0f0f;
-  color: rgba(255,255,255,0.85);
+  background: #e6cfd2;
+  color: #120120;
   padding: 28px 0;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(18,1,32,0.14);
 }
 
 .footerInner {
@@ -114,7 +114,7 @@ body{
 .footerBrand {
   font-weight: 900;
   letter-spacing: 0.5px;
-  color: #fff;
+  color: #120120;
 }
 
 .footerMeta {
@@ -137,11 +137,11 @@ body{
 }
 
 .footerLink {
-  color: rgba(255,255,255,0.8);
+  color: #120120;
   text-decoration: none;
   font-weight: 700;
 }
 
 .footerLink:hover {
-  color: #fff;
+  color: #120120;
 }

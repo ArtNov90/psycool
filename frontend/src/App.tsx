@@ -4,6 +4,7 @@ import Footer from "./components/Footer.tsx";
 
 import Home from "./pages/Home.tsx";
 import Consultations from "./pages/Consultations.tsx";
+import ConsultationDetail from "./pages/ConsultationDetail.tsx";
 import Conferences from "./pages/Conferences.tsx";
 import Contact from "./pages/Contact.tsx";
 
@@ -22,6 +23,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/consultations" element={<Consultations />} />
+            <Route path="/consultations/:slug" element={<ConsultationDetail />} />
             <Route path="/conferences" element={<Conferences />} />
             <Route path="/contact" element={<Contact />} />
 
@@ -44,5 +46,4 @@ export default function App() {
     </BrowserRouter>
   );
 }
-
 

@@ -1,37 +1,120 @@
 .consultations {
-  margin: 0 auto;
-  max-width: 900px;
-  padding: 48px 20px 72px;
-  color: #1f2933;
+  width: 100%;
+  color: #151515;
+  padding-bottom: 72px;
 }
 
 .consultationsHeader {
-  margin-bottom: 32px;
+  position: relative;
+  min-height: clamp(320px, 56vh, 560px);
+  margin-bottom: 36px;
+  overflow: hidden;
+  border-top: 14px solid #e6cfd2;
+  border-bottom: 14px solid #e6cfd2;
+  background: url("/image_therapie_consultation.jpeg") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px 0;
+}
+
+.consultationsHeader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.consultationsHeaderInner {
+  position: relative;
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  text-align: left;
+  padding: 0;
 }
 
 .consultationsTitle {
-  font-size: 2.4rem;
-  margin: 0 0 12px;
-  letter-spacing: -0.02em;
+  margin: 0;
+  color: #f1d6d8;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  font-size: clamp(26px, 4vw, 44px);
+  line-height: 1.15;
+  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
 }
 
 .consultationsLead {
   margin: 0;
+  max-width: 68ch;
   font-size: 1.05rem;
   line-height: 1.6;
-  color: #4b5563;
+  color: #f4e9eb;
 }
 
 .consultationsSection {
   margin-top: 28px;
+  width: min(900px, 92%);
+  margin-left: auto;
+  margin-right: auto;
   padding: 20px 22px;
   border-radius: 12px;
-  background: #f5f7fb;
+  background: #f8f1f2;
+  border: 1px solid #ecdde0;
 }
 
 .consultationsSubtitle {
   margin: 0 0 12px;
   font-size: 1.2rem;
+  color: #b14a4f;
+}
+
+.consultationsCardsWrap {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+.consultationsCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.consultationCard {
+  padding: 24px;
+  border-radius: 12px;
+  background: #f8f1f2;
+  border: 1px solid #ecdde0;
+}
+
+.consultationCardTitle {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+  color: #b14a4f;
+}
+
+.consultationCardText {
+  margin: 0 0 18px;
+  line-height: 1.6;
+}
+
+.consultationCardLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 3px;
+  border: 2px solid #b14a4f;
+  background: #b14a4f;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.consultationCardLink:hover {
+  background: #963d41;
 }
 
 .consultationsList {
@@ -56,13 +139,31 @@
   align-items: center;
   justify-content: center;
   padding: 10px 18px;
-  border-radius: 999px;
-  background: #1f6feb;
-  color: #ffffff;
+  border-radius: 3px;
+  border: 2px solid #b14a4f;
+  background: #b14a4f;
+  color: #fff;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
 }
 
 .consultationsButton:hover {
-  background: #1557b5;
+  background: #963d41;
+}
+
+@media (max-width: 900px) {
+  .consultationsHeaderInner {
+    text-align: center;
+  }
+
+  .consultationsLead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .consultationsCardsGrid {
+    grid-template-columns: 1fr;
+  }
 }

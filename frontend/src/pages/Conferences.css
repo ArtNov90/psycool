@@ -4,36 +4,57 @@
 
 /* ===== HERO (haut de page) ===== */
 .confIntro {
-  background: #ffffff;
-  color: #151515;
-  padding: 90px 0 60px;
+  position: relative;
+  min-height: clamp(320px, 56vh, 560px);
+  overflow: hidden;
+  border-top: 14px solid #e6cfd2;
+  border-bottom: 14px solid #e6cfd2;
+  background: url("/image_therapie_consultation.jpeg") center/cover no-repeat;
+  color: #f1d6d8;
+  display: flex;
+  align-items: center;
+  padding: 24px 0;
+}
+
+.confIntro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
 }
 
 .confIntroInner {
-  width: 100%;
+  position: relative;
+  width: min(1100px, 92%);
   margin: 0 auto;
-  text-align: center;
-  padding: 0 24px;
+  text-align: left;
+  padding: 0;
 }
 
 .confIntroInner h1 {
-  margin: 0 0 14px;
-  font-size: clamp(34px, 4vw, 62px);
+  margin: 0 0 10px;
+  color: #f1d6d8;
+  font-size: clamp(28px, 4vw, 44px);
   font-weight: 800;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.2px;
+  line-height: 1.15;
+  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
 }
 
 .confIntroText {
   margin: 0;
-  font-size: clamp(16px, 1.4vw, 22px);
-  font-weight: 700;
+  max-width: 68ch;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-weight: 500;
+  color: #f4e9eb;
 }
 
 .confDivider {
   width: 96px;
   height: 4px;
-  background: #151515;
-  margin: 18px auto 0;
+  background: #f1d6d8;
+  margin: 18px 0 0;
 }
 
 /* ===== LISTE / 4 SECTIONS ===== */
@@ -153,4 +174,15 @@
 
 @media (max-width: 720px) {
   .confBlock { padding: 50px 0; }
+  .confIntroInner {
+    text-align: center;
+  }
+  .confIntroText {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .confDivider {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

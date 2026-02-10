@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import "./Home.css";
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
       {/* Bloc blanc avec photo ronde + texte */}
       <section className="introWhite">
         <div className="introInner">
-          <div className="avatar" aria-hidden="true" />
+          <img className="avatar" src="/photo-profil.webp" alt="Portrait de la psychanalyste" loading="lazy" />
           <p className="introText">
             <strong>Psychanalyste diplômée</strong>, je vous accueille au sein de mon cabinet pour des consultations.
             <br />
@@ -37,7 +37,9 @@ export default function Home() {
         <div className="parcoursInner">
           <div className="parcoursLeft">
             <h2 className="parcoursTitle">MON PARCOURS</h2>
-            <div className="parcoursImage" aria-hidden="true" />
+            <div className="parcoursImage" aria-hidden="true">
+              <img className="parcoursImageImg" src="/freud-1920w.webp" alt="" loading="lazy" />
+            </div>
           </div>
 
           <div className="parcoursRight">
@@ -66,4 +68,3 @@ export default function Home() {
     </div>
   );
 }
- 

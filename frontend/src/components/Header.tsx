@@ -28,28 +28,28 @@ export default function Header() {
             end
             className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
           >
-            Accueil
+            ACCEUIL
           </NavLink>
 
           <NavLink
             to="/consultations"
             className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
           >
-            Consultations
+            THERAPIE
           </NavLink>
 
           <NavLink
             to="/conferences"
             className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
           >
-            Conférences
+            ATELIERS/PSYCOOL
           </NavLink>
 
           <NavLink
             to="/contact"
             className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
           >
-            Contact
+            PRENDRE RENDEZ-VOUS
           </NavLink>
         </div>
       </nav>
