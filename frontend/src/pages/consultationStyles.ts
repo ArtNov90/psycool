@@ -9,7 +9,7 @@ export type ConsultationStyle = {
 export const consultationStyles: ConsultationStyle[] = [
   {
     slug: "therapie-individuelle",
-    title: "Therapie de couple",
+    title: "Therapie individuelle",
     shortDescription:
       "Un accompagnement personnalise pour traverser une periode difficile et retrouver un equilibre.",
     intro:
@@ -22,7 +22,7 @@ export const consultationStyles: ConsultationStyle[] = [
   },
   {
     slug: "therapie-couple",
-    title: "Therapie individuelle",
+    title: "Therapie de couple",
     shortDescription:
       "Un cadre neutre pour retablir le dialogue et sortir des conflits repetitifs.",
     intro:

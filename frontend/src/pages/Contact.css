@@ -1,0 +1,250 @@
+.contactPage {
+  width: 100%;
+}
+
+.contactHero {
+  position: relative;
+  min-height: clamp(320px, 56vh, 560px);
+  overflow: hidden;
+  border-top: 14px solid #e6cfd2;
+  border-bottom: 14px solid #e6cfd2;
+  background: url("/image_therapie_consultation.jpeg") center/cover no-repeat;
+}
+
+.contactHeroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(108deg, rgba(19, 25, 37, 0.82) 0%, rgba(19, 25, 37, 0.48) 58%, rgba(19, 25, 37, 0.18) 100%);
+}
+
+.contactHeroInner {
+  position: relative;
+  width: min(1120px, 92%);
+  margin: 0 auto;
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 28px 0;
+}
+
+.contactEyebrow {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #f6e9ea;
+  background: rgba(248, 223, 227, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+}
+
+.contactHeroInner h1 {
+  margin: 0;
+  color: #fff4f6;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.04;
+  max-width: 14ch;
+}
+
+.contactLead {
+  margin: 0;
+  max-width: 66ch;
+  color: #f2e7e9;
+  line-height: 1.65;
+}
+
+.contactQuick {
+  background: #f7edf0;
+  padding: 28px 0;
+}
+
+.contactQuickInner {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.quickCard {
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #ecdde0;
+  padding: 18px;
+  box-shadow: 0 8px 20px rgba(45, 15, 20, 0.07);
+  text-decoration: none;
+  color: inherit;
+}
+
+.quickLabel {
+  margin: 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.quickValue {
+  margin: 8px 0 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #8d393e;
+  line-height: 1.4;
+}
+
+.quickHint {
+  margin: 8px 0 0;
+  color: rgba(0, 0, 0, 0.66);
+}
+
+.contactMain {
+  padding: 56px 0 70px;
+  background: linear-gradient(180deg, #ffffff 0%, #fff9fb 100%);
+}
+
+.contactMainInner {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.contactPanel {
+  border-radius: 14px;
+  border: 1px solid #ebd8dd;
+  background: #fff;
+  padding: 22px;
+  box-shadow: 0 10px 24px rgba(33, 16, 19, 0.08);
+}
+
+.contactPanel h2 {
+  margin: 0;
+  font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1.15;
+  color: #702e33;
+}
+
+.panelLead {
+  margin: 12px 0 0;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.contactForm {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field span {
+  font-weight: 600;
+  color: #332225;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  border: 1px solid #d9c8cd;
+  border-radius: 10px;
+  padding: 11px 12px;
+  background: #fff;
+  font: inherit;
+  color: #151515;
+  box-sizing: border-box;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: 2px solid rgba(177, 74, 79, 0.2);
+  border-color: #b14a4f;
+}
+
+.submitBtn {
+  margin-top: 6px;
+  border: 2px solid #b14a4f;
+  background: #b14a4f;
+  color: #fff;
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.submitBtn:hover {
+  background: #963d41;
+  border-color: #963d41;
+}
+
+.infoGroup {
+  margin-top: 18px;
+}
+
+.infoGroup h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  color: #8b363b;
+}
+
+.infoGroup p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.infoActions {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.outlineBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.35);
+  color: #151515;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.outlineBtn:hover {
+  background: rgba(177, 74, 79, 0.08);
+}
+
+@media (max-width: 940px) {
+  .contactQuickInner,
+  .contactMainInner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .contactHeroInner {
+    align-items: center;
+    text-align: center;
+  }
+
+  .contactHeroInner h1 {
+    max-width: 16ch;
+  }
+}

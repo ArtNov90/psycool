@@ -1,79 +1,117 @@
-﻿.home { width: 100%; }
+.home {
+  width: 100%;
+}
 
-/* HERO banner */
-.heroBanner{
+.heroBanner {
   position: relative;
-  height: clamp(360px, 62vh, 620px);
+  min-height: clamp(440px, 72vh, 700px);
   overflow: hidden;
   border-top: 14px solid #e6cfd2;
   border-bottom: 14px solid #e6cfd2;
   background: url("/image_therapie_consultation.jpeg") center/cover no-repeat;
 }
 
-.heroOverlay{
-  position:absolute;
-  inset:0;
-  background: rgba(0,0,0,0.35);
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, rgba(19, 24, 36, 0.78) 0%, rgba(19, 24, 36, 0.46) 58%, rgba(19, 24, 36, 0.2) 100%);
 }
 
-.heroContent{
+.heroContent {
   position: relative;
-  width: min(1100px, 92%);
+  width: min(1120px, 92%);
   margin: 0 auto;
-  height: 100%;
+  min-height: inherit;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   gap: 18px;
-  padding: 24px 0;
+  padding: 42px 0;
 }
 
-.heroTitle{
+.heroEyebrow {
   margin: 0;
-  color: #f1d6d8;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #f6e9ea;
+  background: rgba(248, 223, 227, 0.26);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+}
+
+.heroTitle {
+  margin: 0;
+  max-width: 16ch;
+  color: #fff6f7;
   font-weight: 800;
-  letter-spacing: 0.2px;
-  font-size: clamp(26px, 4vw, 44px);
-  line-height: 1.15;
-  text-shadow: 0 10px 24px rgba(0,0,0,0.45);
+  font-size: clamp(30px, 4.8vw, 56px);
+  line-height: 1.08;
+  text-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
 }
 
-.heroTitle .small{
-  font-size: 0.55em;
+.heroTitle .small {
+  font-size: 0.52em;
   font-weight: 600;
-  opacity: 0.95;
+  opacity: 0.94;
 }
 
-.accent { color: #f1d6d8; }
-.accentText { color: #b14a4f; font-weight: 700; }
+.accent {
+  color: #f1d6d8;
+}
 
-.heroBtn{
+.heroLead {
+  margin: 0;
+  max-width: 60ch;
+  color: #f3e8ea;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.heroActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.heroBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 22px;
-  border: 2px solid rgba(255,255,255,0.75);
+  padding: 12px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
   color: #fff;
   background: transparent;
-  border-radius: 3px;
+  border-radius: 8px;
   font-weight: 700;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  text-decoration: none;
 }
 
-.heroBtn:hover{
-  background: rgba(255,255,255,0.12);
+.heroBtn.primary {
+  background: #b14a4f;
+  border-color: #b14a4f;
 }
 
-/* White intro block */
-.introWhite{
+.heroBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.heroBtn.primary:hover {
+  background: #953d42;
+}
+
+.introWhite {
   background: #ffffff;
   color: #151515;
   padding: 54px 0;
 }
 
-.introInner{
+.introInner {
   width: min(980px, 92%);
   margin: 0 auto;
   text-align: center;
@@ -82,33 +120,144 @@
   justify-items: center;
 }
 
-.avatar{
+.avatar {
   width: 200px;
   height: 200px;
   border-radius: 999px;
-  background:
-    url("https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=70")
-    center/cover no-repeat;
-  box-shadow: 0 14px 35px rgba(0,0,0,0.18);
+  background: url("https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=70") center/cover no-repeat;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.18);
   border: 4px solid #fff;
   transform: translateY(-8px);
 }
 
-.introText{
+.introText {
   margin: 0;
   font-size: 18px;
   line-height: 1.75;
   font-family: Georgia, "Times New Roman", serif;
 }
 
-/* Pink parcours section */
-.parcoursPink{
+.accentText {
+  color: #b14a4f;
+  font-weight: 700;
+}
+
+.sectionTitle {
+  margin: 0 0 22px;
+  font-size: clamp(24px, 3.2vw, 38px);
+  line-height: 1.18;
+}
+
+.highlightsSection {
+  padding: 62px 0;
+  background: radial-gradient(circle at 10% 10%, #fff6f7 0, #f8edf0 42%, #f6eaed 100%);
+}
+
+.highlightsInner {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+.highlightsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.highlightCard {
+  padding: 22px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid #edd9de;
+  box-shadow: 0 10px 30px rgba(60, 16, 21, 0.08);
+}
+
+.highlightCard h3 {
+  margin: 0 0 8px;
+  color: #8f3a3f;
+}
+
+.highlightCard p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.processSection {
+  padding: 62px 0;
+  background: #ffffff;
+}
+
+.processInner {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.processStep {
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #ead7db;
+  background: linear-gradient(180deg, #fffefe 0%, #fff7f8 100%);
+}
+
+.processIndex {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: #b14a4f;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.processStep h3 {
+  margin: 10px 0 8px;
+  color: #7f3136;
+}
+
+.processStep p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.practicalBand {
+  padding: 30px 0;
+  background: #1c2433;
+  color: #e8edf5;
+}
+
+.practicalInner {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.practicalItem h3 {
+  margin: 0 0 8px;
+  color: #ffffff;
+}
+
+.practicalItem p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.parcoursPink {
   background: #e6cfd2;
   color: #151515;
   padding: 64px 0;
 }
 
-.parcoursInner{
+.parcoursInner {
   width: min(1100px, 92%);
   margin: 0 auto;
   display: grid;
@@ -117,71 +266,84 @@
   align-items: start;
 }
 
-.parcoursTitle{
+.parcoursTitle {
   margin: 0 0 22px;
   font-size: clamp(28px, 3vw, 44px);
   letter-spacing: 1px;
   font-weight: 900;
 }
 
-.parcoursImage{
+.parcoursImage {
   width: min(420px, 100%);
   aspect-ratio: 1 / 1;
   border-radius: 999px;
   overflow: hidden;
-  box-shadow: 0 18px 45px rgba(0,0,0,0.18);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
 }
-.parcoursImageImg{
+
+.parcoursImageImg {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.parcoursP{
+.parcoursP {
   margin: 0 0 12px;
   line-height: 1.8;
 }
 
-.parcoursList{
+.parcoursList {
   margin: 14px 0 0;
   padding-left: 18px;
   line-height: 2;
 }
 
-.parcoursCtas{
+.parcoursCtas {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
   margin-top: 22px;
 }
 
-.ghostBtn{
+.ghostBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 10px 14px;
   border-radius: 6px;
-  border: 1px solid rgba(0,0,0,0.25);
-  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.25);
   color: #151515;
   font-weight: 700;
 }
 
-.ghostBtn:hover{
-  background: rgba(255,255,255,0.45);
+.ghostBtn:hover {
+  background: rgba(255, 255, 255, 0.45);
 }
 
-/* Responsive */
-@media (max-width: 900px){
-  .parcoursInner{
-    grid-template-columns: 1fr;
-  }
-  .parcoursImage{
-    margin: 0 auto;
-  }
-  .heroContent{
+@media (max-width: 900px) {
+  .heroContent {
     align-items: center;
     text-align: center;
+  }
+
+  .heroTitle {
+    max-width: 18ch;
+  }
+
+  .heroLead {
+    max-width: 70ch;
+  }
+
+  .parcoursInner,
+  .highlightsGrid,
+  .processGrid,
+  .practicalInner {
+    grid-template-columns: 1fr;
+  }
+
+  .parcoursImage {
+    margin: 0 auto;
   }
 }
