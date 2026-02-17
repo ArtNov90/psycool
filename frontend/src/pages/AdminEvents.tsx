@@ -22,8 +22,11 @@ type EventItem = {
   city?: string;
   place?: string;
   order?: number;
+  type?: ConferenceType;
   section?: 1 | 2 | 3 | 4;
 };
+
+type ConferenceType = "cafepsy" | "masterclass";
 
 type EventDraft = Omit<EventItem, "id">;
 type FieldErrors = Partial<Record<keyof EventDraft, string>>;
@@ -35,6 +38,13 @@ const fieldErrorInputStyle = {
   boxShadow: "0 0 0 1px rgba(255, 80, 80, 0.25)",
 };
 
+function getSortableDateValue(date?: string): number {
+  if (!date) return Number.POSITIVE_INFINITY;
+  const parsed = new Date(`${date}T00:00:00`);
+  if (Number.isNaN(parsed.getTime())) return Number.POSITIVE_INFINITY;
+  return parsed.getTime();
+}
+
 export default function AdminEvents() {
   const [events, setEvents] = useState<EventItem[]>([]);
   const [form, setForm] = useState<EventDraft>({
@@ -44,7 +54,7 @@ export default function AdminEvents() {
     time: "",
     city: "",
     place: "",
-    section: 1,
+    type: "cafepsy",
   });
   const [formErrors, setFormErrors] = useState<FieldErrors>({});
   const [drafts, setDrafts] = useState<Record<string, EventDraft>>({});
@@ -60,10 +70,9 @@ export default function AdminEvents() {
 
   const sortedEvents = useMemo(() => {
     return [...events].sort((a, b) => {
-      const orderA = typeof a.order === "number" ? a.order : Number.MAX_SAFE_INTEGER;
-      const orderB = typeof b.order === "number" ? b.order : Number.MAX_SAFE_INTEGER;
-      if (orderA !== orderB) return orderA - orderB;
-      return (a.date || "").localeCompare(b.date || "");
+      const byDate = getSortableDateValue(a.date) - getSortableDateValue(b.date);
+      if (byDate !== 0) return byDate;
+      return (a.title || "").localeCompare(b.title || "");
     });
   }, [events]);
 
@@ -88,14 +97,22 @@ export default function AdminEvents() {
             time: ev.time ?? "",
             city: ev.city ?? "",
             place: ev.place ?? "",
-            order: ev.order ?? undefined,
-            section: ev.section ?? undefined,
+            type: normalizeConferenceType(ev),
           };
         }
       });
       return next;
     });
   }, [events]);
+
+  function normalizeConferenceType(event: Pick<EventItem, "type" | "section">): ConferenceType {
+    if (event.type === "cafepsy" || event.type === "masterclass") {
+      return event.type;
+    }
+
+    const legacySection = event.section ?? 1;
+    return legacySection % 2 === 0 ? "masterclass" : "cafepsy";
+  }
 
   function validateDraft(draft: EventDraft): FieldErrors {
     const errors: FieldErrors = {};
@@ -105,15 +122,8 @@ export default function AdminEvents() {
     if (!draft.time?.trim()) errors.time = "L'heure est obligatoire.";
     if (!draft.city?.trim()) errors.city = "La ville est obligatoire.";
     if (!draft.place?.trim()) errors.place = "Le lieu est obligatoire.";
-    if (!draft.section) errors.section = "La section est obligatoire.";
+    if (!draft.type) errors.type = "Le type de conference est obligatoire.";
     return errors;
-  }
-
-  function getNextOrder() {
-    const maxOrder = events.reduce((max, ev) => {
-      return typeof ev.order === "number" && ev.order > max ? ev.order : max;
-    }, 0);
-    return maxOrder + 1;
   }
 
   async function addEvent(e: React.FormEvent) {
@@ -133,10 +143,9 @@ export default function AdminEvents() {
         time: form.time || "",
         city: form.city || "",
         place: form.place || "",
-        order: getNextOrder(),
-        section: form.section ?? 1,
+        type: form.type ?? "cafepsy",
       });
-      setForm({ title: "", date: "", description: "", time: "", city: "", place: "", section: 1 });
+      setForm({ title: "", date: "", description: "", time: "", city: "", place: "", type: "cafepsy" });
       setFormErrors({});
     } catch (err) {
       setError("Impossible d'ajouter l'événement. Réessaie.");
@@ -194,8 +203,7 @@ export default function AdminEvents() {
         time: base.time ?? "",
         city: base.city ?? "",
         place: base.place ?? "",
-        order: base.order ?? undefined,
-        section: base.section ?? 1,
+        type: normalizeConferenceType(base),
       },
     }));
     setDraftErrors((current) => ({ ...current, [id]: {} }));
@@ -220,54 +228,14 @@ export default function AdminEvents() {
         city: draft.city || "",
         place: draft.place || "",
       };
-      if (draft.section) {
-        payload.section = draft.section;
-      }
-      if (typeof draft.order === "number") {
-        payload.order = draft.order;
+      if (draft.type) {
+        payload.type = draft.type;
       }
       await updateDoc(doc(db, "events", id), payload);
     } catch (err) {
       setError("Impossible de modifier l'événement. Réessaie.");
     } finally {
       setSaving((current) => ({ ...current, [id]: false }));
-    }
-  }
-
-  async function moveEvent(id: string, direction: "up" | "down") {
-    const index = sortedEvents.findIndex((ev) => ev.id === id);
-    if (index < 0) return;
-    const targetIndex = direction === "up" ? index - 1 : index + 1;
-    if (targetIndex < 0 || targetIndex >= sortedEvents.length) return;
-
-    const current = sortedEvents[index];
-    const target = sortedEvents[targetIndex];
-    const currentOrder =
-      typeof current.order === "number" ? current.order : index + 1;
-    const targetOrder =
-      typeof target.order === "number" ? target.order : targetIndex + 1;
-    const nextSection = target.section ?? current.section;
-
-    setError(null);
-    try {
-      await Promise.all([
-        updateDoc(doc(db, "events", current.id), {
-          order: targetOrder,
-          ...(nextSection ? { section: nextSection } : {}),
-        }),
-        updateDoc(doc(db, "events", target.id), { order: currentOrder }),
-      ]);
-      setDrafts((existing) => ({
-        ...existing,
-        [current.id]: {
-          ...existing[current.id],
-          order: targetOrder,
-          section: nextSection ?? existing[current.id]?.section ?? 1,
-        },
-        [target.id]: { ...existing[target.id], order: currentOrder },
-      }));
-    } catch (err) {
-      setError("Impossible de changer l'ordre. Réessaie.");
     }
   }
 
@@ -395,25 +363,23 @@ export default function AdminEvents() {
           </label>
 
           <label>
-            Section
+            Type de conference
             <select
               className="input"
-              value={form.section ?? 1}
+              value={form.type ?? "cafepsy"}
               onChange={(e) => {
-                const value = Number(e.target.value) as 1 | 2 | 3 | 4;
-                setForm({ ...form, section: value });
-                setFormErrors((current) => ({ ...current, section: undefined }));
+                const value = e.target.value as ConferenceType;
+                setForm({ ...form, type: value });
+                setFormErrors((current) => ({ ...current, type: undefined }));
               }}
-              style={formErrors.section ? fieldErrorInputStyle : undefined}
+              style={formErrors.type ? fieldErrorInputStyle : undefined}
               required
             >
-              <option value={1}>Section 1</option>
-              <option value={2}>Section 2</option>
-              <option value={3}>Section 3</option>
-              <option value={4}>Section 4</option>
+              <option value="cafepsy">CafePsy rigolo</option>
+              <option value="masterclass">Masterclass</option>
             </select>
-            {formErrors.section ? (
-              <div style={fieldErrorStyle}>{formErrors.section}</div>
+            {formErrors.type ? (
+              <div style={fieldErrorStyle}>{formErrors.type}</div>
             ) : null}
           </label>
 
@@ -426,7 +392,7 @@ export default function AdminEvents() {
       <section className="confList">
         <div className="confInner" style={{ textAlign: "left" }}>
           <div className="confBlocks">
-            {sortedEvents.map((ev, index) => {
+            {sortedEvents.map((ev) => {
               const draft = drafts[ev.id] ?? {
                 title: ev.title ?? "",
                 date: ev.date ?? "",
@@ -434,14 +400,11 @@ export default function AdminEvents() {
                 time: ev.time ?? "",
                 city: ev.city ?? "",
                 place: ev.place ?? "",
-                order: ev.order ?? undefined,
-                section: ev.section ?? undefined,
+                type: normalizeConferenceType(ev),
               };
-              const isFirst = index === 0;
-              const isLast = index === sortedEvents.length - 1;
               const errors = draftErrors[ev.id] ?? {};
               return (
-                <div key={ev.id} className={`confBlock confBlock-${ev.section ?? 1}`}>
+                <div key={ev.id} className={`confBlock confBlock-${normalizeConferenceType(draft)}`}>
                   <div className="confBlockEvents">
                     <article className="eventPoster">
                       <div className="eventPosterInner">
@@ -459,24 +422,6 @@ export default function AdminEvents() {
                             {ev.date}
                             {ev.time ? ` • ${ev.time}` : ""}
                           </span>
-                          <div style={{ display: "flex", gap: 8 }}>
-                            <button
-                              className="btn ghost"
-                              type="button"
-                              onClick={() => moveEvent(ev.id, "up")}
-                              disabled={isFirst}
-                            >
-                              Monter
-                            </button>
-                            <button
-                              className="btn ghost"
-                              type="button"
-                              onClick={() => moveEvent(ev.id, "down")}
-                              disabled={isLast}
-                            >
-                              Descendre
-                            </button>
-                          </div>
                         </div>
 
                         <div style={{ display: "grid", gap: 10, marginTop: 10 }}>
@@ -570,24 +515,22 @@ export default function AdminEvents() {
                           </label>
 
                           <label>
-                            Section
+                            Type de conference
                             <select
                               className="input"
-                              value={draft.section ?? 1}
+                              value={draft.type ?? "cafepsy"}
                               onChange={(e) => {
-                                const value = Number(e.target.value) as 1 | 2 | 3 | 4;
-                                updateDraft(ev.id, { section: value });
+                                const value = e.target.value as ConferenceType;
+                                updateDraft(ev.id, { type: value });
                               }}
-                              style={errors.section ? fieldErrorInputStyle : undefined}
+                              style={errors.type ? fieldErrorInputStyle : undefined}
                               required
                             >
-                              <option value={1}>Section 1</option>
-                              <option value={2}>Section 2</option>
-                              <option value={3}>Section 3</option>
-                              <option value={4}>Section 4</option>
+                              <option value="cafepsy">CafePsy rigolo</option>
+                              <option value="masterclass">Masterclass</option>
                             </select>
-                            {errors.section ? (
-                              <div style={fieldErrorStyle}>{errors.section}</div>
+                            {errors.type ? (
+                              <div style={fieldErrorStyle}>{errors.type}</div>
                             ) : null}
                           </label>
 
@@ -630,3 +573,4 @@ export default function AdminEvents() {
     </div>
   );
 }
+

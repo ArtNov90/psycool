@@ -19,9 +19,9 @@ export default function Home() {
             d'anxiete ou de conflits relationnels.
           </p>
           <div className="heroActions">
-            <Link className="heroBtn primary" to="/contact">
+            <a className="heroBtn primary" href="tel:+33687216605">
               Prendre rendez-vous
-            </Link>
+            </a>
             <Link className="heroBtn" to="/consultations">
               Voir les consultations
             </Link>

@@ -1,6 +1,5 @@
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
 import { db } from "../firebase";
 import "./Conferences.css";
 
@@ -12,34 +11,38 @@ type EventItem = {
   city?: string;
   place?: string;
   description?: string;
+  type?: ConferenceType;
   section?: 1 | 2 | 3 | 4;
   order?: number;
 };
+
+type ConferenceType = "cafepsy" | "masterclass";
 
 type DescriptionBlock =
   | { type: "p"; text: string }
   | { type: "ul"; items: string[] };
 
-const BLOCKS: (1 | 2 | 3 | 4)[] = [1, 2, 3, 4];
+const BLOCKS: ConferenceType[] = ["cafepsy", "masterclass"];
 
-const BLOCK_META: Record<1 | 2 | 3 | 4, { title: string; subtitle: string }> = {
-  1: {
-    title: "Ateliers decouverte",
-    subtitle: "Formats accessibles pour explorer des themes du quotidien.",
+const BLOCK_META: Record<ConferenceType, { title: string; subtitle: string }> = {
+  cafepsy: {
+    title: "CafePsy rigolo",
+    subtitle: "Un format vivant pour aborder la psychologie avec legerete et echanges.",
   },
-  2: {
-    title: "Cycles thematiques",
-    subtitle: "Rencontres approfondies autour d'un meme fil conducteur.",
-  },
-  3: {
-    title: "Conferences",
-    subtitle: "Interventions sur la psychanalyse, la relation et les transitions de vie.",
-  },
-  4: {
-    title: "Sessions speciales",
-    subtitle: "Formats ponctuels avec places limitees.",
+  masterclass: {
+    title: "Masterclass",
+    subtitle: "Des sessions plus approfondies pour explorer un theme en detail.",
   },
 };
+
+function normalizeConferenceType(event: EventItem): ConferenceType {
+  if (event.type === "cafepsy" || event.type === "masterclass") {
+    return event.type;
+  }
+
+  const legacySection = event.section ?? 1;
+  return legacySection % 2 === 0 ? "masterclass" : "cafepsy";
+}
 
 function parseDescription(raw?: string): DescriptionBlock[] {
   if (!raw) return [];
@@ -101,6 +104,13 @@ function formatDate(date?: string): string {
   }).format(parsed);
 }
 
+function getSortableDateValue(date?: string): number {
+  if (!date) return Number.POSITIVE_INFINITY;
+  const parsed = new Date(`${date}T00:00:00`);
+  if (Number.isNaN(parsed.getTime())) return Number.POSITIVE_INFINITY;
+  return parsed.getTime();
+}
+
 export default function Conferences() {
   const [events, setEvents] = useState<EventItem[]>([]);
 
@@ -118,18 +128,17 @@ export default function Conferences() {
   }, []);
 
   const grouped = useMemo(() => {
-    const map: Record<1 | 2 | 3 | 4, EventItem[]> = { 1: [], 2: [], 3: [], 4: [] };
+    const map: Record<ConferenceType, EventItem[]> = { cafepsy: [], masterclass: [] };
 
     const sorted = [...events].sort((a, b) => {
-      const orderA = typeof a.order === "number" ? a.order : Number.MAX_SAFE_INTEGER;
-      const orderB = typeof b.order === "number" ? b.order : Number.MAX_SAFE_INTEGER;
-      if (orderA !== orderB) return orderA - orderB;
-      return (a.date || "").localeCompare(b.date || "");
+      const byDate = getSortableDateValue(a.date) - getSortableDateValue(b.date);
+      if (byDate !== 0) return byDate;
+      return (a.title || "").localeCompare(b.title || "");
     });
 
     for (const event of sorted) {
-      const section = (event.section ?? 1) as 1 | 2 | 3 | 4;
-      map[section].push(event);
+      const type = normalizeConferenceType(event);
+      map[type].push(event);
     }
 
     return map;
@@ -147,9 +156,9 @@ export default function Conferences() {
             qui vous correspond.
           </p>
           <div className="confHeroActions">
-            <Link className="confHeroBtn confHeroBtnPrimary" to="/contact">
+            <a className="confHeroBtn confHeroBtnPrimary" href="tel:+33687216605">
               Reserver une place
-            </Link>
+            </a>
             <a className="confHeroBtn" href="tel:+33687216605">
               Appeler le cabinet
             </a>
@@ -166,9 +175,9 @@ export default function Conferences() {
                 Contactez le cabinet pour connaitre les prochaines dates ou etre informe des nouvelles
                 ouvertures.
               </p>
-              <Link className="emptyStateBtn" to="/contact">
+              <a className="emptyStateBtn" href="mailto:chantalnovara@icloud.com">
                 Me tenir informe
-              </Link>
+              </a>
             </article>
           ) : (
             <div className="confBlocks">
@@ -182,7 +191,7 @@ export default function Conferences() {
                   <section key={block} className={`confBlock confBlock-${block}`}>
                     <div className="confBlockInner">
                       <header className="confBlockHeader">
-                        <p className="confBlockKicker">Section {block}</p>
+                        <p className="confBlockKicker">Type de conference</p>
                         <h2>{blockMeta.title}</h2>
                         <p>{blockMeta.subtitle}</p>
                       </header>

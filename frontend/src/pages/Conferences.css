@@ -153,20 +153,12 @@
   padding: 58px 0;
 }
 
-.confBlock-1 {
-  background: linear-gradient(180deg, #d8ebe7 0%, #cfe5e2 100%);
+.confBlock-cafepsy {
+  background: linear-gradient(180deg, #e7f3ee 0%, #dcede6 100%);
 }
 
-.confBlock-2 {
-  background: linear-gradient(180deg, #f8efe0 0%, #f2e7d5 100%);
-}
-
-.confBlock-3 {
-  background: linear-gradient(180deg, #e7eefb 0%, #dfe7f7 100%);
-}
-
-.confBlock-4 {
-  background: linear-gradient(180deg, #fbe4ea 0%, #f6d9e3 100%);
+.confBlock-masterclass {
+  background: linear-gradient(180deg, #f8efe0 0%, #f1e3cb 100%);
 }
 
 .confBlockInner {
@@ -214,23 +206,7 @@
   padding: 20px;
   box-shadow: 0 10px 24px rgba(23, 19, 19, 0.08);
   width: min(860px, 100%);
-  margin-right: auto;
-}
-
-.eventCard:nth-child(odd) {
-  margin-right: auto;
-}
-
-.eventCard:nth-child(even) {
-  margin-left: auto;
-  margin-right: 0;
-  transform: translateY(26px);
-}
-
-/* Si une section n'a qu'une seule carte, on garde un effet quinconce entre sections */
-.confBlock:nth-child(even) .eventCard:nth-child(odd) {
-  margin-left: auto;
-  margin-right: 0;
+  margin: 0 auto;
 }
 
 .eventCardTop {
@@ -290,15 +266,6 @@
 @media (max-width: 940px) {
   .eventCard {
     width: 100%;
-  }
-  
-  .eventCard:nth-child(even) {
-    transform: none;
-  }
-
-  .confBlock:nth-child(even) .eventCard:nth-child(odd) {
-    margin-left: 0;
-    margin-right: auto;
   }
 }
 

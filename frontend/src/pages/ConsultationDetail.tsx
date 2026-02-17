@@ -40,7 +40,7 @@ export default function ConsultationDetail() {
     return <Navigate to="/consultations" replace />;
   }
 
-  if (slug === "therapie-individuelle") {
+  if (slug === "therapie-couple") {
     return (
       <section className="consultationDetail consultationDetailAlt">
         <section className="individualIntro">
