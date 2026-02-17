@@ -7,8 +7,10 @@
 .consultationsHeader {
   position: relative;
   min-height: clamp(320px, 56vh, 560px);
-  margin-bottom: 36px;
+  width: min(1240px, 96%);
+  margin: 12px auto 36px;
   overflow: hidden;
+  border-radius: 24px;
   border-top: 14px solid #e6cfd2;
   border-bottom: 14px solid #e6cfd2;
   background: url("/image_therapie_consultation.jpeg") center/cover no-repeat;
@@ -167,3 +169,4 @@
     grid-template-columns: 1fr;
   }
 }
+

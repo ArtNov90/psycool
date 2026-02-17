@@ -5,7 +5,10 @@
 .confHero {
   position: relative;
   min-height: clamp(360px, 62vh, 620px);
+  width: min(1240px, 96%);
+  margin: 12px auto 0;
   overflow: hidden;
+  border-radius: 24px;
   border-top: 14px solid #e6cfd2;
   border-bottom: 14px solid #e6cfd2;
   background: url("/image_therapie_consultation.jpeg") center/cover no-repeat;
@@ -317,3 +320,4 @@
     padding: 48px 0;
   }
 }
+

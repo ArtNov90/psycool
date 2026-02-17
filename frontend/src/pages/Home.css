@@ -5,7 +5,10 @@
 .heroBanner {
   position: relative;
   min-height: clamp(440px, 72vh, 700px);
+  width: min(1240px, 96%);
+  margin: 12px auto 0;
   overflow: hidden;
+  border-radius: 24px;
   border-top: 14px solid #e6cfd2;
   border-bottom: 14px solid #e6cfd2;
   background: url("/image_therapie_consultation.jpeg") center/cover no-repeat;
@@ -347,3 +350,4 @@
     margin: 0 auto;
   }
 }
+
