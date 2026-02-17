@@ -9,10 +9,10 @@ export default function Home() {
         <div className="heroContent">
           <p className="heroEyebrow">Psychanalyste diplomee</p>
           <h1 className="heroTitle">
-            Un espace de parole securise a <span className="accent">Lattes</span> et{" "}
-            <span className="accent">Brissac</span>
+            Consultations en <span className="accent">visio</span>, en{" "}
+            <span className="accent">anglais</span>, à <span className="accent">Lattes</span>
             <br />
-            <span className="small">en cabinet ou en visio</span>
+            <span className="small">en cabinet, en visio, en francais et en anglais</span>
           </h1>
           <p className="heroLead">
             Therapie individuelle et therapie de couple pour traverser les periodes de blocage,
@@ -136,6 +136,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
     </div>
   );
 }
