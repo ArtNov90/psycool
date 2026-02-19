@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { consultationStyles } from "./consultationStyles";
 import "./ConsultationDetail.css";
+import coupleTherapyImage from "../../photos/psicoterapia-psicopsycouple.jpg";
 
 type FaqItem = {
   question: string;
@@ -47,7 +48,10 @@ export default function ConsultationDetail() {
           <div className="individualIntroInner">
             <div className="individualVisualCol">
               <h1 className="individualMainTitle">La therapie de couple, c'est quoi ?</h1>
-              <div className="individualRoundVisual" />
+              <div
+                className="individualRoundVisual"
+                style={{ backgroundImage: `url(${coupleTherapyImage})` }}
+              />
             </div>
 
             <div className="individualTextCol">

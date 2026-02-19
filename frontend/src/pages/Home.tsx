@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Home.css";
+import whatsappImage from "../../photos/whatsapp.png";
 
 export default function Home() {
   return (
@@ -18,6 +19,10 @@ export default function Home() {
             Therapie individuelle et therapie de couple pour traverser les periodes de blocage,
             d'anxiete ou de conflits relationnels.
           </p>
+          <p className="heroLead"><strong>Mieux se connaitre pour mieux vivre sa vie.</strong></p>
+          <p className="heroMention">
+            Psychanalyste – secteur non conventionné
+          </p>
           <div className="heroActions">
             <a className="heroBtn primary" href="tel:+33687216605">
               Prendre rendez-vous
@@ -32,11 +37,47 @@ export default function Home() {
       <section className="introWhite">
         <div className="introInner">
           <img className="avatar" src="/photo-profil.webp" alt="Portrait de la psychanalyste" loading="lazy" />
-          <p className="introText">
-            <strong>Psychanalyste diplomee</strong>, je vous accueille au sein de mon cabinet pour des consultations.
-            <br />
-            Je pratique egalement la <span className="accentText">consultation par visio</span> : Skype, WhatsApp, Google Meet...
+        </div>
+      </section>
+
+      <section className="onlinePsySection">
+        <div className="onlinePsyInner">
+          <h2 className="onlinePsyTitle">Votre psy en ligne !</h2>
+          <p className="onlinePsyPhone">+ 33 (0)6 87 21 66 05</p>
+
+          <p className="onlinePsyText">
+            Besoin d'aide psychologique, de soutien, de reponses a vos questions ?
           </p>
+
+          <p className="onlinePsyText">
+            La therapie en ligne offre facilite et flexibilite. De plus en plus de personnes demandent un conseil, une
+            aide en ligne pour resoudre leurs problemes ponctuels ou chroniques. Ou que vous soyez, en France ou a
+            l'etranger, un simple appel gratuit par WhatsApp, et vous serez en contact direct avec moi pendant 1h.
+          </p>
+
+          <p className="onlinePsyText">
+            Si vous souhaitez le face a face, je vous accueillerai au cabinet avec plaisir.
+          </p>
+
+          <p className="onlinePsyText">Rdv possible dans des delais rapides.</p>
+
+          <p className="onlinePsyText onlinePsyFormula">
+            Une psy disponible
+            <br />=<br />
+            une solution pour aller mieux.
+          </p>
+
+          <p className="onlinePsyClosing">Donnez sens a votre vie!</p>
+
+          <a
+            className="whatsappCta"
+            href="https://wa.me/33687216605"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Contacter sur WhatsApp"
+          >
+            <img src={whatsappImage} alt="" loading="lazy" />
+          </a>
         </div>
       </section>
 
@@ -140,3 +181,7 @@ export default function Home() {
     </div>
   );
 }
+
+
+
+
