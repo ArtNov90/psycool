@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
 import "./Consultations.css";
 import { consultationStyles } from "./consultationStyles";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 export default function Consultations() {
+  const revealRef = useScrollReveal<HTMLElement>();
+
   return (
-    <section className="consultations">
+    <section className="consultations" ref={revealRef}>
       <header className="consultationsHeader">
         <div className="consultationsHeaderInner">
-          <h1 className="consultationsTitle">Consultations</h1>
-          <p className="consultationsLead">
+          <h1 className="consultationsTitle" data-reveal data-reveal-delay="80ms">Consultations</h1>
+          <p className="consultationsLead" data-reveal data-reveal-delay="160ms">
             Prenez un moment pour decouvrir les types de consultations disponibles
             et comment se deroule un premier rendez-vous.
           </p>
@@ -17,8 +20,13 @@ export default function Consultations() {
 
       <section className="consultationsCardsWrap">
         <div className="consultationsCardsGrid">
-          {consultationStyles.map((style) => (
-            <article key={style.slug} className="consultationCard">
+          {consultationStyles.map((style, index) => (
+            <article
+              key={style.slug}
+              className="consultationCard"
+              data-reveal
+              data-reveal-delay={`${Math.min(320, 80 + index * 80)}ms`}
+            >
               <h2 className="consultationCardTitle">{style.title}</h2>
               <p className="consultationCardText">{style.shortDescription}</p>
               <Link className="consultationCardLink" to={`/consultations/${style.slug}`}>

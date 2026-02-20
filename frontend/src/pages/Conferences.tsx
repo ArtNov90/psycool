@@ -2,6 +2,8 @@ import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useEffect, useMemo, useState } from "react";
 import { db } from "../firebase";
 import "./Conferences.css";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+import paperImage from "../../photos/papier.jpeg";
 
 type EventItem = {
   id: string;
@@ -113,6 +115,7 @@ function getSortableDateValue(date?: string): number {
 
 export default function Conferences() {
   const [events, setEvents] = useState<EventItem[]>([]);
+  const revealRef = useScrollReveal<HTMLDivElement>();
 
   useEffect(() => {
     const q = query(collection(db, "events"), orderBy("date", "asc"));
@@ -145,17 +148,17 @@ export default function Conferences() {
   }, [events]);
 
   return (
-    <div className="confPage">
+    <div className="confPage" ref={revealRef}>
       <section className="confHero">
         <div className="confHeroOverlay" />
         <div className="confHeroInner">
-          <p className="confEyebrow">Agenda psyCool</p>
-          <h1>Conferences et ateliers</h1>
-          <p className="confHeroLead">
+          <p className="confEyebrow" data-reveal data-reveal-delay="60ms">Agenda psyCool</p>
+          <h1 data-reveal data-reveal-delay="120ms">Conferences et ateliers</h1>
+          <p className="confHeroLead" data-reveal data-reveal-delay="180ms">
             Retrouvez les prochaines dates, les lieux et les themes abordes pour choisir la session
             qui vous correspond.
           </p>
-          <div className="confHeroActions">
+          <div className="confHeroActions" data-reveal data-reveal-delay="240ms">
             <a className="confHeroBtn confHeroBtnPrimary" href="tel:+33687216605">
               Reserver une place
             </a>
@@ -190,15 +193,23 @@ export default function Conferences() {
                 return (
                   <section key={block} className={`confBlock confBlock-${block}`}>
                     <div className="confBlockInner">
-                      <header className="confBlockHeader">
+                      <header className="confBlockHeader" data-reveal>
                         <p className="confBlockKicker">Type de conference</p>
                         <h2>{blockMeta.title}</h2>
                         <p>{blockMeta.subtitle}</p>
                       </header>
 
                       <div className="eventGrid">
-                        {items.map((ev) => (
-                          <article key={ev.id} className="eventCard">
+                        {items.map((ev, index) => (
+                          <article
+                            key={ev.id}
+                            className="eventCard"
+                            data-reveal
+                            data-reveal-delay={`${Math.min(300, 60 + index * 60)}ms`}
+                            style={{
+                              backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(${paperImage})`,
+                            }}
+                          >
                             <div className="eventCardTop">
                               <p className="eventDate">{formatDate(ev.date)}</p>
                               {ev.time ? <span className="eventTime">{ev.time}</span> : null}

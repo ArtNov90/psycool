@@ -4,27 +4,48 @@
 
 .heroBanner {
   position: relative;
-  min-height: clamp(230px, 42vh, 360px);
+  min-height: clamp(200px, 34vh, 300px);
   width: 100%;
   margin: 0;
   overflow: hidden;
   border-radius: 0;
-  border-top: 14px solid #e6cfd2;
-  border-bottom: 14px solid #e6cfd2;
   background:
     radial-gradient(circle at 10% 20%, rgba(255, 214, 224, 0.55) 0, rgba(255, 214, 224, 0) 34%),
     radial-gradient(circle at 82% 78%, rgba(255, 182, 193, 0.35) 0, rgba(255, 182, 193, 0) 42%),
-    linear-gradient(120deg, #5f2f4b 0%, #8f3a5d 45%, #d0676c 100%);
+    linear-gradient(120deg, #c6b2be 0%, #8f3a5d 15%, #f5c0c3 100%);
+}
+
+.heroBanner::before,
+.heroBanner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 28px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.heroBanner::before {
+  top: 0;
+  background: linear-gradient(to bottom, #e6cfd2 0%, rgba(230, 207, 210, 0) 100%);
+}
+
+.heroBanner::after {
+  bottom: 0;
+  background: linear-gradient(to top, #e6cfd2 0%, rgba(230, 207, 210, 0) 100%);
 }
 
 .heroOverlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(108deg, rgba(19, 24, 36, 0.55) 0%, rgba(19, 24, 36, 0.26) 55%, rgba(19, 24, 36, 0.1) 100%);
+  z-index: 1;
 }
 
 .heroContent {
   position: relative;
+  z-index: 3;
   width: min(1120px, 92%);
   margin: 0 auto;
   min-height: inherit;
@@ -32,8 +53,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 18px;
-  padding: 42px 0;
+  gap: 14px;
+  padding: 30px 0;
 }
 
 .heroEyebrow {
@@ -104,6 +125,7 @@
   font-weight: 700;
   letter-spacing: 0.4px;
   text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .heroBtn.primary {
@@ -113,6 +135,8 @@
 
 .heroBtn:hover {
   background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
 }
 
 .heroBtn.primary:hover {
@@ -266,6 +290,12 @@
   background: #fff;
   border: 1px solid #edd9de;
   box-shadow: 0 10px 30px rgba(60, 16, 21, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.highlightCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(60, 16, 21, 0.12);
 }
 
 .highlightCard h3 {
@@ -299,6 +329,12 @@
   border-radius: 14px;
   border: 1px solid #ead7db;
   background: linear-gradient(180deg, #fffefe 0%, #fff7f8 100%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.processStep:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(60, 16, 21, 0.1);
 }
 
 .processIndex {
@@ -435,10 +471,12 @@
   background: rgba(255, 255, 255, 0.25);
   color: #151515;
   font-weight: 700;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .ghostBtn:hover {
   background: rgba(255, 255, 255, 0.45);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 900px) {

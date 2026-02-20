@@ -10,7 +10,7 @@
 
 .individualIntro {
   width: 100%;
-  padding: 44px 0 22px;
+  padding: 32px 0 16px;
   border-top: 14px solid #e6cfd2;
   border-bottom: 14px solid #e6cfd2;
   background: linear-gradient(180deg, #f4e7e9 0%, #f8f1f2 100%);
@@ -32,14 +32,14 @@
 .individualMainTitle {
   margin: 0 0 18px;
   color: #b14a4f;
-  font-size: clamp(30px, 4vw, 56px);
+  font-size: clamp(26px, 3.4vw, 46px);
   line-height: 1.1;
   text-transform: uppercase;
   letter-spacing: 0.6px;
 }
 
 .individualRoundVisual {
-  width: min(320px, 76vw);
+  width: min(280px, 72vw);
   aspect-ratio: 1 / 1;
   margin: 0 auto;
   border-radius: 999px;
@@ -85,6 +85,11 @@
   font-size: clamp(16px, 1.1vw, 22px);
   line-height: 1.4;
   text-align: left;
+  transition: background 0.2s ease;
+}
+
+.individualFaqButton:hover {
+  background: rgba(177, 74, 79, 0.05);
 }
 
 .individualFaqSign {
@@ -106,7 +111,7 @@
 
 .consultationDetailHero {
   position: relative;
-  min-height: clamp(280px, 46vh, 480px);
+  min-height: clamp(220px, 36vh, 360px);
   overflow: hidden;
   border-top: 14px solid #e6cfd2;
   border-bottom: 14px solid #e6cfd2;
@@ -116,7 +121,7 @@
     linear-gradient(120deg, #5f2f4b 0%, #8f3a5d 45%, #d0676c 100%);
   display: flex;
   align-items: center;
-  padding: 24px 0;
+  padding: 20px 0;
 }
 
 .consultationDetailHero::before {
@@ -207,6 +212,7 @@
   font-weight: 700;
   letter-spacing: 0.4px;
   text-transform: uppercase;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .consultationDetailButton {
@@ -217,6 +223,8 @@
 
 .consultationDetailButton:hover {
   background: #963d41;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.14);
 }
 
 .consultationDetailGhost {
@@ -227,6 +235,8 @@
 
 .consultationDetailGhost:hover {
   background: rgba(177, 74, 79, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
 }
 
 @media (max-width: 900px) {

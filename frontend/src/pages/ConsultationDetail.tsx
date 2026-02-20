@@ -3,6 +3,7 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { consultationStyles } from "./consultationStyles";
 import "./ConsultationDetail.css";
 import coupleTherapyImage from "../../photos/psicoterapia-psicopsycouple.jpg";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 type FaqItem = {
   question: string;
@@ -36,6 +37,7 @@ export default function ConsultationDetail() {
   const { slug } = useParams<{ slug: string }>();
   const style = consultationStyles.find((item) => item.slug === slug);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const revealRef = useScrollReveal<HTMLElement>();
 
   if (!style) {
     return <Navigate to="/consultations" replace />;
@@ -43,18 +45,20 @@ export default function ConsultationDetail() {
 
   if (slug === "therapie-couple") {
     return (
-      <section className="consultationDetail consultationDetailAlt">
+      <section className="consultationDetail consultationDetailAlt" ref={revealRef}>
         <section className="individualIntro">
           <div className="individualIntroInner">
             <div className="individualVisualCol">
-              <h1 className="individualMainTitle">La therapie de couple, c'est quoi ?</h1>
+              <h1 className="individualMainTitle" data-reveal data-reveal-delay="80ms">La therapie de couple, c'est quoi ?</h1>
               <div
                 className="individualRoundVisual"
                 style={{ backgroundImage: `url(${coupleTherapyImage})` }}
+                data-reveal
+                data-reveal-delay="140ms"
               />
             </div>
 
-            <div className="individualTextCol">
+            <div className="individualTextCol" data-reveal data-reveal-delay="200ms">
               <p>
                 Votre relation va mal au point que  vous songez à y mettre un terme?
               </p>
@@ -70,7 +74,12 @@ export default function ConsultationDetail() {
             {individualFaq.map((item, index) => {
               const isOpen = openIndex === index;
               return (
-                <article key={item.question} className="individualFaqItem">
+                <article
+                  key={item.question}
+                  className="individualFaqItem"
+                  data-reveal
+                  data-reveal-delay={`${Math.min(320, 80 + index * 70)}ms`}
+                >
                   <button
                     type="button"
                     className="individualFaqButton"
@@ -85,7 +94,7 @@ export default function ConsultationDetail() {
               );
             })}
 
-            <div className="consultationDetailActions">
+            <div className="consultationDetailActions" data-reveal data-reveal-delay="280ms">
               <a className="consultationDetailButton" href="mailto:contact@exemple.fr">
                 Prendre rendez-vous
               </a>
@@ -100,17 +109,17 @@ export default function ConsultationDetail() {
   }
 
   return (
-    <section className="consultationDetail">
+    <section className="consultationDetail" ref={revealRef}>
       <header className="consultationDetailHero">
         <div className="consultationDetailHeroInner">
-          <p className="consultationDetailEyebrow">Style de therapie</p>
-          <h1 className="consultationDetailTitle">{style.title}</h1>
-          <p className="consultationDetailIntro">{style.intro}</p>
+          <p className="consultationDetailEyebrow" data-reveal data-reveal-delay="60ms">Style de therapie</p>
+          <h1 className="consultationDetailTitle" data-reveal data-reveal-delay="120ms">{style.title}</h1>
+          <p className="consultationDetailIntro" data-reveal data-reveal-delay="180ms">{style.intro}</p>
         </div>
       </header>
 
       <section className="consultationDetailBody">
-        <div className="consultationDetailCard">
+        <div className="consultationDetailCard" data-reveal data-reveal-delay="100ms">
           <h2>Ce que nous travaillons ensemble</h2>
           <ul>
             {style.points.map((point) => (
