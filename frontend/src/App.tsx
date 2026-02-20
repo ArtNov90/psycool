@@ -6,6 +6,7 @@ import Home from "./pages/Home.tsx";
 import Consultations from "./pages/Consultations.tsx";
 import ConsultationDetail from "./pages/ConsultationDetail.tsx";
 import Conferences from "./pages/Conferences.tsx";
+import EnglishTherapy from "./pages/EnglishTherapy.tsx";
 
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminEvents from "./pages/AdminEvents.tsx";
@@ -24,6 +25,7 @@ export default function App() {
             <Route path="/consultations" element={<Consultations />} />
             <Route path="/consultations/:slug" element={<ConsultationDetail />} />
             <Route path="/conferences" element={<Conferences />} />
+            <Route path="/english-therapy" element={<EnglishTherapy />} />
 
              {/* Admin */}
             <Route path="/admin/login" element={<AdminLogin />} />

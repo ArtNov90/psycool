@@ -1,22 +1,23 @@
-/* Global layout */
-#root{
+#root {
   max-width: none !important;
   padding: 0 !important;
   margin: 0 !important;
 }
 
-body{
+body {
   margin: 0;
+  background: #e7e7e7;
+  color: #131317;
 }
 
-.main { width: 100%; }
+.main {
+  width: 100%;
+}
 
 [data-reveal] {
   opacity: 0;
   transform: translateY(16px);
-  transition-property: opacity, transform;
-  transition-duration: 600ms;
-  transition-timing-function: ease;
+  transition: opacity 600ms ease, transform 600ms ease;
   transition-delay: var(--reveal-delay, 0ms);
   will-change: opacity, transform;
 }
@@ -36,238 +37,149 @@ body{
 
 .siteHeader {
   width: 100%;
-  background: #e6cfd2;
-  color: #120120;
+  padding: 26px 0 20px;
+  background: #e7e7e7;
 }
 
-/* Header top */
-.headerTop {
-  font-size: 14px;
-  opacity: 0.95;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(18,1,32,0.14);
-}
-
-.headerTopInner {
-  width: min(1200px, 92%);
+.headerMain {
+  width: min(1700px, 96%);
   margin: 0 auto;
-  text-align: center;
-}
-
-.headerTopLink {
-  color: #120120;
-  text-decoration: none;
-}
-.headerTopLink:hover {
-  color: #120120;
-}
-
-.headerWhatsappLink {
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 6px;
-}
-
-.headerWhatsappIcon {
-  width: 14px;
-  height: 14px;
-  fill: currentColor;
-}
-
-.headerSep {
-  margin: 0 10px;
-  color: rgba(18,1,32,0.55);
-}
-
-/* Brand */
-.headerBrand {
-  padding: 14px 0 10px;
-}
-
-.headerBrandInner {
-  width: min(1200px, 92%);
-  margin: 0 auto;
-  text-align: center;
+  gap: 26px;
 }
 
 .brandName {
-  font-size: 34px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: clamp(34px, 2.2vw, 46px);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #111119;
 }
 
-/* Nav */
 .headerNav {
-  padding: 14px 0 20px;
-}
-
-.headerNavInner {
-  width: min(1200px, 92%);
-  margin: 0 auto;
   display: flex;
   justify-content: center;
-  gap: clamp(10px, 1.2vw, 18px);
-  padding: 10px 0;
+  gap: clamp(16px, 2vw, 34px);
   flex-wrap: wrap;
-  align-items: center;
 }
 
 .navLink {
-  width: clamp(98px, 11.8vw, 142px);
-  aspect-ratio: 1 / 1;
+  color: #222229;
+  text-decoration: none;
+  font-size: clamp(16px, 1.1vw, 23px);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 8px 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 180ms ease, color 180ms ease;
+}
+
+.navLink:hover,
+.navLink.active {
+  color: #101015;
+  border-color: #aa4f49;
+}
+
+.headerContactCta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  line-height: 1.2;
-  color: #6d6e72;
-  text-decoration: none;
-  font-size: clamp(14px, 1.2vw, 17px);
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  padding: 12px;
+  height: 56px;
+  min-width: 204px;
+  padding: 0 24px;
   border-radius: 999px;
-  border: 1px solid #d6d7da;
-  background: radial-gradient(circle at 30% 25%, #f4f4f5 0%, #e9eaec 72%);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.65) inset, 0 3px 8px rgba(0,0,0,0.12);
-  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  background: #ad4f49;
+  transition: filter 180ms ease, transform 180ms ease;
 }
 
-.navLink:hover {
-  color: #5f6064;
-  transform: translateY(-2px);
-  border-color: #cfd2d8;
-  background: radial-gradient(circle at 30% 25%, #f7f7f8 0%, #eceef1 74%);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.75) inset, 0 8px 16px rgba(0,0,0,0.15);
-}
-
-.headerNavInner .navLink:nth-child(1):hover {
-  color: #6a5a2f;
-  border-color: #e6d59e;
-  background: radial-gradient(circle at 30% 25%, #fff8de 0%, #f2e7bc 74%);
-}
-
-.headerNavInner .navLink:nth-child(2):hover {
-  color: #4f6a37;
-  border-color: #c5e0b2;
-  background: radial-gradient(circle at 30% 25%, #edfbe2 0%, #d7efc7 74%);
-}
-
-.headerNavInner .navLink:nth-child(3):hover {
-  color: #5b476e;
-  border-color: #d2c2ea;
-  background: radial-gradient(circle at 30% 25%, #f3ebff 0%, #e1d2f5 74%);
-}
-
-.headerNavInner .navLink:nth-child(4):hover {
-  color: #6a3f50;
-  border-color: #e8b7c9;
-  background: radial-gradient(circle at 30% 25%, #ffe9f1 0%, #f3cddc 74%);
-}
-
-.navLink.active {
-  color: #2c5f73;
-  border-color: #8fc7d7;
-  background: radial-gradient(circle at 30% 25%, #d9f1f8 0%, #b9dce8 76%);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.75) inset, 0 10px 18px rgba(101,145,161,0.35);
-}
-
-@media (max-width: 700px) {
-  .headerNav {
-    padding: 10px 0 14px;
-  }
-
-  .headerNavInner {
-    gap: 10px;
-  }
-
-  .navLink {
-    width: clamp(86px, 24vw, 106px);
-    font-size: 13px;
-    padding: 8px;
-  }
+.headerContactCta:hover {
+  filter: brightness(0.94);
+  transform: translateY(-1px);
 }
 
 .siteFooter {
-  background: #e6cfd2;
-  color: #120120;
-  padding: 28px 0;
-  border-top: 1px solid rgba(18,1,32,0.14);
+  margin-top: 56px;
+  background: #dfdfdf;
+  border-top: 1px solid #b9b9bc;
 }
 
 .footerInner {
-  width: min(1200px, 92%);
+  width: min(1700px, 96%);
   margin: 0 auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  padding: 28px 0 34px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 18px 26px;
+  align-items: center;
 }
 
 .footerBrand {
-  font-weight: 900;
-  letter-spacing: 0.5px;
-  color: #120120;
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: #151518;
 }
 
 .footerMeta {
-  font-size: 13px;
-  opacity: 0.8;
+  font-size: 14px;
+  color: #55565c;
 }
 
 .footerLinks {
   display: flex;
-  gap: 14px;
-  justify-content: center;
   flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footerLink {
+  color: #26262c;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.footerLink:hover {
+  color: #000;
 }
 
 .footerRight {
-  display: flex;
-  gap: 14px;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-self: end;
 }
 
 .footerWhatsappCta {
-  width: 92px;
-  height: 92px;
-  margin: 8px auto 0;
+  width: 64px;
+  height: 64px;
   display: block;
-  border-radius: 50%;
-  text-decoration: none;
+  border-radius: 999px;
   overflow: hidden;
-  background: transparent;
-  border: 3px solid #ffffff;
-  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.22);
-  transition: filter 0.2s ease, transform 0.2s ease;
-}
-
-.footerWhatsappCta:hover {
-  filter: brightness(0.95);
-  transform: translateY(-4px);
-}
-
-.footerWhatsappCta:focus-visible {
-  outline: none;
+  border: 2px solid #fff;
 }
 
 .footerWhatsappCta img {
   width: 100%;
   height: 100%;
-  display: block;
   object-fit: cover;
-  object-position: 46% 62%;
-  transform: scale(1.06);
-  clip-path: none;
 }
 
-.footerLink {
-  color: #120120;
-  text-decoration: none;
-  font-weight: 700;
-}
+@media (max-width: 1200px) {
+  .headerMain {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
 
-.footerLink:hover {
-  color: #120120;
+  .footerInner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .footerRight {
+    justify-self: center;
+  }
 }
