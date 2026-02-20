@@ -9,7 +9,6 @@
   position: relative;
   min-height: clamp(180px, 26vh, 260px);
   overflow: hidden;
-  border-top: 1px solid #b7b8bd;
   border-bottom: 1px solid #b7b8bd;
   background: #e7e7e7;
   display: flex;

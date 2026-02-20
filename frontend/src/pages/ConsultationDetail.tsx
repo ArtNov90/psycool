@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { consultationStyles } from "./consultationStyles";
 import "./ConsultationDetail.css";
-import coupleTherapyImage from "../../photos/psicoterapia-psicopsycouple.jpg";
+import therapyImage from "../../photos/canva1.png";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
 type FaqItem = {
@@ -52,7 +52,7 @@ export default function ConsultationDetail() {
               <h1 className="individualMainTitle" data-reveal data-reveal-delay="80ms">La therapie de couple, c'est quoi ?</h1>
               <div
                 className="individualRoundVisual"
-                style={{ backgroundImage: `url(${coupleTherapyImage})` }}
+                style={{ backgroundImage: `url(${therapyImage})` }}
                 data-reveal
                 data-reveal-delay="140ms"
               />
@@ -110,7 +110,14 @@ export default function ConsultationDetail() {
 
   return (
     <section className="consultationDetail" ref={revealRef}>
-      <header className="consultationDetailHero">
+      <header
+        className="consultationDetailHero"
+        style={{
+          backgroundImage: `linear-gradient(108deg, rgba(19, 24, 36, 0.45) 0%, rgba(19, 24, 36, 0.18) 100%), url(${therapyImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="consultationDetailHeroInner">
           <p className="consultationDetailEyebrow" data-reveal data-reveal-delay="60ms">Style de therapie</p>
           <h1 className="consultationDetailTitle" data-reveal data-reveal-delay="120ms">{style.title}</h1>
