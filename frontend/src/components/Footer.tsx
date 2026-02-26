@@ -21,7 +21,7 @@ export default function Footer() {
             Conferences
           </NavLink>
           <NavLink className="footerLink" to="/english-therapy">
-            Therapy (EN)
+            THERAPY IN ENGLISH
           </NavLink>
         </div>
 

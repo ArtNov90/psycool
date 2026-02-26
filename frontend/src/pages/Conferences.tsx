@@ -28,7 +28,7 @@ const BLOCKS: ConferenceType[] = ["cafepsy", "masterclass"];
 
 const BLOCK_META: Record<ConferenceType, { title: string; subtitle: string }> = {
   cafepsy: {
-    title: "CafePsy rigolo",
+    title: "Ateliers",
     subtitle: "Un format vivant pour aborder la psychologie avec legerete et echanges.",
   },
   masterclass: {
@@ -194,7 +194,6 @@ export default function Conferences() {
                   <section key={block} className={`confBlock confBlock-${block}`}>
                     <div className="confBlockInner">
                       <header className="confBlockHeader" data-reveal>
-                        <p className="confBlockKicker">Type de conference</p>
                         <h2>{blockMeta.title}</h2>
                         <p>{blockMeta.subtitle}</p>
                       </header>

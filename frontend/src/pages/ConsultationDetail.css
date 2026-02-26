@@ -5,6 +5,10 @@
   background: #e7e7e7;
 }
 
+.consultationDetailNoBg {
+  background: transparent;
+}
+
 .consultationDetailAlt {
   background: #e7e7e7;
 }
@@ -36,7 +40,7 @@
   line-height: 0.95;
   text-transform: uppercase;
   letter-spacing: 0;
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
   font-weight: 500;
 }
 
@@ -153,7 +157,7 @@
   margin: 0;
   max-width: 16ch;
   color: #12131a;
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
   font-weight: 500;
   font-size: clamp(46px, 5.4vw, 86px);
   line-height: 0.95;
@@ -183,7 +187,7 @@
   margin: 0 0 14px;
   font-size: 1.2rem;
   color: #191a22;
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
   font-size: clamp(32px, 3vw, 48px);
   font-weight: 500;
 }

@@ -109,7 +109,10 @@ export default function ConsultationDetail() {
   }
 
   return (
-    <section className="consultationDetail" ref={revealRef}>
+    <section
+      className={`consultationDetail${slug === "therapie-individuelle" ? " consultationDetailNoBg" : ""}`}
+      ref={revealRef}
+    >
       <header
         className="consultationDetailHero"
         style={{

@@ -35,7 +35,7 @@ export default function Header() {
             to="/english-therapy"
             className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
           >
-            THERAPY (EN)
+            THERAPY IN ENGLISH
           </NavLink>
         </nav>
 

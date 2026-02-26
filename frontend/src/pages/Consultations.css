@@ -40,7 +40,7 @@
   margin: 0;
   max-width: 16ch;
   color: #12131a;
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
   font-weight: 500;
   font-size: clamp(46px, 5.4vw, 86px);
   line-height: 0.95;
@@ -101,7 +101,7 @@
   margin: 0 0 10px;
   font-size: clamp(30px, 3vw, 46px);
   color: #171820;
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
   font-weight: 500;
 }
 
