@@ -3,6 +3,8 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { consultationStyles } from "./consultationStyles";
 import "./ConsultationDetail.css";
 import therapyImage from "../../photos/canva1.png";
+import homeHeroImage from "../../photos/yumu-wIG0Hhre7Ms-unsplash.jpg";
+import parcoursImage from "../../photos/chemin.png";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
 type FaqItem = {
@@ -33,6 +35,24 @@ const individualFaq: FaqItem[] = [
   },
 ];
 
+const individualTherapyCards = [
+  {
+    image: homeHeroImage,
+    alt: "Bac a sable symbolisant l'espace therapeutique",
+    title: "Un espace personnel pour apaiser l'anxiete et retrouver de la clarte",
+  },
+  {
+    image: therapyImage,
+    alt: "Fauteuil de therapie dans un cabinet",
+    title: "Un cadre d'ecoute bienveillant, a votre rythme, en toute confidentialite",
+  },
+  {
+    image: parcoursImage,
+    alt: "Illustration symbolique du cheminement interieur",
+    title: "Un accompagnement concret pour avancer durablement dans votre vie",
+  },
+];
+
 export default function ConsultationDetail() {
   const { slug } = useParams<{ slug: string }>();
   const style = consultationStyles.find((item) => item.slug === slug);
@@ -41,6 +61,45 @@ export default function ConsultationDetail() {
 
   if (!style) {
     return <Navigate to="/consultations" replace />;
+  }
+
+  if (slug === "therapie-individuelle") {
+    return (
+      <section className="consultationDetail consultationDetailNoBg individualTherapyPage" ref={revealRef}>
+        <div className="individualTherapyShell">
+          <header className="individualTherapyHeader">
+            <h1 className="individualTherapyTitle" data-reveal data-reveal-delay="60ms">
+              Therapie individuelle
+            </h1>
+          </header>
+
+          <section className="individualTherapyGallery">
+            {individualTherapyCards.map((card, index) => (
+              <article
+                className="individualTherapyCard"
+                key={card.title}
+                data-reveal
+                data-reveal-delay={`${80 + index * 80}ms`}
+              >
+                <div className="individualTherapyMedia">
+                  <img src={card.image} alt={card.alt} loading={index === 0 ? "eager" : "lazy"} />
+                </div>
+                <h2>{card.title}</h2>
+              </article>
+            ))}
+          </section>
+
+          <div className="consultationDetailActions individualTherapyActions" data-reveal data-reveal-delay="280ms">
+            <a className="consultationDetailButton" href="mailto:contact@exemple.fr">
+              Prendre rendez-vous
+            </a>
+            <Link className="consultationDetailGhost" to="/consultations">
+              Retour aux consultations
+            </Link>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   if (slug === "therapie-couple") {

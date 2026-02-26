@@ -20,6 +20,29 @@
   color: #0f1016;
 }
 
+.homeIntroRow {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: minmax(130px, 180px) minmax(0, 1fr);
+  gap: 20px;
+  align-items: center;
+}
+
+.homeIntroPortrait {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #c8c8cd;
+  box-shadow: 0 10px 22px rgba(22, 18, 14, 0.18);
+  aspect-ratio: 4 / 5;
+}
+
+.homeIntroPortrait img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
 .homeHeroImageWrap {
   margin-top: 38px;
   border-radius: 22px;
@@ -101,7 +124,7 @@
 }
 
 .homeIntro {
-  margin: 24px 0 0;
+  margin: 0;
   max-width: 780px;
   font-size: clamp(24px, 2.1vw, 36px);
   line-height: 1.25;
@@ -281,6 +304,14 @@
 }
 
 @media (max-width: 1040px) {
+  .homeIntroRow {
+    grid-template-columns: 1fr;
+  }
+
+  .homeIntroPortrait {
+    width: min(220px, 56vw);
+  }
+
   .homeNewsGrid {
     grid-template-columns: 1fr;
   }

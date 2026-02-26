@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./Home.css";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import homeHeroImage from "../../photos/yumu-wIG0Hhre7Ms-unsplash.jpg";
 import accompagnementImage from "../../photos/canva1.png";
 import parcoursImage from "../../photos/chemin.png";
+import chantalPhoto from "../../photos/chantal.webp";
 
 export default function Home() {
   const revealRef = useScrollReveal<HTMLElement>();
@@ -44,7 +45,7 @@ export default function Home() {
       <div className="homeShell">
         <header className="homeHero">
           <h1 className="homeTitle" data-reveal data-reveal-delay="80ms">
-            Mieux se connaître pour mieux vivre sa vie
+            Mieux se connaitre pour mieux vivre sa vie
           </h1>
 
           <div className="homeHeroImageWrap" data-reveal data-reveal-delay="140ms">
@@ -83,17 +84,22 @@ export default function Home() {
           </div>
           <div className="homeIntroDivider" data-reveal data-reveal-delay="170ms" />
 
-          <p className="homeIntro" data-reveal data-reveal-delay="180ms">
-            Psychanalyste diplômée, je vous accueille au sein de mon cabinet pour des consultations. Je pratique également la consultation par VISIO avec WhatsApp
-          </p>
+          <div className="homeIntroRow">
+            <div className="homeIntroPortrait" data-reveal data-reveal-delay="180ms">
+              <img src={chantalPhoto} alt="Portrait de Chantal" loading="eager" />
+            </div>
+            <p className="homeIntro" data-reveal data-reveal-delay="220ms">
+              Psychanalyste diplomee, je vous accueille au sein de mon cabinet pour des consultations. Je pratique egalement la consultation par VISIO avec WhatsApp
+            </p>
+          </div>
         </header>
 
         <section className="homeQuote" data-reveal data-reveal-delay="120ms">
           <p className="homeQuoteText">
-            Je propose un regard humaniste à travers des conceptes basés sur la psychologie moderne.
-            Ma mission : offrir un espace sécurisé où chaque personne peut explorer ses
-            émotions, comprendre ses schémas et construire des stratégies concrètes pour un
-            mieux-être durable.
+            Je propose un regard humaniste a travers des conceptes bases sur la psychologie moderne.
+            Ma mission : offrir un espace securise ou chaque personne peut explorer ses
+            emotions, comprendre ses schemas et construire des strategies concretes pour un
+            mieux-etre durable.
           </p>
         </section>
 
@@ -108,7 +114,7 @@ export default function Home() {
               <img src={accompagnementImage} alt="" loading="lazy" />
               <div className="homeNewsBody">
                 <h3>Therapie individuelle</h3>
-                <p>Un espace d'écoute pour travailler les blocages, les doutes et les transitions de vie.</p>
+                <p>Un espace d'ecoute pour travailler les blocages, les doutes et les transitions de vie.</p>
                 <Link to="/consultations">Voir les consultations</Link>
               </div>
             </article>
@@ -116,7 +122,7 @@ export default function Home() {
             <article className="homeNewsCard" data-reveal data-reveal-delay="120ms">
               <img src={accompagnementImage} alt="" loading="lazy" />
               <div className="homeNewsBody">
-                <h3>Thérapie de couple</h3>
+                <h3>Therapie de couple</h3>
                 <p>Retrouver un dialogue plus apaise et clarifier les besoins de chacun.</p>
                 <Link to="/consultations/therapie-couple">Decouvrir</Link>
               </div>
@@ -125,8 +131,8 @@ export default function Home() {
             <article className="homeNewsCard" data-reveal data-reveal-delay="180ms">
               <img src={accompagnementImage} alt="" loading="lazy" />
               <div className="homeNewsBody">
-                <h3>Ateliers et conférences</h3>
-                <p>Decouvrez les prochaines sessions et thèmes proposes par Psycool.</p>
+                <h3>Ateliers et conferences</h3>
+                <p>Decouvrez les prochaines sessions et themes proposes par Psycool.</p>
                 <Link to="/conferences">Voir l'agenda</Link>
               </div>
             </article>
@@ -145,20 +151,20 @@ export default function Home() {
             </div>
 
             <div className="homeParcoursContent" data-reveal data-reveal-delay="140ms">
-              <h2 className="homeParcoursTitle">Une pratique ancrée dans la psychanalyse</h2>
+              <h2 className="homeParcoursTitle">Une pratique ancree dans la psychanalyse</h2>
               <p className="homeParcoursLead">
                 Master 2 en psychanalyse (Universite de Montpellier) et formation a l'Institut
-                Jung de Zurich. J'accompagne en thérapie individuelle et de couple, avec une
-                approche clinique attentive à l'histoire singuliere de chacun.
+                Jung de Zurich. J'accompagne en therapie individuelle et de couple, avec une
+                approche clinique attentive a l'histoire singuliere de chacun.
               </p>
 
               <ul className="homeParcoursList">
                 <li>Psychanalyse</li>
-                <li>Thérapie individuelle</li>
-                <li>Thérapie de couple</li>
+                <li>Therapie individuelle</li>
+                <li>Therapie de couple</li>
                 <li>Psychologie des profondeurs</li>
                 <li>Psychotherapie analytique</li>
-                <li>Cinéma et psychanalyse</li>
+                <li>Cinema et psychanalyse</li>
               </ul>
 
               <div className="homeParcoursActions">
