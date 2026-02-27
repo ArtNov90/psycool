@@ -32,6 +32,13 @@ export default function Header() {
           </NavLink>
 
           <NavLink
+            to="/teleconsultation"
+            className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
+          >
+            TELECONSULTATION
+          </NavLink>
+
+          <NavLink
             to="/english-therapy"
             className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
           >
@@ -40,7 +47,7 @@ export default function Header() {
         </nav>
 
         <a className="headerContactCta" href="tel:+33687216605">
-          Nous contacter
+          Prendre rendez-vous
         </a>
       </div>
     </header>

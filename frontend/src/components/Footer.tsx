@@ -20,6 +20,9 @@ export default function Footer() {
           <NavLink className="footerLink" to="/conferences">
             Conferences
           </NavLink>
+          <NavLink className="footerLink" to="/teleconsultation">
+            Teleconsultation
+          </NavLink>
           <NavLink className="footerLink" to="/english-therapy">
             THERAPY IN ENGLISH
           </NavLink>

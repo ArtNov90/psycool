@@ -32,6 +32,14 @@
   font-weight: 500;
 }
 
+.individualTherapyLead {
+  margin: 16px 0 0;
+  max-width: 60ch;
+  color: #2b2d36;
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
 .individualTherapyGallery {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -63,6 +71,67 @@
   font-size: clamp(16px, 1.2vw, 22px);
   line-height: 1.35;
   font-weight: 450;
+}
+
+.therapyDetailStack {
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+}
+
+.therapyDetailNarrow {
+  width: min(1250px, 92%);
+  margin: 0 auto;
+}
+
+.therapyPanel {
+  background: #dfdfe1;
+  border: 1px solid #c8c8cd;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.therapyPanelTitle {
+  margin: 0 0 10px;
+  color: #191a22;
+  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
+  font-size: clamp(28px, 2.3vw, 38px);
+  font-weight: 500;
+}
+
+.therapyPanelList {
+  margin: 0;
+  padding-left: 18px;
+  line-height: 1.7;
+}
+
+.therapyPracticalGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.therapyPracticalItem {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid #cbcbcf;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.therapyPracticalLabel {
+  margin: 0;
+  color: #4c4d57;
+  font-size: 0.9rem;
+}
+
+.therapyPracticalValue {
+  margin: 5px 0 0;
+  color: #1a1b22;
+  font-weight: 600;
+}
+
+.therapyFaqWrap {
+  border-top: 1px solid rgba(18, 1, 32, 0.2);
 }
 
 .individualTherapyActions {
@@ -333,5 +402,8 @@
     text-align: center;
     font-size: clamp(17px, 5vw, 28px);
   }
-}
 
+  .therapyPracticalGrid {
+    grid-template-columns: 1fr;
+  }
+}

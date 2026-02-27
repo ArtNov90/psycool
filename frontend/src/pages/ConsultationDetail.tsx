@@ -12,28 +12,10 @@ type FaqItem = {
   answer: string;
 };
 
-const individualFaq: FaqItem[] = [
-  {
-    question: "Pourquoi et quand faut-il consulter ?",
-    answer:
-      "Quand chacun reproche à l'autre d'être la cause de sa souffrance et se vit comme une victime. Dans un couple, on passe par des hauts et des bas. Or il peut arriver que les deux partenaires n'arrivent plus à sortir de ce système de ressentiment et d'accusations réciproques. Chacun ne voit plus que les problèmes que l'autre lui apporte, ne croit plus en ses capacités de changer. C'est le blocage. On sent qu'alors il ne s'agit plus d'une crise passagère. La seule façon de s'en sortir est d'introduire un tiers dans la relation, qui va permettre de rétablir la communication.",
-  },
-  {
-    question: "L'infidélité n'est-elle pas aussi un motif fréquent de consultation ?",
-    answer:
-      "Il y a souvent des histoires d'infidélité quand un couple va mal. Mais elles sont plutôt le révélateur de la crise que sa cause. Quand on se sent abandonné, plus désirable, alors on se tourne vers une personne plus attentionnée. Parfois, des couples consultent avec l'intention de se séparer sans agressivité, de réfléchir au moyen de préserver au mieux l'équilibre des enfants.",
-  },
-  {
-    question: "Pourquoi choisir une thérapie de couple plutôt qu'une sexothérapie ou une thérapie personnelle?",
-    answer:
-      "Il y a toujours des problèmes sexuels dans les couples qui viennent en thérapie, mais ce n'est pas le motif essentiel. Chacun a conscience que les relations sexuelles sont devenues insatisfaisantes, voire inexistantes. Tous deux sentent bien que c'est la conséquence de la mésentente et non sa cause. D'ailleurs, quand ça commence à aller mieux, le couple retrouve une libido plus harmonieuse.En revanche, s'il s'agit d'un problème purement physique, mieux vaut consulter un sexologue.Une thérapie de couple se justifie si on est dans un système d'accusations réciproques ; une thérapie individuelle quand la personne se sent mal, indépendamment de sa relation avec son partenaire.",
-  },
-  {
-    question: "Quel est l'enjeu ?",
-    answer:
-      "Le but d'une thérapie n'est pas de déterminer qui a tort ou raison, mais plutôt de rétablir la communication. Le couple est une entité qui a ses règles, ses codes, ses habitudes, et il arrive que les deux partenaires ne s'y reconnaissent plus. Le thérapeute donne les moyens à chacun d'exprimer ses insatisfactions par rapport à la relation et non par rapport à l'autre. Ce changement de perspective permet d'entrer dans un processus de collaboration conjointe pour revoir le « contrat » sans viser à changer l'autre, car c'est impossible. On sort du règlement de comptes destructeur pour devenir constructif.",
-  },
-];
+type PracticalInfo = {
+  label: string;
+  value: string;
+};
 
 const individualTherapyCards = [
   {
@@ -53,6 +35,180 @@ const individualTherapyCards = [
   },
 ];
 
+const individualAudience = [
+  "Anxiete, stress, surcharge mentale ou fatigue emotionnelle.",
+  "Periode de transition: separation, deuil, changement professionnel ou personnel.",
+  "Perte de confiance, sentiment de blocage ou difficultes relationnelles.",
+  "Besoin de mieux se comprendre et de retrouver un equilibre plus stable.",
+];
+
+const individualWork = [
+  "Identifier les mecanismes repetitifs qui entretiennent la souffrance.",
+  "Mettre des mots clairs sur ce que vous traversez et vos besoins.",
+  "Developper des reperes concrets pour reguler les emotions au quotidien.",
+  "Retrouver une capacite de choix et d'action dans votre vie personnelle.",
+];
+
+const individualSteps = [
+  "Premier contact pour comprendre votre demande et verifier si ce cadre vous convient.",
+  "Premiere seance d'exploration de votre situation, de vos attentes et de vos objectifs.",
+  "Suivi regulier a un rythme adapte, avec un travail progressif et structure.",
+  "Points d'etape pour evaluer les changements et ajuster l'accompagnement.",
+];
+
+const individualPractical: PracticalInfo[] = [
+  { label: "Duree d'une seance", value: "Environ 50 minutes" },
+  { label: "Rythme", value: "Hebdomadaire ou bimensuel selon le besoin" },
+  { label: "Format", value: "Cabinet et visio" },
+  { label: "Tarif", value: "Precise lors du premier echange" },
+];
+
+const individualFaq: FaqItem[] = [
+  {
+    question: "Combien de temps dure une therapie individuelle ?",
+    answer:
+      "La duree varie selon votre situation et vos objectifs. Certaines demandes se travaillent en quelques mois, d'autres necessitent un accompagnement plus long.",
+  },
+  {
+    question: "Dois-je avoir un probleme grave pour consulter ?",
+    answer:
+      "Non. Beaucoup de personnes consultent pour mieux se comprendre, prevenir l'epuisement ou sortir d'un mal-etre installe.",
+  },
+  {
+    question: "Puis-je alterner presentiel et visio ?",
+    answer:
+      "Oui, ce format hybride peut etre mis en place selon vos contraintes et ce qui soutient le mieux la continuite du travail.",
+  },
+];
+
+const coupleAudience = [
+  "Conflits repetitifs qui tournent en boucle.",
+  "Communication difficile, distance emotionnelle, incomprehensions.",
+  "Crise liee a une infidelite, un changement de vie ou une perte de confiance.",
+  "Volonte de clarifier la relation avant une decision importante.",
+];
+
+const coupleWork = [
+  "Retablir un dialogue plus securisant pour les deux partenaires.",
+  "Comprendre les dynamiques qui alimentent les tensions.",
+  "Exprimer les besoins sans accusation ni evitemment.",
+  "Construire des accords concrets pour avancer, ensemble ou separement.",
+];
+
+const coupleSteps = [
+  "Entretien initial pour cadrer la demande et les attentes de chacun.",
+  "Seances centrees sur les interactions, avec mediations du dialogue.",
+  "Travail sur les points de blocage et les ajustements relationnels.",
+  "Bilan regulier pour mesurer l'evolution et definir la suite.",
+];
+
+const couplePractical: PracticalInfo[] = [
+  { label: "Duree d'une seance", value: "60 a 75 minutes" },
+  { label: "Rythme", value: "En general toutes les 2 semaines" },
+  { label: "Participants", value: "Les deux partenaires, avec adaptation possible" },
+  { label: "Tarif", value: "Precise lors du premier echange" },
+];
+
+const coupleFaq: FaqItem[] = [
+  {
+    question: "Faut-il etre maries pour consulter ?",
+    answer:
+      "Non. La therapie de couple concerne toute relation affective engagee, quel que soit le statut du couple.",
+  },
+  {
+    question: "Peut-on venir si l'un des deux hesite ?",
+    answer:
+      "Oui, tant qu'il existe un minimum d'accord pour essayer un espace de dialogue accompagne.",
+  },
+  {
+    question: "Peut-on consulter si une separation est envisagee ?",
+    answer:
+      "Oui. Le travail peut aider a clarifier la decision et, si besoin, a organiser une separation plus apaisee.",
+  },
+];
+
+function TherapyBlocks({
+  title,
+  list,
+  dataRevealDelay,
+}: {
+  title: string;
+  list: string[];
+  dataRevealDelay: string;
+}) {
+  return (
+    <article className="therapyPanel" data-reveal data-reveal-delay={dataRevealDelay}>
+      <h2 className="therapyPanelTitle">{title}</h2>
+      <ul className="therapyPanelList">
+        {list.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </article>
+  );
+}
+
+function PracticalGrid({
+  title,
+  items,
+  dataRevealDelay,
+}: {
+  title: string;
+  items: PracticalInfo[];
+  dataRevealDelay: string;
+}) {
+  return (
+    <article className="therapyPanel" data-reveal data-reveal-delay={dataRevealDelay}>
+      <h2 className="therapyPanelTitle">{title}</h2>
+      <div className="therapyPracticalGrid">
+        {items.map((item) => (
+          <div className="therapyPracticalItem" key={item.label}>
+            <p className="therapyPracticalLabel">{item.label}</p>
+            <p className="therapyPracticalValue">{item.value}</p>
+          </div>
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function FaqBlock({
+  title,
+  items,
+  openIndex,
+  onToggle,
+}: {
+  title: string;
+  items: FaqItem[];
+  openIndex: number | null;
+  onToggle: (index: number) => void;
+}) {
+  return (
+    <article className="therapyPanel" data-reveal data-reveal-delay="260ms">
+      <h2 className="therapyPanelTitle">{title}</h2>
+      <div className="therapyFaqWrap">
+        {items.map((item, index) => {
+          const isOpen = openIndex === index;
+          return (
+            <section className="individualFaqItem" key={item.question}>
+              <button
+                type="button"
+                className="individualFaqButton"
+                onClick={() => onToggle(index)}
+                aria-expanded={isOpen}
+              >
+                <span>{item.question}</span>
+                <span className="individualFaqSign">{isOpen ? "-" : "+"}</span>
+              </button>
+              {isOpen ? <p className="individualFaqAnswer">{item.answer}</p> : null}
+            </section>
+          );
+        })}
+      </div>
+    </article>
+  );
+}
+
 export default function ConsultationDetail() {
   const { slug } = useParams<{ slug: string }>();
   const style = consultationStyles.find((item) => item.slug === slug);
@@ -71,6 +227,9 @@ export default function ConsultationDetail() {
             <h1 className="individualTherapyTitle" data-reveal data-reveal-delay="60ms">
               Therapie individuelle
             </h1>
+            <p className="individualTherapyLead" data-reveal data-reveal-delay="120ms">
+              Un accompagnement personnalise pour traverser une periode difficile et retrouver de la stabilite.
+            </p>
           </header>
 
           <section className="individualTherapyGallery">
@@ -89,7 +248,20 @@ export default function ConsultationDetail() {
             ))}
           </section>
 
-          <div className="consultationDetailActions individualTherapyActions" data-reveal data-reveal-delay="280ms">
+          <section className="therapyDetailStack">
+            <TherapyBlocks title="Pour qui ?" list={individualAudience} dataRevealDelay="120ms" />
+            <TherapyBlocks title="Ce que nous travaillons ensemble" list={individualWork} dataRevealDelay="170ms" />
+            <TherapyBlocks title="Deroule de l'accompagnement" list={individualSteps} dataRevealDelay="220ms" />
+            <PracticalGrid title="Infos pratiques" items={individualPractical} dataRevealDelay="240ms" />
+            <FaqBlock
+              title="Questions frequentes"
+              items={individualFaq}
+              openIndex={openIndex}
+              onToggle={(index) => setOpenIndex(openIndex === index ? null : index)}
+            />
+          </section>
+
+          <div className="consultationDetailActions individualTherapyActions" data-reveal data-reveal-delay="300ms">
             <a className="consultationDetailButton" href="mailto:contact@exemple.fr">
               Prendre rendez-vous
             </a>
@@ -108,7 +280,7 @@ export default function ConsultationDetail() {
         <section className="individualIntro">
           <div className="individualIntroInner">
             <div className="individualVisualCol">
-              <h1 className="individualMainTitle" data-reveal data-reveal-delay="80ms">La therapie de couple, c'est quoi ?</h1>
+              <h1 className="individualMainTitle" data-reveal data-reveal-delay="80ms">Therapie de couple</h1>
               <div
                 className="individualRoundVisual"
                 style={{ backgroundImage: `url(${therapyImage})` }}
@@ -119,41 +291,29 @@ export default function ConsultationDetail() {
 
             <div className="individualTextCol" data-reveal data-reveal-delay="200ms">
               <p>
-                Votre relation va mal au point que  vous songez à y mettre un terme?
+                Un espace neutre pour retablir le dialogue, comprendre les tensions et retrouver une dynamique plus saine.
               </p>
               <p>
-                Avant de prendre cette décision radicale, pourquoi ne pas faire une thérapie de couple?
+                L'objectif n'est pas de designer un responsable, mais d'aider chacun a reprendre sa place dans la relation.
               </p>
             </div>
           </div>
         </section>
 
         <section className="individualFaqWrap">
-          <div className="individualFaqInner">
-            {individualFaq.map((item, index) => {
-              const isOpen = openIndex === index;
-              return (
-                <article
-                  key={item.question}
-                  className="individualFaqItem"
-                  data-reveal
-                  data-reveal-delay={`${Math.min(320, 80 + index * 70)}ms`}
-                >
-                  <button
-                    type="button"
-                    className="individualFaqButton"
-                    onClick={() => setOpenIndex(isOpen ? null : index)}
-                    aria-expanded={isOpen}
-                  >
-                    <span>{item.question}</span>
-                    <span className="individualFaqSign">{isOpen ? "-" : "+"}</span>
-                  </button>
-                  {isOpen ? <p className="individualFaqAnswer">{item.answer}</p> : null}
-                </article>
-              );
-            })}
+          <div className="individualFaqInner therapyDetailStack therapyDetailNarrow">
+            <TherapyBlocks title="Quand consulter ?" list={coupleAudience} dataRevealDelay="110ms" />
+            <TherapyBlocks title="Objectifs de la therapie" list={coupleWork} dataRevealDelay="160ms" />
+            <TherapyBlocks title="Deroule des seances" list={coupleSteps} dataRevealDelay="210ms" />
+            <PracticalGrid title="Infos pratiques" items={couplePractical} dataRevealDelay="240ms" />
+            <FaqBlock
+              title="Questions frequentes"
+              items={coupleFaq}
+              openIndex={openIndex}
+              onToggle={(index) => setOpenIndex(openIndex === index ? null : index)}
+            />
 
-            <div className="consultationDetailActions" data-reveal data-reveal-delay="280ms">
+            <div className="consultationDetailActions" data-reveal data-reveal-delay="300ms">
               <a className="consultationDetailButton" href="mailto:contact@exemple.fr">
                 Prendre rendez-vous
               </a>

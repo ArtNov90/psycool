@@ -4,6 +4,12 @@ import { consultationStyles } from "./consultationStyles";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import therapyCardImage from "../../photos/canva1.png";
 
+const orientationTips = [
+  "Therapie individuelle: quand vous souhaitez travailler sur votre vecu personnel, vos emotions ou un blocage recurrent.",
+  "Therapie de couple: quand le dialogue est difficile, les tensions repetitives ou la relation en perte d'equilibre.",
+  "En cas de doute, le premier rendez-vous permet de clarifier l'orientation la plus utile.",
+];
+
 export default function Consultations() {
   const revealRef = useScrollReveal<HTMLElement>();
 
@@ -13,8 +19,8 @@ export default function Consultations() {
         <div className="consultationsHeaderInner">
           <h1 className="consultationsTitle" data-reveal data-reveal-delay="80ms">Consultations</h1>
           <p className="consultationsLead" data-reveal data-reveal-delay="160ms">
-            Prenez un moment pour decouvrir les types de consultations disponibles
-            et comment se deroule un premier rendez-vous.
+            Choisissez le type d'accompagnement qui correspond a votre situation.
+            Les details complets sont disponibles sur chaque page de therapie.
           </p>
         </div>
       </header>
@@ -40,11 +46,20 @@ export default function Consultations() {
               <h2 className="consultationCardTitle">{style.title}</h2>
               <p className="consultationCardText">{style.shortDescription}</p>
               <Link className="consultationCardLink" to={`/consultations/${style.slug}`}>
-                Voir plus
+                Decouvrir
               </Link>
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="consultationsSection" data-reveal data-reveal-delay="220ms">
+        <h2 className="consultationsSubtitle">Comment choisir ?</h2>
+        <ul className="consultationsList">
+          {orientationTips.map((tip) => (
+            <li key={tip}>{tip}</li>
+          ))}
+        </ul>
       </section>
     </section>
   );
