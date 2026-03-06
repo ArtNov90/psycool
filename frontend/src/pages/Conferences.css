@@ -69,9 +69,18 @@
 
 .confHeroActions {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 12px;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.confHeroNotice {
+  margin: 0;
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-weight: 600;
+  color: #5f403c;
 }
 
 .confHeroBtn {
@@ -110,6 +119,15 @@
 
 .confInner {
   width: 100%;
+}
+
+.confBottomCta {
+  width: min(1120px, 92%);
+  margin: 42px auto 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 .emptyState {

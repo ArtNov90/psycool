@@ -79,7 +79,12 @@ export default function Consultations() {
       <section className="consultationsCta" data-reveal data-reveal-delay="140ms">
         <h2>Prêt(e) à faire le premier pas ?</h2>
         <p>La première étape est souvent la plus difficile. Je vous accompagne avec bienveillance.</p>
-        <a href="tel:+33687216605" className="consultationsCtaButton">
+        <a
+          href="https://wa.me/33687216605"
+          className="consultationsCtaButton"
+          target="_blank"
+          rel="noreferrer"
+        >
           Prendre rendez-vous
         </a>
       </section>

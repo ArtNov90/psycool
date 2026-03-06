@@ -159,11 +159,14 @@ export default function Conferences() {
             qui vous correspond.
           </p>
           <div className="confHeroActions" data-reveal data-reveal-delay="240ms">
-            <a className="confHeroBtn confHeroBtnPrimary" href="tel:+33687216605">
+            <p className="confHeroNotice">Inscription indispensable par SMS</p>
+            <a
+              className="confHeroBtn confHeroBtnPrimary"
+              href="https://wa.me/33687216605"
+              target="_blank"
+              rel="noreferrer"
+            >
               Reserver une place
-            </a>
-            <a className="confHeroBtn" href="tel:+33687216605">
-              Appeler le cabinet
             </a>
           </div>
         </div>
@@ -251,6 +254,18 @@ export default function Conferences() {
             </div>
           )}
         </div>
+      </section>
+
+      <section className="confBottomCta" data-reveal data-reveal-delay="120ms">
+        <p className="confHeroNotice">Inscription indispensable par SMS</p>
+        <a
+          className="confHeroBtn confHeroBtnPrimary"
+          href="https://wa.me/33687216605"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Reserver une place
+        </a>
       </section>
     </div>
   );

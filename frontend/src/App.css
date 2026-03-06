@@ -104,9 +104,8 @@ body {
 }
 
 .siteFooter {
-  margin-top: 56px;
-  background: #dfdfdf;
-  border-top: 1px solid #b9b9bc;
+  margin-top: 0;
+  background: #e7e7e7;
 }
 
 .footerInner {

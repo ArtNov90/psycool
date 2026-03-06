@@ -52,7 +52,14 @@ export default function Teleconsultation() {
             Bénéficiez d'un accompagnement thérapeutique de qualité, où que vous soyez, en
             visioconférence.
           </p>
-          <a className="teleCta" href="tel:+33687216605" data-reveal data-reveal-delay="210ms">
+          <a
+            className="teleCta"
+            href="https://wa.me/33687216605"
+            target="_blank"
+            rel="noreferrer"
+            data-reveal
+            data-reveal-delay="210ms"
+          >
             Prendre rendez-vous
           </a>
         </div>

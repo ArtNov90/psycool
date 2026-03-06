@@ -262,7 +262,12 @@ export default function ConsultationDetail() {
           </section>
 
           <div className="consultationDetailActions individualTherapyActions" data-reveal data-reveal-delay="300ms">
-            <a className="consultationDetailButton" href="mailto:contact@exemple.fr">
+            <a
+              className="consultationDetailButton"
+              href="https://wa.me/33687216605"
+              target="_blank"
+              rel="noreferrer"
+            >
               Prendre rendez-vous
             </a>
             <Link className="consultationDetailGhost" to="/consultations">
@@ -314,7 +319,12 @@ export default function ConsultationDetail() {
             />
 
             <div className="consultationDetailActions" data-reveal data-reveal-delay="300ms">
-              <a className="consultationDetailButton" href="mailto:contact@exemple.fr">
+              <a
+                className="consultationDetailButton"
+                href="https://wa.me/33687216605"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Prendre rendez-vous
               </a>
               <Link className="consultationDetailGhost" to="/consultations">
@@ -356,7 +366,12 @@ export default function ConsultationDetail() {
             ))}
           </ul>
           <div className="consultationDetailActions">
-            <a className="consultationDetailButton" href="mailto:contact@exemple.fr">
+            <a
+              className="consultationDetailButton"
+              href="https://wa.me/33687216605"
+              target="_blank"
+              rel="noreferrer"
+            >
               Prendre rendez-vous
             </a>
             <Link className="consultationDetailGhost" to="/consultations">

@@ -46,7 +46,12 @@ export default function Header() {
           </NavLink>
         </nav>
 
-        <a className="headerContactCta" href="tel:+33687216605">
+        <a
+          className="headerContactCta"
+          href="https://wa.me/33687216605"
+          target="_blank"
+          rel="noreferrer"
+        >
           Prendre rendez-vous
         </a>
       </div>
