@@ -9,27 +9,27 @@ export type ConsultationStyle = {
 export const consultationStyles: ConsultationStyle[] = [
   {
     slug: "therapie-individuelle",
-    title: "Therapie individuelle",
+    title: "Thérapie individuelle",
     shortDescription:
-      "Un accompagnement personnalise pour traverser une periode difficile et retrouver un equilibre.",
+      "Un accompagnement personnalisé pour traverser une période difficile et retrouver un équilibre.",
     intro:
-      "La therapie individuelle offre un espace de parole securise, centre sur votre histoire, votre rythme et vos besoins.",
+      "La thérapie individuelle offre un espace de parole sécurisé, centré sur votre histoire, votre rythme et vos besoins.",
     points: [
       "Mieux comprendre ce que vous traversez.",
-      "Apaiser l'anxiete, le stress ou les blocages repetitifs.",
-      "Construire des reperes concrets pour avancer au quotidien.",
+      "Apaiser l'anxiété, le stress ou les blocages répétitifs.",
+      "Construire des repères concrets pour avancer au quotidien.",
     ],
   },
   {
     slug: "therapie-couple",
-    title: "Therapie de couple",
+    title: "Thérapie de couple",
     shortDescription:
-      "Un cadre neutre pour retablir le dialogue et sortir des conflits repetitifs.",
+      "Un cadre neutre pour rétablir le dialogue et sortir des conflits répétitifs.",
     intro:
-      "La therapie de couple permet de clarifier les besoins de chacun et de retrouver une communication plus saine.",
+      "La thérapie de couple permet de clarifier les besoins de chacun et de retrouver une communication plus saine.",
     points: [
-      "On peut avoir recours a l'aide d'un psy pour de nombreuses raisons. Les problemes familiaux ou professionnels, le stress ou le manque de stabilite au travail, les divorces... peuvent provoquer des crises que seul un professionnel peut vous aider a depasser.",
-      "Une psychanalyste et therapeute dotee d'une solide experience, qualifiee dans les domaines tels que la psychologie des profondeurs, la psychanalyse, la therapie individuelle et la philosophie.",
+      "On peut avoir recours à l'aide d'un psy pour de nombreuses raisons. Les problèmes familiaux ou professionnels, le stress ou le manque de stabilité au travail, les divorces... peuvent provoquer des crises que seul un professionnel peut vous aider à dépasser.",
+      "Une psychanalyste et thérapeute dotée d'une solide expérience, qualifiée dans des domaines tels que la psychologie des profondeurs, la psychanalyse, la thérapie individuelle et la philosophie.",
     ],
   },
 ];

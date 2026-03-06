@@ -141,36 +141,64 @@ export default function Home() {
 
         <section className="homeParcours">
           <div className="homeDivider" />
-          <h2 className="homeSectionTitle" data-reveal>
-            Mon parcours
+          <h2 className="homeSectionTitle homeParcoursSectionTitle" data-reveal>
+            Qui suis-je ?
           </h2>
 
-          <div className="homeParcoursGrid">
-            <div className="homeParcoursMedia" data-reveal data-reveal-delay="80ms">
-              <img src={parcoursImage} alt="Illustration du parcours" loading="lazy" />
-            </div>
+          <div className="homeParcoursLayout">
+            <figure className="homeParcoursPhotoWrap" data-reveal data-reveal-delay="80ms">
+              <img
+                className="homeParcoursPhoto"
+                src="/photo-profil.webp"
+                alt="Portrait du psychologue"
+                loading="lazy"
+              />
+            </figure>
 
             <div className="homeParcoursContent" data-reveal data-reveal-delay="140ms">
-              <h2 className="homeParcoursTitle">Une pratique ancree dans la psychanalyse</h2>
-              <p className="homeParcoursLead">
-                Master 2 en psychanalyse (Universite de Montpellier) et formation a l'Institut
-                Jung de Zurich. J'accompagne en therapie individuelle et de couple, avec une
-                approche clinique attentive a l'histoire singuliere de chacun.
+              <p className="homeParcoursText">
+                Psychologue clinicien et psychanalyste depuis 1990, j&apos;ai consacré ma carrière à
+                l&apos;accompagnement des personnes en souffrance psychique. Mon approche combine la
+                compréhension psychanalytique des mécanismes inconscients avec des outils concrets
+                pour vous aider à avancer.
+              </p>
+              <p className="homeParcoursText">
+                Ma conviction : le chemin vers le mieux-être passe par une écoute authentique, sans
+                jugement, qui permet de mettre des mots sur ce qui fait mal. Ensemble, nous
+                travaillons à comprendre les schémas répétitifs qui vous empêchent d&apos;avancer, pour
+                vous en libérer durablement.
+              </p>
+              <p className="homeParcoursText">
+                J&apos;ai publié plusieurs ouvrages chez Albin Michel, traduits en italien et en turc,
+                et je partage régulièrement mes réflexions sur mon podcast et ma chaîne YouTube.
               </p>
 
               <ul className="homeParcoursList">
-                <li>Psychanalyse</li>
-                <li>Therapie individuelle</li>
-                <li>Therapie de couple</li>
-                <li>Psychologie des profondeurs</li>
-                <li>Psychotherapie analytique</li>
-                <li>Cinema et psychanalyse</li>
+                <li>
+                  <span className="homeParcoursTick">v</span>
+                  <span>
+                    <strong>DESS Psychologie clinique</strong> - Université Paris VII (1990)
+                  </span>
+                </li>
+                <li>
+                  <span className="homeParcoursTick">v</span>
+                  <span>
+                    <strong>Psychanalyste</strong> - Formation complète incluant analyse personnelle
+                  </span>
+                </li>
+                <li>
+                  <span className="homeParcoursTick">v</span>
+                  <span>
+                    <strong>Auteur chez Albin Michel</strong> - Ouvrages traduits internationalement
+                  </span>
+                </li>
+                <li>
+                  <span className="homeParcoursTick">v</span>
+                  <span>
+                    <strong>N° ADELI enregistré</strong> - Titre de psychologue protégé
+                  </span>
+                </li>
               </ul>
-
-              <div className="homeParcoursActions">
-                <Link to="/consultations">Voir les consultations</Link>
-                <Link to="/conferences">Voir les ateliers et masterclass</Link>
-              </div>
             </div>
           </div>
         </section>

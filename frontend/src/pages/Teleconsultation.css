@@ -84,12 +84,28 @@
   text-align: center;
   min-height: 300px;
   padding: 26px 18px;
-  background: #dfdfe1;
+  background-color: #dfdfe1;
   border: 1px solid #c8c8cd;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.teleBenefitCard:nth-child(1) {
+  background-image: linear-gradient(145deg, #f8edf1 0%, #f2effa 100%);
+}
+
+.teleBenefitCard:nth-child(2) {
+  background-image: linear-gradient(145deg, #edf6f7 0%, #eef2fb 100%);
+}
+
+.teleBenefitCard:nth-child(3) {
+  background-image: linear-gradient(145deg, #eef7eb 0%, #f8f3e7 100%);
+}
+
+.teleBenefitCard:nth-child(4) {
+  background-image: linear-gradient(145deg, #fbf0e8 0%, #f6edf2 100%);
 }
 
 .teleBenefitCard h2 {

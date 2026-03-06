@@ -1,4 +1,4 @@
-import { useScrollReveal } from "../hooks/useScrollReveal";
+﻿import { useScrollReveal } from "../hooks/useScrollReveal";
 import "./Teleconsultation.css";
 
 const keyBenefits = [
@@ -46,7 +46,7 @@ export default function Teleconsultation() {
             Consultation à distance
           </p>
           <h1 className="teleTitle" data-reveal data-reveal-delay="110ms">
-            Téléconsultation avec une psychanalyste
+            Téléconsultation avec une psy
           </h1>
           <p className="teleLead" data-reveal data-reveal-delay="160ms">
             Bénéficiez d'un accompagnement thérapeutique de qualité, où que vous soyez, en

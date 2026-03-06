@@ -20,110 +20,110 @@ type PracticalInfo = {
 const individualTherapyCards = [
   {
     image: homeHeroImage,
-    alt: "Bac a sable symbolisant l'espace therapeutique",
-    title: "Un espace personnel pour apaiser l'anxiete et retrouver de la clarte",
+    alt: "Bac à sable symbolisant l'espace thérapeutique",
+    title: "Un espace personnel pour apaiser l'anxiété et retrouver de la clarté",
   },
   {
     image: therapyImage,
-    alt: "Fauteuil de therapie dans un cabinet",
-    title: "Un cadre d'ecoute bienveillant, a votre rythme, en toute confidentialite",
+    alt: "Fauteuil de thérapie dans un cabinet",
+    title: "Un cadre d'écoute bienveillant, à votre rythme, en toute confidentialité",
   },
   {
     image: parcoursImage,
-    alt: "Illustration symbolique du cheminement interieur",
+    alt: "Illustration symbolique du cheminement intérieur",
     title: "Un accompagnement concret pour avancer durablement dans votre vie",
   },
 ];
 
 const individualAudience = [
-  "Anxiete, stress, surcharge mentale ou fatigue emotionnelle.",
-  "Periode de transition: separation, deuil, changement professionnel ou personnel.",
-  "Perte de confiance, sentiment de blocage ou difficultes relationnelles.",
-  "Besoin de mieux se comprendre et de retrouver un equilibre plus stable.",
+  "Anxiété, stress, surcharge mentale ou fatigue émotionnelle.",
+  "Période de transition: séparation, deuil, changement professionnel ou personnel.",
+  "Perte de confiance, sentiment de blocage ou difficultés relationnelles.",
+  "Besoin de mieux se comprendre et de retrouver un équilibre plus stable.",
 ];
 
 const individualWork = [
-  "Identifier les mecanismes repetitifs qui entretiennent la souffrance.",
+  "Identifier les mécanismes répétitifs qui entretiennent la souffrance.",
   "Mettre des mots clairs sur ce que vous traversez et vos besoins.",
-  "Developper des reperes concrets pour reguler les emotions au quotidien.",
-  "Retrouver une capacite de choix et d'action dans votre vie personnelle.",
+  "Développer des repères concrets pour réguler les émotions au quotidien.",
+  "Retrouver une capacité de choix et d'action dans votre vie personnelle.",
 ];
 
 const individualSteps = [
-  "Premier contact pour comprendre votre demande et verifier si ce cadre vous convient.",
-  "Premiere seance d'exploration de votre situation, de vos attentes et de vos objectifs.",
-  "Suivi regulier a un rythme adapte, avec un travail progressif et structure.",
-  "Points d'etape pour evaluer les changements et ajuster l'accompagnement.",
+  "Premier contact pour comprendre votre demande et vérifier si ce cadre vous convient.",
+  "Première séance d'exploration de votre situation, de vos attentes et de vos objectifs.",
+  "Suivi régulier à un rythme adapté, avec un travail progressif et structuré.",
+  "Points d'étape pour évaluer les changements et ajuster l'accompagnement.",
 ];
 
 const individualPractical: PracticalInfo[] = [
-  { label: "Duree d'une seance", value: "Environ 50 minutes" },
+  { label: "Durée d'une séance", value: "Environ 50 minutes" },
   { label: "Rythme", value: "Hebdomadaire ou bimensuel selon le besoin" },
   { label: "Format", value: "Cabinet et visio" },
-  { label: "Tarif", value: "Precise lors du premier echange" },
+  { label: "Tarif", value: "Précisé lors du premier échange" },
 ];
 
 const individualFaq: FaqItem[] = [
   {
-    question: "Combien de temps dure une therapie individuelle ?",
+    question: "Combien de temps dure une thérapie individuelle ?",
     answer:
-      "La duree varie selon votre situation et vos objectifs. Certaines demandes se travaillent en quelques mois, d'autres necessitent un accompagnement plus long.",
+      "La durée varie selon votre situation et vos objectifs. Certaines demandes se travaillent en quelques mois, d'autres nécessitent un accompagnement plus long.",
   },
   {
-    question: "Dois-je avoir un probleme grave pour consulter ?",
+    question: "Dois-je avoir un problème grave pour consulter ?",
     answer:
-      "Non. Beaucoup de personnes consultent pour mieux se comprendre, prevenir l'epuisement ou sortir d'un mal-etre installe.",
+      "Non. Beaucoup de personnes consultent pour mieux se comprendre, prévenir l'épuisement ou sortir d'un mal-être installé.",
   },
   {
-    question: "Puis-je alterner presentiel et visio ?",
+    question: "Puis-je alterner présentiel et visio ?",
     answer:
-      "Oui, ce format hybride peut etre mis en place selon vos contraintes et ce qui soutient le mieux la continuite du travail.",
+      "Oui, ce format hybride peut être mis en place selon vos contraintes et ce qui soutient le mieux la continuité du travail.",
   },
 ];
 
 const coupleAudience = [
-  "Conflits repetitifs qui tournent en boucle.",
-  "Communication difficile, distance emotionnelle, incomprehensions.",
-  "Crise liee a une infidelite, un changement de vie ou une perte de confiance.",
-  "Volonte de clarifier la relation avant une decision importante.",
+  "Conflits répétitifs qui tournent en boucle.",
+  "Communication difficile, distance émotionnelle, incompréhensions.",
+  "Crise liée à une infidélité, un changement de vie ou une perte de confiance.",
+  "Volonté de clarifier la relation avant une décision importante.",
 ];
 
 const coupleWork = [
-  "Retablir un dialogue plus securisant pour les deux partenaires.",
+  "Rétablir un dialogue plus sécurisant pour les deux partenaires.",
   "Comprendre les dynamiques qui alimentent les tensions.",
-  "Exprimer les besoins sans accusation ni evitemment.",
-  "Construire des accords concrets pour avancer, ensemble ou separement.",
+  "Exprimer les besoins sans accusation ni évitement.",
+  "Construire des accords concrets pour avancer, ensemble ou séparément.",
 ];
 
 const coupleSteps = [
   "Entretien initial pour cadrer la demande et les attentes de chacun.",
-  "Seances centrees sur les interactions, avec mediations du dialogue.",
+  "Séances centrées sur les interactions, avec médiation du dialogue.",
   "Travail sur les points de blocage et les ajustements relationnels.",
-  "Bilan regulier pour mesurer l'evolution et definir la suite.",
+  "Bilan régulier pour mesurer l'évolution et définir la suite.",
 ];
 
 const couplePractical: PracticalInfo[] = [
-  { label: "Duree d'une seance", value: "60 a 75 minutes" },
-  { label: "Rythme", value: "En general toutes les 2 semaines" },
+  { label: "Durée d'une séance", value: "60 à 75 minutes" },
+  { label: "Rythme", value: "En général toutes les 2 semaines" },
   { label: "Participants", value: "Les deux partenaires, avec adaptation possible" },
-  { label: "Tarif", value: "Precise lors du premier echange" },
+  { label: "Tarif", value: "Précisé lors du premier échange" },
 ];
 
 const coupleFaq: FaqItem[] = [
   {
-    question: "Faut-il etre maries pour consulter ?",
+    question: "Faut-il être mariés pour consulter ?",
     answer:
-      "Non. La therapie de couple concerne toute relation affective engagee, quel que soit le statut du couple.",
+      "Non. La thérapie de couple concerne toute relation affective engagée, quel que soit le statut du couple.",
   },
   {
-    question: "Peut-on venir si l'un des deux hesite ?",
+    question: "Peut-on venir si l'un des deux hésite ?",
     answer:
-      "Oui, tant qu'il existe un minimum d'accord pour essayer un espace de dialogue accompagne.",
+      "Oui, tant qu'il existe un minimum d'accord pour essayer un espace de dialogue accompagné.",
   },
   {
-    question: "Peut-on consulter si une separation est envisagee ?",
+    question: "Peut-on consulter si une séparation est envisagée ?",
     answer:
-      "Oui. Le travail peut aider a clarifier la decision et, si besoin, a organiser une separation plus apaisee.",
+      "Oui. Le travail peut aider à clarifier la décision et, si besoin, à organiser une séparation plus apaisée.",
   },
 ];
 
@@ -225,10 +225,10 @@ export default function ConsultationDetail() {
         <div className="individualTherapyShell">
           <header className="individualTherapyHeader">
             <h1 className="individualTherapyTitle" data-reveal data-reveal-delay="60ms">
-              Therapie individuelle
+              Thérapie individuelle
             </h1>
             <p className="individualTherapyLead" data-reveal data-reveal-delay="120ms">
-              Un accompagnement personnalise pour traverser une periode difficile et retrouver de la stabilite.
+              Un accompagnement personnalisé pour traverser une période difficile et retrouver de la stabilité.
             </p>
           </header>
 
@@ -251,10 +251,10 @@ export default function ConsultationDetail() {
           <section className="therapyDetailStack">
             <TherapyBlocks title="Pour qui ?" list={individualAudience} dataRevealDelay="120ms" />
             <TherapyBlocks title="Ce que nous travaillons ensemble" list={individualWork} dataRevealDelay="170ms" />
-            <TherapyBlocks title="Deroule de l'accompagnement" list={individualSteps} dataRevealDelay="220ms" />
+            <TherapyBlocks title="Déroulé de l'accompagnement" list={individualSteps} dataRevealDelay="220ms" />
             <PracticalGrid title="Infos pratiques" items={individualPractical} dataRevealDelay="240ms" />
             <FaqBlock
-              title="Questions frequentes"
+              title="Questions fréquentes"
               items={individualFaq}
               openIndex={openIndex}
               onToggle={(index) => setOpenIndex(openIndex === index ? null : index)}
@@ -280,7 +280,7 @@ export default function ConsultationDetail() {
         <section className="individualIntro">
           <div className="individualIntroInner">
             <div className="individualVisualCol">
-              <h1 className="individualMainTitle" data-reveal data-reveal-delay="80ms">Therapie de couple</h1>
+              <h1 className="individualMainTitle" data-reveal data-reveal-delay="80ms">Thérapie de couple</h1>
               <div
                 className="individualRoundVisual"
                 style={{ backgroundImage: `url(${therapyImage})` }}
@@ -291,10 +291,10 @@ export default function ConsultationDetail() {
 
             <div className="individualTextCol" data-reveal data-reveal-delay="200ms">
               <p>
-                Un espace neutre pour retablir le dialogue, comprendre les tensions et retrouver une dynamique plus saine.
+                Un espace neutre pour rétablir le dialogue, comprendre les tensions et retrouver une dynamique plus saine.
               </p>
               <p>
-                L'objectif n'est pas de designer un responsable, mais d'aider chacun a reprendre sa place dans la relation.
+                L'objectif n'est pas de désigner un responsable, mais d'aider chacun à reprendre sa place dans la relation.
               </p>
             </div>
           </div>
@@ -303,11 +303,11 @@ export default function ConsultationDetail() {
         <section className="individualFaqWrap">
           <div className="individualFaqInner therapyDetailStack therapyDetailNarrow">
             <TherapyBlocks title="Quand consulter ?" list={coupleAudience} dataRevealDelay="110ms" />
-            <TherapyBlocks title="Objectifs de la therapie" list={coupleWork} dataRevealDelay="160ms" />
-            <TherapyBlocks title="Deroule des seances" list={coupleSteps} dataRevealDelay="210ms" />
+            <TherapyBlocks title="Objectifs de la thérapie" list={coupleWork} dataRevealDelay="160ms" />
+            <TherapyBlocks title="Déroulé des séances" list={coupleSteps} dataRevealDelay="210ms" />
             <PracticalGrid title="Infos pratiques" items={couplePractical} dataRevealDelay="240ms" />
             <FaqBlock
-              title="Questions frequentes"
+              title="Questions fréquentes"
               items={coupleFaq}
               openIndex={openIndex}
               onToggle={(index) => setOpenIndex(openIndex === index ? null : index)}
@@ -341,7 +341,7 @@ export default function ConsultationDetail() {
         }}
       >
         <div className="consultationDetailHeroInner">
-          <p className="consultationDetailEyebrow" data-reveal data-reveal-delay="60ms">Style de therapie</p>
+          <p className="consultationDetailEyebrow" data-reveal data-reveal-delay="60ms">Style de thérapie</p>
           <h1 className="consultationDetailTitle" data-reveal data-reveal-delay="120ms">{style.title}</h1>
           <p className="consultationDetailIntro" data-reveal data-reveal-delay="180ms">{style.intro}</p>
         </div>
