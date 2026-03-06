@@ -28,33 +28,35 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 14px;
   padding: 26px 0;
+  text-align: center;
 }
 
 .confEyebrow {
-  margin: 0;
+  margin: 0 0 10px;
   display: inline-flex;
   align-items: center;
-  padding: 6px 12px;
+  padding: 7px 14px;
   border-radius: 999px;
-  font-size: 0.8rem;
+  font-size: 0.84rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #4f4f59;
-  background: #dbdbdd;
-  border: 1px solid #c5c6cb;
+  color: #8b5a51;
+  background: #e4dede;
+  border: 1px solid #d7cbcc;
+  font-weight: 600;
 }
 
 .confHeroInner h1 {
   margin: 0;
-  max-width: 16ch;
-  color: #131319;
+  max-width: 19ch;
+  color: #12131a;
   font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
   font-weight: 500;
-  font-size: clamp(46px, 5.4vw, 88px);
-  line-height: 0.95;
+  font-size: clamp(34px, 3.8vw, 56px);
+  line-height: 0.98;
 }
 
 .confHeroLead {
@@ -69,6 +71,7 @@
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .confHeroBtn {

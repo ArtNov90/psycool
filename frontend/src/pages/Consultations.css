@@ -17,19 +17,27 @@
 
 .consultationsEyebrow {
   margin: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 999px;
   color: #8b5a51;
-  font-size: 0.8rem;
-  letter-spacing: 0.22em;
-  font-weight: 700;
+  background: #e4dede;
+  border: 1px solid #d7cbcc;
+  font-size: 0.84rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .consultationsTitle {
-  margin: 16px 0 0;
+  margin: 18px auto 0;
+  max-width: 19ch;
   color: #12131a;
   font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
   font-weight: 500;
-  font-size: clamp(34px, 4vw, 58px);
-  line-height: 1.02;
+  font-size: clamp(34px, 3.8vw, 56px);
+  line-height: 0.98;
 }
 
 .consultationsLead {
