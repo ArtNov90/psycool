@@ -2,7 +2,7 @@
   width: 100%;
   color: #151515;
   padding-bottom: 96px;
-  background: #e7e7e7;
+  background: var(--color-bg-page);
 }
 
 .consultationsHeader {

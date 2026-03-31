@@ -2,7 +2,7 @@
   width: 100%;
   color: #151515;
   padding-bottom: 72px;
-  background: #e7e7e7;
+  background: var(--color-bg-page);
 }
 
 .englishTherapyHero {
@@ -10,7 +10,7 @@
   min-height: clamp(180px, 26vh, 260px);
   overflow: hidden;
   border-bottom: 1px solid #b7b8bd;
-  background: #e7e7e7;
+  background: var(--color-bg-page);
   display: flex;
   align-items: center;
   padding: 20px 0;

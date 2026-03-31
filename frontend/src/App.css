@@ -1,3 +1,13 @@
+:root {
+  --color-bg-page: #efece8;
+  --color-surface-muted: #e2dcd6;
+  --color-border-soft: #cfc4bb;
+  --color-heading: #2f2c2a;
+  --color-text: #4c4742;
+  --color-accent: #aa4f49;
+  --color-accent-dark: #993f3a;
+}
+
 #root {
   max-width: none !important;
   padding: 0 !important;
@@ -6,7 +16,7 @@
 
 body {
   margin: 0;
-  background: #e7e7e7;
+  background: var(--color-bg-page);
   color: #131317;
 }
 
@@ -38,7 +48,7 @@ body {
 .siteHeader {
   width: 100%;
   padding: 26px 0 20px;
-  background: #e7e7e7;
+  background: var(--color-bg-page);
 }
 
 .headerMain {
@@ -79,7 +89,7 @@ body {
 .navLink:hover,
 .navLink.active {
   color: #101015;
-  border-color: #aa4f49;
+  border-color: var(--color-accent);
 }
 
 .headerContactCta {
@@ -94,7 +104,7 @@ body {
   font-size: 20px;
   font-weight: 600;
   color: #fff;
-  background: #ad4f49;
+  background: var(--color-accent);
   transition: filter 180ms ease, transform 180ms ease;
 }
 
@@ -105,7 +115,7 @@ body {
 
 .siteFooter {
   margin-top: 0;
-  background: #e7e7e7;
+  background: var(--color-bg-page);
 }
 
 .footerInner {

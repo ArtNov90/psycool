@@ -7,6 +7,8 @@ export default function Footer() {
       <div className="footerInner">
         <div className="footerLeft">
           <div className="footerBrand">Psycool</div>
+          <div className="psyName">Chantal NOVARA</div>
+          <div className="nonconvention">Secteur non conventionné</div>
           <div className="footerMeta">© {new Date().getFullYear()} - Tous droits reserves</div>
         </div>
 
