@@ -8,17 +8,17 @@ const faqItems = [
   {
     question: "Quand consulter un psy ?",
     answer:
-      "Consultez si vous traversez une période difficile (deuil, séparation, perte d'emploi), si une souffrance persiste (anxiété, tristesse, irritabilité), ou si des schémas répétitifs vous bloquent. Il n'est pas nécessaire d'attendre une crise.",
+      "Consultez si vous traversez une periode difficile (deuil, separation, perte d'emploi), si une souffrance persiste (anxiete, tristesse, irritabilite), ou si des schemas repetitifs vous bloquent. Il n'est pas necessaire d'attendre une crise.",
   },
   {
-    question: "Comment se déroule une première consultation ?",
+    question: "Comment se deroule une premiere consultation ?",
     answer:
-      "La première consultation sert à faire connaissance et à clarifier ce qui vous amène. Nous évaluons ensemble vos besoins et si ma méthode vous convient. Il n'y a aucune obligation d'engagement.",
+      "La premiere consultation sert a faire connaissance et a clarifier ce qui vous amene. Nous evaluons ensemble vos besoins et si ma methode vous convient. Il n'y a aucune obligation d'engagement.",
   },
   {
     question: "Les consultations en visio sont-elles efficaces ?",
     answer:
-      "Oui. Les études et mon expérience de plus de 10 ans en visioconférence montrent une efficacité comparable au présentiel dans la majorité des situations, avec plus de flexibilité.",
+      "Oui. Les etudes et mon experience de plus de 10 ans en visioconference montrent une efficacite comparable au presentiel dans la majorite des situations, avec plus de flexibilite.",
   },
 ];
 
@@ -33,10 +33,10 @@ export default function Consultations() {
             CONSULTATIONS
           </p>
           <h1 className="consultationsTitle" data-reveal data-reveal-delay="110ms">
-            Deux façons de me consulter
+            Deux facons de me consulter
           </h1>
           <p className="consultationsLead" data-reveal data-reveal-delay="160ms">
-            Choisissez le type d&apos;accompagnement qui correspond à votre situation.
+            Choisissez le type d&apos;accompagnement qui correspond a votre situation.
           </p>
         </div>
       </header>
@@ -55,7 +55,7 @@ export default function Consultations() {
                 <h2 className="consultationCardTitle">{style.title}</h2>
                 <p className="consultationCardText">{style.shortDescription}</p>
                 <Link className="consultationCardLink" to={`/consultations/${style.slug}`}>
-                  Découvrir <span aria-hidden="true">{"->"}</span>
+                  Decouvrir <span aria-hidden="true">{"->"}</span>
                 </Link>
               </div>
             </article>
@@ -64,7 +64,7 @@ export default function Consultations() {
       </section>
 
       <section className="consultationsFaq" data-reveal data-reveal-delay="120ms">
-        <p className="consultationsFaqEyebrow">QUESTIONS FRÉQUENTES</p>
+        <p className="consultationsFaqEyebrow">QUESTIONS FREQUENTES</p>
         <h2 className="consultationsFaqTitle">Avant de consulter</h2>
         <div className="consultationsFaqList">
           {faqItems.map((item) => (
@@ -77,8 +77,8 @@ export default function Consultations() {
       </section>
 
       <section className="consultationsCta" data-reveal data-reveal-delay="140ms">
-        <h2>Prêt(e) à faire le premier pas ?</h2>
-        <p>La première étape est souvent la plus difficile. Je vous accompagne avec bienveillance.</p>
+        <h2>Pret(e) a faire le premier pas ?</h2>
+        <p>La premiere etape est souvent la plus difficile. Je vous accompagne avec bienveillance.</p>
         <a
           href="https://wa.me/33687216605"
           className="consultationsCtaButton"

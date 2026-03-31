@@ -14,7 +14,7 @@ export default function Header() {
             end
             className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
           >
-            ACCEUIL
+            ACCUEIL
           </NavLink>
 
           <NavLink

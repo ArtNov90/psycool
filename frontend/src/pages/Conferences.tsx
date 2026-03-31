@@ -152,7 +152,9 @@ export default function Conferences() {
       <section className="confHero">
         <div className="confHeroOverlay" />
         <div className="confHeroInner">
-          <p className="confEyebrow" data-reveal data-reveal-delay="60ms">Agenda psyCool</p>
+          <p className="confEyebrow" data-reveal data-reveal-delay="60ms">
+            Agenda psyCool
+          </p>
           <h1 data-reveal data-reveal-delay="120ms">Ateliers et Masterclass</h1>
           <p className="confHeroLead" data-reveal data-reveal-delay="180ms">
             Retrouvez les prochaines dates, les lieux et les themes abordes pour choisir la session

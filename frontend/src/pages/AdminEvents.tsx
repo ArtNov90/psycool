@@ -147,8 +147,8 @@ export default function AdminEvents() {
       });
       setForm({ title: "", date: "", description: "", time: "", city: "", place: "", type: "cafepsy" });
       setFormErrors({});
-    } catch (err) {
-      setError("Impossible d'ajouter l'événement. Réessaie.");
+    } catch {
+      setError("Impossible d'ajouter l'evenement. Reessaie.");
     } finally {
       setAdding(false);
     }
@@ -169,8 +169,8 @@ export default function AdminEvents() {
         delete next[id];
         return next;
       });
-    } catch (err) {
-      setError("Impossible de supprimer l'événement. Réessaie.");
+    } catch {
+      setError("Impossible de supprimer l'evenement. Reessaie.");
     } finally {
       setDeleting((current) => ({ ...current, [id]: false }));
     }
@@ -232,8 +232,8 @@ export default function AdminEvents() {
         payload.type = draft.type;
       }
       await updateDoc(doc(db, "events", id), payload);
-    } catch (err) {
-      setError("Impossible de modifier l'événement. Réessaie.");
+    } catch {
+      setError("Impossible de modifier l'evenement. Reessaie.");
     } finally {
       setSaving((current) => ({ ...current, [id]: false }));
     }
@@ -243,14 +243,14 @@ export default function AdminEvents() {
     <div className="confPage">
       <section className="confIntro">
         <div className="confIntroInner">
-          <h1>Gestion des conférences</h1>
+          <h1>Gestion des conferences</h1>
           <p className="confIntroText">
-            Ici, tu peux ajouter, modifier et réorganiser les événements.
+            Ici, tu peux ajouter, modifier et reorganiser les evenements.
           </p>
           <div className="confDivider" />
           <div style={{ marginTop: 18 }}>
             <button className="btn ghost" onClick={() => signOut(auth)}>
-              Se déconnecter
+              Se deconnecter
             </button>
           </div>
         </div>
@@ -265,7 +265,7 @@ export default function AdminEvents() {
       ) : null}
 
       <div className="panel">
-        <h2>Ajouter un événement</h2>
+        <h2>Ajouter un evenement</h2>
         <form className="form" onSubmit={addEvent}>
           <label>
             Titre
@@ -420,7 +420,7 @@ export default function AdminEvents() {
                         >
                           <span>
                             {ev.date}
-                            {ev.time ? ` • ${ev.time}` : ""}
+                            {ev.time ? ` - ${ev.time}` : ""}
                           </span>
                         </div>
 
@@ -549,7 +549,7 @@ export default function AdminEvents() {
                               onClick={() => resetDraft(ev.id)}
                               disabled={saving[ev.id]}
                             >
-                              Réinitialiser
+                              Reinitialiser
                             </button>
                             <button
                               className="btn ghost"
@@ -573,4 +573,5 @@ export default function AdminEvents() {
     </div>
   );
 }
+
 

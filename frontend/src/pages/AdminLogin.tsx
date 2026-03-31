@@ -16,14 +16,14 @@ export default function AdminLogin() {
       await signInWithEmailAndPassword(auth, email, pwd);
       nav("/admin");
     } catch {
-      setErr("Connexion impossible. Vérifie l’email et le mot de passe.");
+      setErr("Connexion impossible. Verifie l'email et le mot de passe.");
     }
   }
 
   return (
     <div className="panel" style={{ maxWidth: 520, margin: "0 auto" }}>
       <h1>Admin</h1>
-      <p className="muted">Accès réservé.</p>
+      <p className="muted">Acces reserve.</p>
 
       <form className="form" onSubmit={onSubmit}>
         <label>
@@ -33,10 +33,17 @@ export default function AdminLogin() {
 
         <label>
           Mot de passe
-          <input className="input" type="password" value={pwd} onChange={(e) => setPwd(e.target.value)} />
+          <input
+            className="input"
+            type="password"
+            value={pwd}
+            onChange={(e) => setPwd(e.target.value)}
+          />
         </label>
 
-        <button className="btn" type="submit">Se connecter</button>
+        <button className="btn" type="submit">
+          Se connecter
+        </button>
         {err && <p style={{ marginTop: 10 }}>{err}</p>}
       </form>
     </div>
