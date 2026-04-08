@@ -28,8 +28,8 @@ const BLOCKS: ConferenceType[] = ["cafepsy", "masterclass"];
 
 const BLOCK_META: Record<ConferenceType, { title: string; subtitle: string }> = {
   cafepsy: {
-    title: "Ateliers",
-    subtitle: "Un format vivant pour aborder la psychologie avec legerete et echanges.",
+    title: "Conférences",
+    subtitle: "Un format vivant pour aborder la psychologie avec légèreté et profondeur.",
   },
   masterclass: {
     title: "Masterclass",
@@ -155,7 +155,7 @@ export default function Conferences() {
           <p className="confEyebrow" data-reveal data-reveal-delay="60ms">
             Agenda psyCool
           </p>
-          <h1 data-reveal data-reveal-delay="120ms">Ateliers et Masterclass</h1>
+          <h1 data-reveal data-reveal-delay="120ms">Conférences et Masterclass</h1>
           <p className="confHeroLead" data-reveal data-reveal-delay="180ms">
             Retrouvez les prochaines dates, les lieux et les themes abordes pour choisir la session
             qui vous correspond.

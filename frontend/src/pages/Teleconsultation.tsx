@@ -135,6 +135,25 @@ export default function Teleconsultation() {
           </div>
         </div>
       </section>
+
+      <section className="teleBottomCta" data-reveal data-reveal-delay="120ms">
+        <div className="teleBottomCtaInner">
+          <h2>Prêt(e) à faire le premier pas ?</h2>
+          <p>
+            La première étape est souvent la plus difficile.
+            <br />
+            Je vous accompagne avec bienveillance.
+          </p>
+          <a
+            href="https://wa.me/33687216605"
+            className="teleBottomCtaButton"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Prendre rendez-vous
+          </a>
+        </div>
+      </section>
     </section>
   );
 }
