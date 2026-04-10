@@ -9,6 +9,8 @@ type EventItem = {
   id: string;
   title?: string;
   date?: string; // YYYY-MM-DD
+  startTime?: string;
+  endTime?: string;
   time?: string;
   city?: string;
   place?: string;
@@ -111,6 +113,12 @@ function getSortableDateValue(date?: string): number {
   const parsed = new Date(`${date}T00:00:00`);
   if (Number.isNaN(parsed.getTime())) return Number.POSITIVE_INFINITY;
   return parsed.getTime();
+}
+
+function formatTimeRange(event: Pick<EventItem, "startTime" | "endTime" | "time">): string {
+  if (event.startTime && event.endTime) return `${event.startTime} - ${event.endTime}`;
+  if (event.startTime) return event.startTime;
+  return event.time || "";
 }
 
 export default function Conferences() {
@@ -216,7 +224,9 @@ export default function Conferences() {
                           >
                             <div className="eventCardTop">
                               <p className="eventDate">{formatDate(ev.date)}</p>
-                              {ev.time ? <span className="eventTime">{ev.time}</span> : null}
+                              {formatTimeRange(ev) ? (
+                                <span className="eventTime">{formatTimeRange(ev)}</span>
+                              ) : null}
                             </div>
 
                             <h3 className="eventTitle">{ev.title || "Sans titre"}</h3>
