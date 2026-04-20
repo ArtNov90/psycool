@@ -6,7 +6,6 @@ const firebaseConfig = {
   apiKey: "AIzaSyDZYQ6s0WL94zplBt2muY4bGeHUWLRw-Lk",
   authDomain: "psycool-90375.firebaseapp.com",
   projectId: "psycool-90375",
-  storageBucket: "psycool-90375.firebasestorage.app",
   messagingSenderId: "870173348321",
   appId: "1:870173348321:web:4514c759b667e1c6bd82a0"
 };

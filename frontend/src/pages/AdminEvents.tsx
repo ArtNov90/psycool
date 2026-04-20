@@ -12,6 +12,11 @@ import { signOut } from "firebase/auth";
 import { useEffect, useMemo, useState } from "react";
 import { auth, db } from "../firebase";
 import "./Conferences.css";
+import workshopImage from "../../photos/yumu-wIG0Hhre7Ms-unsplash.jpg";
+import masterclassImage from "../../photos/chemin.png";
+import cafePsyImage from "../../photos/psy-612x612.jpg";
+import freudImage from "../../photos/freud-1920w.webp";
+import abstractImage from "../../photos/canva1.png";
 
 type EventItem = {
   id: string;
@@ -23,12 +28,15 @@ type EventItem = {
   time?: string;
   city?: string;
   place?: string;
+  imageUrl?: string;
+  imageKey?: EventImageKey;
   order?: number;
   type?: ConferenceType;
   section?: 1 | 2 | 3 | 4;
 };
 
 type ConferenceType = "cafepsy" | "masterclass";
+type EventImageKey = "" | "cafepsy" | "freud" | "workshop" | "masterclass" | "abstract";
 
 type EventDraft = Omit<EventItem, "id">;
 type FieldErrors = Partial<Record<keyof EventDraft, string>>;
@@ -44,6 +52,39 @@ const TYPE_LABELS: Record<ConferenceType, string> = {
   cafepsy: "CafePsy rigolo",
   masterclass: "Masterclass",
 };
+
+const IMAGE_OPTIONS: { key: Exclude<EventImageKey, "">; label: string; src: string; alt: string }[] = [
+  {
+    key: "cafepsy",
+    label: "CafePsy colore",
+    src: cafePsyImage,
+    alt: "Illustration coloree autour de la psychologie",
+  },
+  {
+    key: "freud",
+    label: "Portrait Freud",
+    src: freudImage,
+    alt: "Portrait graphique evoquant l'histoire de la psychanalyse",
+  },
+  {
+    key: "workshop",
+    label: "Atelier texture",
+    src: workshopImage,
+    alt: "Matiere sensorielle utilisee en atelier therapeutique",
+  },
+  {
+    key: "masterclass",
+    label: "Chemin",
+    src: masterclassImage,
+    alt: "Illustration d'un cheminement personnel",
+  },
+  {
+    key: "abstract",
+    label: "Abstrait colore",
+    src: abstractImage,
+    alt: "Formes colorees evoquant les emotions et le dialogue",
+  },
+];
 
 function extractLegacyTimes(time?: string): { startTime: string; endTime: string } {
   if (!time) return { startTime: "", endTime: "" };
@@ -66,6 +107,15 @@ function getSortableDateValue(date?: string): number {
   return parsed.getTime();
 }
 
+function getErrorMessage(error: unknown): string {
+  if (error instanceof Error && error.message) return error.message;
+  return "Erreur inconnue.";
+}
+
+function getImageOption(key?: EventImageKey) {
+  return IMAGE_OPTIONS.find((option) => option.key === key);
+}
+
 export default function AdminEvents() {
   const [events, setEvents] = useState<EventItem[]>([]);
   const [form, setForm] = useState<EventDraft>({
@@ -76,6 +126,8 @@ export default function AdminEvents() {
     endTime: "",
     city: "",
     place: "",
+    imageUrl: "",
+    imageKey: "",
     type: "cafepsy",
   });
   const [formErrors, setFormErrors] = useState<FieldErrors>({});
@@ -121,6 +173,8 @@ export default function AdminEvents() {
             endTime: ev.endTime ?? legacyTimes.endTime,
             city: ev.city ?? "",
             place: ev.place ?? "",
+            imageUrl: ev.imageUrl ?? "",
+            imageKey: ev.imageKey ?? "",
             type: normalizeConferenceType(ev),
           };
         }
@@ -173,6 +227,8 @@ export default function AdminEvents() {
         time: buildTimeRange(form.startTime, form.endTime),
         city: form.city || "",
         place: form.place || "",
+        imageUrl: form.imageUrl || "",
+        imageKey: form.imageKey || "",
         type: form.type ?? "cafepsy",
       });
       setForm({
@@ -183,11 +239,13 @@ export default function AdminEvents() {
         endTime: "",
         city: "",
         place: "",
+        imageUrl: "",
+        imageKey: "",
         type: "cafepsy",
       });
       setFormErrors({});
-    } catch {
-      setError("Impossible d'ajouter l'événement. Réessaie.");
+    } catch (caughtError) {
+      setError(`Impossible d'ajouter l'événement. ${getErrorMessage(caughtError)}`);
     } finally {
       setAdding(false);
     }
@@ -208,8 +266,8 @@ export default function AdminEvents() {
         delete next[id];
         return next;
       });
-    } catch {
-      setError("Impossible de supprimer l'événement. Réessaie.");
+    } catch (caughtError) {
+      setError(`Impossible de supprimer l'événement. ${getErrorMessage(caughtError)}`);
     } finally {
       setDeleting((current) => ({ ...current, [id]: false }));
     }
@@ -243,6 +301,8 @@ export default function AdminEvents() {
         endTime: base.endTime ?? extractLegacyTimes(base.time).endTime,
         city: base.city ?? "",
         place: base.place ?? "",
+        imageUrl: base.imageUrl ?? "",
+        imageKey: base.imageKey ?? "",
         type: normalizeConferenceType(base),
       },
     }));
@@ -269,13 +329,24 @@ export default function AdminEvents() {
         time: buildTimeRange(draft.startTime, draft.endTime),
         city: draft.city || "",
         place: draft.place || "",
+        imageUrl: draft.imageUrl || "",
+        imageKey: draft.imageKey || "",
       };
       if (draft.type) {
         payload.type = draft.type;
       }
       await updateDoc(doc(db, "events", id), payload);
-    } catch {
-      setError("Impossible de modifier l'événement. Réessaie.");
+      setDrafts((current) => ({
+        ...current,
+        [id]: {
+          ...draft,
+          imageUrl: draft.imageUrl || "",
+          imageKey: draft.imageKey || "",
+        },
+      }));
+      setDraftErrors((current) => ({ ...current, [id]: {} }));
+    } catch (caughtError) {
+      setError(`Impossible de modifier l'événement. ${getErrorMessage(caughtError)}`);
     } finally {
       setSaving((current) => ({ ...current, [id]: false }));
     }
@@ -283,6 +354,50 @@ export default function AdminEvents() {
 
   function renderFieldError(message?: string) {
     return message ? <div style={fieldErrorStyle}>{message}</div> : null;
+  }
+
+  function renderImagePreview(draft: EventDraft) {
+    const selectedImage = getImageOption(draft.imageKey);
+
+    if (selectedImage) {
+      return (
+        <div className="adminImagePreview">
+          <img src={selectedImage.src} alt={selectedImage.alt} />
+          <span>Image selectionnee: {selectedImage.label}</span>
+        </div>
+      );
+    }
+
+    if (draft.imageUrl) {
+      return (
+        <div className="adminImagePreview">
+          <img src={draft.imageUrl} alt="" />
+          <span>Image personnalisee actuelle</span>
+        </div>
+      );
+    }
+
+    return null;
+  }
+
+  function renderImageSelect(
+    value: EventImageKey | undefined,
+    onChange: (value: EventImageKey) => void
+  ) {
+    return (
+      <select
+        className="adminInput"
+        value={value ?? ""}
+        onChange={(e) => onChange(e.target.value as EventImageKey)}
+      >
+        <option value="">Image automatique</option>
+        {IMAGE_OPTIONS.map((option) => (
+          <option key={option.key} value={option.key}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    );
   }
 
   return (
@@ -451,6 +566,21 @@ export default function AdminEvents() {
             </label>
 
             <label className="adminField adminFieldWide">
+              <span>Image de la carte</span>
+              {renderImageSelect(form.imageKey, (imageKey) => setForm({ ...form, imageKey, imageUrl: "" }))}
+              {renderImagePreview(form)}
+              {form.imageKey || form.imageUrl ? (
+                <button
+                  className="confHeroBtn adminActionButton"
+                  type="button"
+                  onClick={() => setForm({ ...form, imageKey: "", imageUrl: "" })}
+                >
+                  Retirer l'image
+                </button>
+              ) : null}
+            </label>
+
+            <label className="adminField adminFieldWide">
               <span>Description</span>
               <textarea
                 className="adminInput adminTextarea"
@@ -494,6 +624,8 @@ export default function AdminEvents() {
                 endTime: ev.endTime ?? legacyTimes.endTime,
                 city: ev.city ?? "",
                 place: ev.place ?? "",
+                imageUrl: ev.imageUrl ?? "",
+                imageKey: ev.imageKey ?? "",
                 type: normalizeConferenceType(ev),
               };
               const errors = draftErrors[ev.id] ?? {};
@@ -609,6 +741,23 @@ export default function AdminEvents() {
                             <option value="masterclass">Masterclass</option>
                           </select>
                           {renderFieldError(errors.type)}
+                        </label>
+
+                        <label className="adminField adminFieldWide">
+                          <span>Image de la carte</span>
+                          {renderImageSelect(draft.imageKey, (imageKey) =>
+                            updateDraft(ev.id, { imageKey, imageUrl: "" })
+                          )}
+                          {renderImagePreview(draft)}
+                          {draft.imageKey || draft.imageUrl ? (
+                            <button
+                              className="confHeroBtn adminActionButton"
+                              type="button"
+                              onClick={() => updateDraft(ev.id, { imageKey: "", imageUrl: "" })}
+                            >
+                              Retirer l'image personnalisee
+                            </button>
+                          ) : null}
                         </label>
 
                         <label className="adminField adminFieldWide">

@@ -238,10 +238,11 @@
   background-repeat: no-repeat;
   border: 1px solid #c7c8cd;
   border-radius: 20px;
-  padding: 20px;
+  padding: 12px;
   box-shadow: none;
   width: min(860px, 100%);
   margin: 0 auto;
+  overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -250,11 +251,41 @@
   box-shadow: 0 12px 24px rgba(20, 20, 28, 0.12);
 }
 
+.eventMedia {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  min-height: 156px;
+  max-height: 220px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #dedbd4;
+}
+
+.eventMedia::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 19, 26, 0.02), rgba(18, 19, 26, 0.2));
+  pointer-events: none;
+}
+
+.eventMedia img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.eventCardBody {
+  padding: 16px 8px 8px;
+}
+
 .eventCardTop {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .eventDate {
@@ -466,6 +497,30 @@
   resize: vertical;
 }
 
+.adminImagePreview {
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid #d5d0ca;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.adminImagePreview img {
+  display: block;
+  width: 128px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.adminImagePreview span {
+  color: #34353d;
+  font-weight: 600;
+}
+
 .adminComposerActions,
 .adminCardActions {
   display: flex;
@@ -563,6 +618,10 @@
     width: 100%;
   }
 
+  .eventMedia {
+    min-height: 180px;
+  }
+
   .adminComposerHeader,
   .adminListHeader {
     grid-template-columns: 1fr;
@@ -597,9 +656,32 @@
     padding: 48px 0;
   }
 
+  .eventCard {
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  .eventMedia {
+    aspect-ratio: 4 / 3;
+    min-height: 170px;
+    border-radius: 12px;
+  }
+
+  .eventCardBody {
+    padding: 14px 6px 8px;
+  }
+
   .adminHeroStats,
   .adminEventForm {
     grid-template-columns: 1fr;
+  }
+
+  .adminImagePreview {
+    grid-template-columns: 1fr;
+  }
+
+  .adminImagePreview img {
+    width: 100%;
   }
 
   .adminComposer,

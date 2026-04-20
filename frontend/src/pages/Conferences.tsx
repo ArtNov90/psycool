@@ -4,6 +4,11 @@ import { db } from "../firebase";
 import "./Conferences.css";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import paperImage from "../../photos/papier.jpeg";
+import workshopImage from "../../photos/yumu-wIG0Hhre7Ms-unsplash.jpg";
+import masterclassImage from "../../photos/chemin.png";
+import cafePsyImage from "../../photos/psy-612x612.jpg";
+import freudImage from "../../photos/freud-1920w.webp";
+import abstractImage from "../../photos/canva1.png";
 
 type EventItem = {
   id: string;
@@ -15,12 +20,15 @@ type EventItem = {
   city?: string;
   place?: string;
   description?: string;
+  imageUrl?: string;
+  imageKey?: EventImageKey;
   type?: ConferenceType;
   section?: 1 | 2 | 3 | 4;
   order?: number;
 };
 
 type ConferenceType = "cafepsy" | "masterclass";
+type EventImageKey = "cafepsy" | "freud" | "workshop" | "masterclass" | "abstract";
 
 type DescriptionBlock =
   | { type: "p"; text: string }
@@ -36,6 +44,60 @@ const BLOCK_META: Record<ConferenceType, { title: string; subtitle: string }> = 
   masterclass: {
     title: "Masterclass",
     subtitle: "Des sessions plus approfondies pour explorer un theme en detail.",
+  },
+};
+
+const EVENT_IMAGES: Record<ConferenceType, { src: string; alt: string }[]> = {
+  cafepsy: [
+    {
+      src: cafePsyImage,
+      alt: "Illustration coloree autour de la psychologie",
+    },
+    {
+      src: freudImage,
+      alt: "Portrait graphique evoquant l'histoire de la psychanalyse",
+    },
+    {
+      src: workshopImage,
+      alt: "Matiere sensorielle utilisee en atelier therapeutique",
+    },
+  ],
+  masterclass: [
+    {
+      src: masterclassImage,
+      alt: "Illustration d'un cheminement personnel",
+    },
+    {
+      src: abstractImage,
+      alt: "Formes colorees evoquant les emotions et le dialogue",
+    },
+    {
+      src: workshopImage,
+      alt: "Texture douce associee aux ateliers de psychologie",
+    },
+  ],
+};
+
+const EVENT_IMAGE_BY_KEY: Record<EventImageKey, { src: string; alt: string }> = {
+  cafepsy: {
+    src: cafePsyImage,
+    alt: "Illustration coloree autour de la psychologie",
+  },
+  freud: {
+    src: freudImage,
+    alt: "Portrait graphique evoquant l'histoire de la psychanalyse",
+  },
+  workshop: {
+    src: workshopImage,
+    alt: "Matiere sensorielle utilisee en atelier therapeutique",
+  },
+  masterclass: {
+    src: masterclassImage,
+    alt: "Illustration d'un cheminement personnel",
+  },
+  abstract: {
+    src: abstractImage,
+    alt: "Formes colorees evoquant les emotions et le dialogue",
   },
 };
 
@@ -119,6 +181,26 @@ function formatTimeRange(event: Pick<EventItem, "startTime" | "endTime" | "time"
   if (event.startTime && event.endTime) return `${event.startTime} - ${event.endTime}`;
   if (event.startTime) return event.startTime;
   return event.time || "";
+}
+
+function isEventImageKey(value?: string): value is EventImageKey {
+  return Boolean(value && value in EVENT_IMAGE_BY_KEY);
+}
+
+function getEventImage(event: EventItem, type: ConferenceType, index: number) {
+  if (event.imageUrl?.trim()) {
+    return {
+      src: event.imageUrl,
+      alt: event.title ? `Image de ${event.title}` : "Image de la conference",
+    };
+  }
+
+  if (isEventImageKey(event.imageKey)) {
+    return EVENT_IMAGE_BY_KEY[event.imageKey];
+  }
+
+  const images = EVENT_IMAGES[type];
+  return images[index % images.length];
 }
 
 export default function Conferences() {
@@ -212,52 +294,62 @@ export default function Conferences() {
                       </header>
 
                       <div className="eventGrid">
-                        {items.map((ev, index) => (
-                          <article
-                            key={ev.id}
-                            className="eventCard"
-                            data-reveal
-                            data-reveal-delay={`${Math.min(300, 60 + index * 60)}ms`}
-                            style={{
-                              backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(${paperImage})`,
-                            }}
-                          >
-                            <div className="eventCardTop">
-                              <p className="eventDate">{formatDate(ev.date)}</p>
-                              {formatTimeRange(ev) ? (
-                                <span className="eventTime">{formatTimeRange(ev)}</span>
-                              ) : null}
-                            </div>
+                        {items.map((ev, index) => {
+                          const eventImage = getEventImage(ev, block, index);
 
-                            <h3 className="eventTitle">{ev.title || "Sans titre"}</h3>
+                          return (
+                            <article
+                              key={ev.id}
+                              className="eventCard"
+                              data-reveal
+                              data-reveal-delay={`${Math.min(300, 60 + index * 60)}ms`}
+                              style={{
+                                backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(${paperImage})`,
+                              }}
+                            >
+                              <div className="eventMedia">
+                                <img src={eventImage.src} alt={eventImage.alt} loading={index === 0 ? "eager" : "lazy"} />
+                              </div>
 
-                            {(ev.city || ev.place) && (
-                              <p className="eventPlace">
-                                {ev.city ?? ""}
-                                {ev.city && ev.place ? " - " : ""}
-                                {ev.place ?? ""}
-                              </p>
-                            )}
+                              <div className="eventCardBody">
+                                <div className="eventCardTop">
+                                  <p className="eventDate">{formatDate(ev.date)}</p>
+                                  {formatTimeRange(ev) ? (
+                                    <span className="eventTime">{formatTimeRange(ev)}</span>
+                                  ) : null}
+                                </div>
 
-                            {parseDescription(ev.description).map((blockItem, index) => {
-                              if (blockItem.type === "ul") {
-                                return (
-                                  <ul key={`${ev.id}-d-${index}`} className="eventDescriptionList">
-                                    {blockItem.items.map((item, itemIndex) => (
-                                      <li key={`${ev.id}-d-${index}-${itemIndex}`}>{item}</li>
-                                    ))}
-                                  </ul>
-                                );
-                              }
+                                <h3 className="eventTitle">{ev.title || "Sans titre"}</h3>
 
-                              return (
-                                <p key={`${ev.id}-d-${index}`} className="eventDescription">
-                                  {blockItem.text}
-                                </p>
-                              );
-                            })}
-                          </article>
-                        ))}
+                                {(ev.city || ev.place) && (
+                                  <p className="eventPlace">
+                                    {ev.city ?? ""}
+                                    {ev.city && ev.place ? " - " : ""}
+                                    {ev.place ?? ""}
+                                  </p>
+                                )}
+
+                                {parseDescription(ev.description).map((blockItem, index) => {
+                                  if (blockItem.type === "ul") {
+                                    return (
+                                      <ul key={`${ev.id}-d-${index}`} className="eventDescriptionList">
+                                        {blockItem.items.map((item, itemIndex) => (
+                                          <li key={`${ev.id}-d-${index}-${itemIndex}`}>{item}</li>
+                                        ))}
+                                      </ul>
+                                    );
+                                  }
+
+                                  return (
+                                    <p key={`${ev.id}-d-${index}`} className="eventDescription">
+                                      {blockItem.text}
+                                    </p>
+                                  );
+                                })}
+                              </div>
+                            </article>
+                          );
+                        })}
                       </div>
                     </div>
                   </section>

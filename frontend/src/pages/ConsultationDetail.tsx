@@ -3,6 +3,7 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { consultationStyles } from "./consultationStyles";
 import "./ConsultationDetail.css";
 import therapyImage from "../../photos/canva1.png";
+import coupleTherapyImage from "../../photos/psicoterapia-psicopsycouple.jpg";
 import homeHeroImage from "../../photos/yumu-wIG0Hhre7Ms-unsplash.jpg";
 import parcoursImage from "../../photos/chemin.png";
 import { useScrollReveal } from "../hooks/useScrollReveal";
@@ -288,7 +289,7 @@ export default function ConsultationDetail() {
               <h1 className="individualMainTitle" data-reveal data-reveal-delay="80ms">Thérapie de couple</h1>
               <div
                 className="individualRoundVisual"
-                style={{ backgroundImage: `url(${therapyImage})` }}
+                style={{ backgroundImage: `url(${coupleTherapyImage})` }}
                 data-reveal
                 data-reveal-delay="140ms"
               />
