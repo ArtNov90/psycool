@@ -9,7 +9,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { signOut } from "firebase/auth";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { auth, db } from "../firebase";
 import "./Conferences.css";
 import workshopImage from "../../photos/yumu-wIG0Hhre7Ms-unsplash.jpg";
@@ -47,6 +47,7 @@ const fieldErrorInputStyle = {
   borderColor: "rgba(255, 80, 80, 0.8)",
   boxShadow: "0 0 0 1px rgba(255, 80, 80, 0.25)",
 };
+const MAX_IMAGE_DATA_URL_LENGTH = 850_000;
 
 const TYPE_LABELS: Record<ConferenceType, string> = {
   cafepsy: "CafePsy rigolo",
@@ -137,6 +138,9 @@ export default function AdminEvents() {
   const [saving, setSaving] = useState<Record<string, boolean>>({});
   const [deleting, setDeleting] = useState<Record<string, boolean>>({});
   const [adding, setAdding] = useState(false);
+  const [uploadingImages, setUploadingImages] = useState<Record<string, boolean>>({});
+  const formImageInputRef = useRef<HTMLInputElement | null>(null);
+  const draftImageInputRefs = useRef<Record<string, HTMLInputElement | null>>({});
 
   const eventById = useMemo(() => {
     return new Map(events.map((ev) => [ev.id, ev]));
@@ -288,6 +292,83 @@ export default function AdminEvents() {
     });
   }
 
+  async function compressImageFile(file: File): Promise<string> {
+    if (!file.type.startsWith("image/")) {
+      throw new Error("Le fichier choisi n'est pas une image.");
+    }
+
+    const objectUrl = URL.createObjectURL(file);
+    try {
+      const image = await new Promise<HTMLImageElement>((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(new Error("Impossible de lire cette image."));
+        img.src = objectUrl;
+      });
+
+      const maxWidth = 1200;
+      const maxHeight = 675;
+      const ratio = Math.min(maxWidth / image.naturalWidth, maxHeight / image.naturalHeight, 1);
+      const width = Math.max(1, Math.round(image.naturalWidth * ratio));
+      const height = Math.max(1, Math.round(image.naturalHeight * ratio));
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+
+      const context = canvas.getContext("2d");
+      if (!context) {
+        throw new Error("Impossible de preparer l'image.");
+      }
+
+      context.drawImage(image, 0, 0, width, height);
+
+      for (const quality of [0.82, 0.72, 0.62, 0.52]) {
+        const dataUrl = canvas.toDataURL("image/jpeg", quality);
+        if (dataUrl.length <= MAX_IMAGE_DATA_URL_LENGTH) {
+          return dataUrl;
+        }
+      }
+
+      throw new Error("L'image reste trop lourde. Essayez une image plus petite.");
+    } finally {
+      URL.revokeObjectURL(objectUrl);
+    }
+  }
+
+  async function handleFormImageChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+
+    setError(null);
+    setUploadingImages((current) => ({ ...current, new: true }));
+    try {
+      const imageUrl = await compressImageFile(file);
+      setForm((current) => ({ ...current, imageUrl, imageKey: "" }));
+    } catch (caughtError) {
+      setError(`Impossible de preparer l'image. ${getErrorMessage(caughtError)}`);
+    } finally {
+      setUploadingImages((current) => ({ ...current, new: false }));
+    }
+  }
+
+  async function handleDraftImageChange(id: string, event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+
+    setError(null);
+    setUploadingImages((current) => ({ ...current, [id]: true }));
+    try {
+      const imageUrl = await compressImageFile(file);
+      updateDraft(id, { imageUrl, imageKey: "" });
+    } catch (caughtError) {
+      setError(`Impossible de preparer l'image. ${getErrorMessage(caughtError)}`);
+    } finally {
+      setUploadingImages((current) => ({ ...current, [id]: false }));
+    }
+  }
+
   function resetDraft(id: string) {
     const base = eventById.get(id);
     if (!base) return;
@@ -397,6 +478,35 @@ export default function AdminEvents() {
           </option>
         ))}
       </select>
+    );
+  }
+
+  function renderImageUploadButton(options: {
+    busy: boolean;
+    inputRef?: React.RefObject<HTMLInputElement | null>;
+    onClick?: () => void;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  }) {
+    return (
+      <div className="adminImageUploadRow">
+        {options.inputRef ? (
+          <input
+            ref={options.inputRef}
+            className="adminImageFileInput"
+            type="file"
+            accept="image/*"
+            onChange={options.onChange}
+          />
+        ) : null}
+        <button
+          className="confHeroBtn adminActionButton"
+          type="button"
+          onClick={options.onClick ?? (() => options.inputRef?.current?.click())}
+          disabled={options.busy}
+        >
+          {options.busy ? "Import en cours..." : "Choisir une image"}
+        </button>
+      </div>
     );
   }
 
@@ -568,6 +678,11 @@ export default function AdminEvents() {
             <label className="adminField adminFieldWide">
               <span>Image de la carte</span>
               {renderImageSelect(form.imageKey, (imageKey) => setForm({ ...form, imageKey, imageUrl: "" }))}
+              {renderImageUploadButton({
+                busy: Boolean(uploadingImages.new),
+                inputRef: formImageInputRef,
+                onChange: handleFormImageChange,
+              })}
               {renderImagePreview(form)}
               {form.imageKey || form.imageUrl ? (
                 <button
@@ -748,6 +863,20 @@ export default function AdminEvents() {
                           {renderImageSelect(draft.imageKey, (imageKey) =>
                             updateDraft(ev.id, { imageKey, imageUrl: "" })
                           )}
+                          {renderImageUploadButton({
+                            busy: Boolean(uploadingImages[ev.id]),
+                            onClick: () => draftImageInputRefs.current[ev.id]?.click(),
+                            onChange: (event) => handleDraftImageChange(ev.id, event),
+                          })}
+                          <input
+                            ref={(element) => {
+                              draftImageInputRefs.current[ev.id] = element;
+                            }}
+                            className="adminImageFileInput"
+                            type="file"
+                            accept="image/*"
+                            onChange={(event) => handleDraftImageChange(ev.id, event)}
+                          />
                           {renderImagePreview(draft)}
                           {draft.imageKey || draft.imageUrl ? (
                             <button
