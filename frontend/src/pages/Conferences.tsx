@@ -9,6 +9,7 @@ import masterclassImage from "../../photos/chemin.png";
 import cafePsyImage from "../../photos/psy-612x612.jpg";
 import freudImage from "../../photos/freud-1920w.webp";
 import abstractImage from "../../photos/canva1.png";
+import writingImage from "../../photos/ecriture.png";
 
 type EventItem = {
   id: string;
@@ -28,7 +29,7 @@ type EventItem = {
 };
 
 type ConferenceType = "cafepsy" | "masterclass";
-type EventImageKey = "cafepsy" | "freud" | "workshop" | "masterclass" | "abstract";
+type EventImageKey = "cafepsy" | "freud" | "workshop" | "masterclass" | "abstract" | "writing";
 
 type DescriptionBlock =
   | { type: "p"; text: string }
@@ -99,7 +100,21 @@ const EVENT_IMAGE_BY_KEY: Record<EventImageKey, { src: string; alt: string }> = 
     src: abstractImage,
     alt: "Formes colorees evoquant les emotions et le dialogue",
   },
+  writing: {
+    src: writingImage,
+    alt: "Carnet et stylo pour un atelier d'ecriture",
+  },
 };
+
+function isWritingWorkshop(event: EventItem): boolean {
+  const normalizedTitle = (event.title || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+
+  return normalizedTitle.includes("atelier ecriture");
+}
 
 function normalizeConferenceType(event: EventItem): ConferenceType {
   if (event.type === "cafepsy" || event.type === "masterclass") {
@@ -188,6 +203,10 @@ function isEventImageKey(value?: string): value is EventImageKey {
 }
 
 function getEventImage(event: EventItem, type: ConferenceType, index: number) {
+  if (isWritingWorkshop(event)) {
+    return EVENT_IMAGE_BY_KEY.writing;
+  }
+
   if (event.imageUrl?.trim()) {
     return {
       src: event.imageUrl,

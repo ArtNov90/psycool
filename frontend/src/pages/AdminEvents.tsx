@@ -17,6 +17,7 @@ import masterclassImage from "../../photos/chemin.png";
 import cafePsyImage from "../../photos/psy-612x612.jpg";
 import freudImage from "../../photos/freud-1920w.webp";
 import abstractImage from "../../photos/canva1.png";
+import writingImage from "../../photos/ecriture.png";
 
 type EventItem = {
   id: string;
@@ -36,7 +37,7 @@ type EventItem = {
 };
 
 type ConferenceType = "cafepsy" | "masterclass";
-type EventImageKey = "" | "cafepsy" | "freud" | "workshop" | "masterclass" | "abstract";
+type EventImageKey = "" | "cafepsy" | "freud" | "workshop" | "masterclass" | "abstract" | "writing";
 
 type EventDraft = Omit<EventItem, "id">;
 type FieldErrors = Partial<Record<keyof EventDraft, string>>;
@@ -84,6 +85,12 @@ const IMAGE_OPTIONS: { key: Exclude<EventImageKey, "">; label: string; src: stri
     label: "Abstrait colore",
     src: abstractImage,
     alt: "Formes colorees evoquant les emotions et le dialogue",
+  },
+  {
+    key: "writing",
+    label: "Ecriture",
+    src: writingImage,
+    alt: "Carnet et stylo pour un atelier d'ecriture",
   },
 ];
 
