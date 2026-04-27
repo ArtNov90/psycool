@@ -27,7 +27,7 @@ export default function Home() {
     {
       src: parcoursImage,
       alt: "Illustration du parcours thérapeutique",
-      title: "English speaking therapie",
+      title: "English speaking therapy",
       description: "Don't feel lost in translation",
     },
   ];
