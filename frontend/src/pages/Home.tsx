@@ -27,8 +27,8 @@ export default function Home() {
     {
       src: parcoursImage,
       alt: "Illustration du parcours thérapeutique",
-      title: "Consultations en anglais",
-      description: "Un accompagnement thérapeutique accessible également en langue anglaise.",
+      title: "English speaking therapie",
+      description: "Don't feel lost in translation",
     },
   ];
 
