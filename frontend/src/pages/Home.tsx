@@ -155,10 +155,7 @@ export default function Home() {
                   <li>Diplômée de l&apos;université (Master 2 de psychanalyse et philosophie)</li>
                   <li>Institut de formation des psychanalystes C.G. JUNG à Zurich</li>
                   <li>Institut Freudien de Montpellier</li>
-                  <li>
-                    Formée à l&apos;interprétation des rêves à l&apos;Académie des rêves de Montpellier,
-                    formatrice pour les psychothérapeutes et psychanalystes
-                  </li>
+                  <li>Formatrice pour les psychothérapeutes et psychanalystes</li>
                 </ul>
               </div>
             </div>
