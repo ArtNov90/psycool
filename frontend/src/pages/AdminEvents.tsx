@@ -29,6 +29,7 @@ type EventItem = {
   time?: string;
   city?: string;
   place?: string;
+  meetLink?: string;
   imageUrl?: string;
   imageKey?: EventImageKey;
   order?: number;
@@ -134,6 +135,7 @@ export default function AdminEvents() {
     endTime: "",
     city: "",
     place: "",
+    meetLink: "",
     imageUrl: "",
     imageKey: "",
     type: "cafepsy",
@@ -184,6 +186,7 @@ export default function AdminEvents() {
             endTime: ev.endTime ?? legacyTimes.endTime,
             city: ev.city ?? "",
             place: ev.place ?? "",
+            meetLink: ev.meetLink ?? "",
             imageUrl: ev.imageUrl ?? "",
             imageKey: ev.imageKey ?? "",
             type: normalizeConferenceType(ev),
@@ -215,6 +218,9 @@ export default function AdminEvents() {
     }
     if (!draft.city?.trim()) errors.city = "La ville est obligatoire.";
     if (!draft.place?.trim()) errors.place = "Le lieu est obligatoire.";
+    if (draft.meetLink?.trim() && !draft.meetLink.trim().startsWith("https://meet.google.com/")) {
+      errors.meetLink = "Le lien doit commencer par https://meet.google.com/.";
+    }
     if (!draft.type) errors.type = "Le type de conférence est obligatoire.";
     return errors;
   }
@@ -238,6 +244,7 @@ export default function AdminEvents() {
         time: buildTimeRange(form.startTime, form.endTime),
         city: form.city || "",
         place: form.place || "",
+        meetLink: form.meetLink || "",
         imageUrl: form.imageUrl || "",
         imageKey: form.imageKey || "",
         type: form.type ?? "cafepsy",
@@ -250,6 +257,7 @@ export default function AdminEvents() {
         endTime: "",
         city: "",
         place: "",
+        meetLink: "",
         imageUrl: "",
         imageKey: "",
         type: "cafepsy",
@@ -389,6 +397,7 @@ export default function AdminEvents() {
         endTime: base.endTime ?? extractLegacyTimes(base.time).endTime,
         city: base.city ?? "",
         place: base.place ?? "",
+        meetLink: base.meetLink ?? "",
         imageUrl: base.imageUrl ?? "",
         imageKey: base.imageKey ?? "",
         type: normalizeConferenceType(base),
@@ -417,6 +426,7 @@ export default function AdminEvents() {
         time: buildTimeRange(draft.startTime, draft.endTime),
         city: draft.city || "",
         place: draft.place || "",
+        meetLink: draft.meetLink || "",
         imageUrl: draft.imageUrl || "",
         imageKey: draft.imageKey || "",
       };
@@ -663,6 +673,22 @@ export default function AdminEvents() {
               {renderFieldError(formErrors.place)}
             </label>
 
+            <label className="adminField adminFieldWide">
+              <span>Lien Google Meet</span>
+              <input
+                className="adminInput"
+                type="url"
+                placeholder="https://meet.google.com/xxx-yyyy-zzz"
+                value={form.meetLink ?? ""}
+                onChange={(e) => {
+                  setForm({ ...form, meetLink: e.target.value });
+                  setFormErrors((current) => ({ ...current, meetLink: undefined }));
+                }}
+                style={formErrors.meetLink ? fieldErrorInputStyle : undefined}
+              />
+              {renderFieldError(formErrors.meetLink)}
+            </label>
+
             <label className="adminField">
               <span>Type de conférence</span>
               <select
@@ -746,6 +772,7 @@ export default function AdminEvents() {
                 endTime: ev.endTime ?? legacyTimes.endTime,
                 city: ev.city ?? "",
                 place: ev.place ?? "",
+                meetLink: ev.meetLink ?? "",
                 imageUrl: ev.imageUrl ?? "",
                 imageKey: ev.imageKey ?? "",
                 type: normalizeConferenceType(ev),
@@ -845,6 +872,19 @@ export default function AdminEvents() {
                             required
                           />
                           {renderFieldError(errors.place)}
+                        </label>
+
+                        <label className="adminField adminFieldWide">
+                          <span>Lien Google Meet</span>
+                          <input
+                            className="adminInput"
+                            type="url"
+                            placeholder="https://meet.google.com/xxx-yyyy-zzz"
+                            value={draft.meetLink ?? ""}
+                            onChange={(e) => updateDraft(ev.id, { meetLink: e.target.value })}
+                            style={errors.meetLink ? fieldErrorInputStyle : undefined}
+                          />
+                          {renderFieldError(errors.meetLink)}
                         </label>
 
                         <label className="adminField">

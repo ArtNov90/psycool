@@ -89,7 +89,7 @@ export default function Home() {
               <img src={chantalPhoto} alt="Portrait de Chantal" loading="eager" />
             </div>
             <p className="homeIntro" data-reveal data-reveal-delay="220ms">
-              Psychanalyste diplômée, 30 ans d'expérience, je vous accueille au sein de mon cabinet pour des consultations. Je pratique également la consultation par VISIO avec WhatsApp
+              Psychanalyste diplômée, 30 ans d'expérience, je vous accueille au sein de mon cabinet pour des consultations. Je pratique également la consultation par VISIO avec WhatsApp et Google&nbsp;Meet
             </p>
           </div>
         </header>
