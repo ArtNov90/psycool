@@ -15,7 +15,7 @@ const englishFaqItems = [
   {
     question: "Are online sessions effective?",
     answer:
-      "Yes. Research and my 10+ years of online practice show outcomes comparable to in-person sessions for most situations, with greater flexibility.",
+      "Yes. Research and my 10+ years of online practice show outcomes comparable to in-person sessions for most situations, with greater flexibility. Online sessions and contact can take place through WhatsApp or Google Meet.",
   },
 ];
 
