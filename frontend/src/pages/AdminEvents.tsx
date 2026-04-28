@@ -51,7 +51,7 @@ const fieldErrorInputStyle = {
 const MAX_IMAGE_DATA_URL_LENGTH = 850_000;
 
 const TYPE_LABELS: Record<ConferenceType, string> = {
-  cafepsy: "CafePsy rigolo",
+  cafepsy: "Café Psy Rigolo",
   masterclass: "Masterclass",
 };
 
@@ -676,7 +676,7 @@ export default function AdminEvents() {
                 style={formErrors.type ? fieldErrorInputStyle : undefined}
                 required
               >
-                <option value="cafepsy">CafePsy rigolo</option>
+                <option value="cafepsy">Café Psy Rigolo</option>
                 <option value="masterclass">Masterclass</option>
               </select>
               {renderFieldError(formErrors.type)}
@@ -859,7 +859,7 @@ export default function AdminEvents() {
                             style={errors.type ? fieldErrorInputStyle : undefined}
                             required
                           >
-                            <option value="cafepsy">CafePsy rigolo</option>
+                            <option value="cafepsy">Café Psy Rigolo</option>
                             <option value="masterclass">Masterclass</option>
                           </select>
                           {renderFieldError(errors.type)}
