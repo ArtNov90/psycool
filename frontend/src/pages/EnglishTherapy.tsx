@@ -3,7 +3,7 @@ import "./EnglishTherapy.css";
 
 const englishFaqItems = [
   {
-    question: "When should I consult a psychologist?",
+    question: "When should I consult a psychoanalyst?",
     answer:
       "It is relevant to consult when you are going through a difficult period (grief, separation, job loss), when emotional suffering persists (anxiety, sadness, irritability), or when repetitive patterns keep you from moving forward. You do not need to wait for a crisis.",
   },
