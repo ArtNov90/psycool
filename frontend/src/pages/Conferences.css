@@ -720,3 +720,138 @@
   }
 }
 
+/* ── Image crop modal ── */
+
+.cropBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(20, 20, 28, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.cropModal {
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px 28px 24px;
+  width: min(900px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4);
+}
+
+.cropTitle {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1e1f26;
+}
+
+.cropHint {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #6b6c78;
+}
+
+.cropError {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #c0392b;
+  font-weight: 600;
+}
+
+.cropImageWrapper {
+  position: relative;
+  display: inline-block;
+  align-self: center;
+  line-height: 0;
+  user-select: none;
+}
+
+.cropImage {
+  display: block;
+  max-width: min(840px, 100%);
+  max-height: 58vh;
+  border-radius: 10px;
+}
+
+.cropOverlayTop,
+.cropOverlayBottom,
+.cropOverlayLeft,
+.cropOverlayRight {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.52);
+  pointer-events: none;
+}
+
+.cropOverlayTop {
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.cropOverlayBottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.cropOverlayLeft,
+.cropOverlayRight {
+  top: 0;
+}
+
+.cropOverlayRight {
+  right: 0;
+}
+
+.cropSelection {
+  position: absolute;
+  box-sizing: border-box;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  cursor: move;
+  overflow: hidden;
+}
+
+.cropGridH1,
+.cropGridH2,
+.cropGridV1,
+.cropGridV2 {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+}
+
+.cropGridH1 { top: 33.33%; left: 0; right: 0; height: 1px; }
+.cropGridH2 { top: 66.66%; left: 0; right: 0; height: 1px; }
+.cropGridV1 { left: 33.33%; top: 0; bottom: 0; width: 1px; }
+.cropGridV2 { left: 66.66%; top: 0; bottom: 0; width: 1px; }
+
+.cropHandle {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: 2px solid rgba(60, 60, 80, 0.6);
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.cropHandleNW { top: -7px; left: -7px; cursor: nw-resize; }
+.cropHandleNE { top: -7px; right: -7px; cursor: ne-resize; }
+.cropHandleSW { bottom: -7px; left: -7px; cursor: sw-resize; }
+.cropHandleSE { bottom: -7px; right: -7px; cursor: se-resize; }
+
+.cropActions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+

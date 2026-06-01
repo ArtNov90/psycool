@@ -124,6 +124,199 @@ function getImageOption(key?: EventImageKey) {
   return IMAGE_OPTIONS.find((option) => option.key === key);
 }
 
+type CropBox = { x: number; y: number; w: number; h: number };
+type CropHandle = "nw" | "ne" | "sw" | "se";
+type DragInteraction = {
+  mode: "drag" | "resize";
+  handle?: CropHandle;
+  startX: number;
+  startY: number;
+  startCrop: CropBox;
+};
+type CropPendingState = { srcUrl: string; file: File; context: "new" | string };
+
+function ImageCropModal({
+  srcUrl,
+  onConfirm,
+  onSkip,
+  onCancel,
+}: {
+  srcUrl: string;
+  onConfirm: (dataUrl: string) => void;
+  onSkip: () => void;
+  onCancel: () => void;
+}) {
+  const imgRef = useRef<HTMLImageElement>(null);
+  const [crop, setCrop] = useState<CropBox>({ x: 0, y: 0, w: 0, h: 0 });
+  const [loaded, setLoaded] = useState(false);
+  const [cropError, setCropError] = useState<string | null>(null);
+  const dragRef = useRef<DragInteraction | null>(null);
+
+  useEffect(() => {
+    function onMouseMove(e: MouseEvent) {
+      const drag = dragRef.current;
+      if (!drag) return;
+      const img = imgRef.current;
+      if (!img) return;
+      const maxW = img.clientWidth;
+      const maxH = img.clientHeight;
+      const dx = e.clientX - drag.startX;
+      const dy = e.clientY - drag.startY;
+      const MIN = 20;
+      const sc = drag.startCrop;
+
+      if (drag.mode === "drag") {
+        setCrop({
+          x: Math.max(0, Math.min(sc.x + dx, maxW - sc.w)),
+          y: Math.max(0, Math.min(sc.y + dy, maxH - sc.h)),
+          w: sc.w,
+          h: sc.h,
+        });
+      } else {
+        let { x, y, w, h } = sc;
+        switch (drag.handle) {
+          case "nw": {
+            const nx = Math.max(0, Math.min(sc.x + dx, sc.x + sc.w - MIN));
+            const ny = Math.max(0, Math.min(sc.y + dy, sc.y + sc.h - MIN));
+            x = nx; y = ny; w = sc.x + sc.w - nx; h = sc.y + sc.h - ny;
+            break;
+          }
+          case "ne": {
+            const ny = Math.max(0, Math.min(sc.y + dy, sc.y + sc.h - MIN));
+            y = ny; h = sc.y + sc.h - ny;
+            w = Math.max(MIN, Math.min(sc.w + dx, maxW - sc.x));
+            break;
+          }
+          case "sw": {
+            const nx = Math.max(0, Math.min(sc.x + dx, sc.x + sc.w - MIN));
+            x = nx; w = sc.x + sc.w - nx;
+            h = Math.max(MIN, Math.min(sc.h + dy, maxH - sc.y));
+            break;
+          }
+          case "se": {
+            w = Math.max(MIN, Math.min(sc.w + dx, maxW - sc.x));
+            h = Math.max(MIN, Math.min(sc.h + dy, maxH - sc.y));
+            break;
+          }
+        }
+        setCrop({ x, y, w, h });
+      }
+    }
+    function onMouseUp() { dragRef.current = null; }
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+    return () => {
+      document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseup", onMouseUp);
+    };
+  }, []);
+
+  function onImageLoad() {
+    const img = imgRef.current;
+    if (!img) return;
+    setCrop({ x: 0, y: 0, w: img.clientWidth, h: img.clientHeight });
+    setLoaded(true);
+  }
+
+  function startDrag(e: React.MouseEvent) {
+    e.preventDefault();
+    dragRef.current = { mode: "drag", startX: e.clientX, startY: e.clientY, startCrop: { ...crop } };
+  }
+
+  function startResize(e: React.MouseEvent, handle: CropHandle) {
+    e.preventDefault();
+    e.stopPropagation();
+    dragRef.current = { mode: "resize", handle, startX: e.clientX, startY: e.clientY, startCrop: { ...crop } };
+  }
+
+  function confirmCrop() {
+    setCropError(null);
+    const img = imgRef.current;
+    if (!img) return;
+    const scaleX = img.naturalWidth / img.clientWidth;
+    const scaleY = img.naturalHeight / img.clientHeight;
+    const sx = Math.round(crop.x * scaleX);
+    const sy = Math.round(crop.y * scaleY);
+    const sw = Math.max(1, Math.round(crop.w * scaleX));
+    const sh = Math.max(1, Math.round(crop.h * scaleY));
+    const ratio = Math.min(1200 / sw, 675 / sh, 1);
+    const outW = Math.max(1, Math.round(sw * ratio));
+    const outH = Math.max(1, Math.round(sh * ratio));
+    const canvas = document.createElement("canvas");
+    canvas.width = outW;
+    canvas.height = outH;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) { setCropError("Impossible de préparer l'image."); return; }
+    ctx.drawImage(img, sx, sy, sw, sh, 0, 0, outW, outH);
+    for (const quality of [0.82, 0.72, 0.62, 0.52]) {
+      const dataUrl = canvas.toDataURL("image/jpeg", quality);
+      if (dataUrl.length <= MAX_IMAGE_DATA_URL_LENGTH) { onConfirm(dataUrl); return; }
+    }
+    setCropError("L'image reste trop lourde. Essayez une image plus petite.");
+  }
+
+  return (
+    <div className="cropBackdrop">
+      <div className="cropModal">
+        <h3 className="cropTitle">Recadrer l'image</h3>
+        <p className="cropHint">Déplacez la sélection ou tirez les coins pour recadrer.</p>
+        {cropError ? <p className="cropError">{cropError}</p> : null}
+        <div className="cropImageWrapper">
+          <img
+            ref={imgRef}
+            src={srcUrl}
+            onLoad={onImageLoad}
+            className="cropImage"
+            draggable={false}
+            alt=""
+          />
+          {loaded && (
+            <>
+              <div className="cropOverlayTop" style={{ height: crop.y }} />
+              <div className="cropOverlayBottom" style={{ top: crop.y + crop.h }} />
+              <div className="cropOverlayLeft" style={{ top: crop.y, height: crop.h, width: crop.x }} />
+              <div className="cropOverlayRight" style={{ top: crop.y, height: crop.h, left: crop.x + crop.w }} />
+              <div
+                className="cropSelection"
+                style={{ left: crop.x, top: crop.y, width: crop.w, height: crop.h }}
+                onMouseDown={startDrag}
+              >
+                <div className="cropGridH1" />
+                <div className="cropGridH2" />
+                <div className="cropGridV1" />
+                <div className="cropGridV2" />
+                <div className="cropHandle cropHandleNW" onMouseDown={(e) => startResize(e, "nw")} />
+                <div className="cropHandle cropHandleNE" onMouseDown={(e) => startResize(e, "ne")} />
+                <div className="cropHandle cropHandleSW" onMouseDown={(e) => startResize(e, "sw")} />
+                <div className="cropHandle cropHandleSE" onMouseDown={(e) => startResize(e, "se")} />
+              </div>
+            </>
+          )}
+        </div>
+        <div className="cropActions">
+          <button
+            className="confHeroBtn confHeroBtnPrimary adminActionButton"
+            onClick={confirmCrop}
+            disabled={!loaded}
+          >
+            Valider le recadrage
+          </button>
+          <button
+            className="confHeroBtn adminActionButton"
+            onClick={onSkip}
+            disabled={!loaded}
+          >
+            Utiliser sans recadrer
+          </button>
+          <button className="confHeroBtn adminActionButton" onClick={onCancel}>
+            Annuler
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function AdminEvents() {
   const [events, setEvents] = useState<EventItem[]>([]);
   const [form, setForm] = useState<EventDraft>({
@@ -146,6 +339,7 @@ export default function AdminEvents() {
   const [deleting, setDeleting] = useState<Record<string, boolean>>({});
   const [adding, setAdding] = useState(false);
   const [uploadingImages, setUploadingImages] = useState<Record<string, boolean>>({});
+  const [cropPending, setCropPending] = useState<CropPendingState | null>(null);
   const formImageInputRef = useRef<HTMLInputElement | null>(null);
   const draftImageInputRefs = useRef<Record<string, HTMLInputElement | null>>({});
 
@@ -342,38 +536,66 @@ export default function AdminEvents() {
     }
   }
 
-  async function handleFormImageChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleFormImageChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     event.target.value = "";
     if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      setError("Le fichier choisi n'est pas une image.");
+      return;
+    }
+    setCropPending({ srcUrl: URL.createObjectURL(file), file, context: "new" });
+  }
 
-    setError(null);
-    setUploadingImages((current) => ({ ...current, new: true }));
-    try {
-      const imageUrl = await compressImageFile(file);
-      setForm((current) => ({ ...current, imageUrl, imageKey: "" }));
-    } catch (caughtError) {
-      setError(`Impossible de preparer l'image. ${getErrorMessage(caughtError)}`);
-    } finally {
-      setUploadingImages((current) => ({ ...current, new: false }));
+  function handleDraftImageChange(id: string, event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      setError("Le fichier choisi n'est pas une image.");
+      return;
+    }
+    setCropPending({ srcUrl: URL.createObjectURL(file), file, context: id });
+  }
+
+  function handleCropConfirm(dataUrl: string) {
+    if (!cropPending) return;
+    URL.revokeObjectURL(cropPending.srcUrl);
+    const { context } = cropPending;
+    setCropPending(null);
+    if (context === "new") {
+      setForm((current) => ({ ...current, imageUrl: dataUrl, imageKey: "" }));
+    } else {
+      updateDraft(context, { imageUrl: dataUrl, imageKey: "" });
     }
   }
 
-  async function handleDraftImageChange(id: string, event: React.ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0];
-    event.target.value = "";
-    if (!file) return;
-
+  async function handleCropSkip() {
+    if (!cropPending) return;
+    const { srcUrl, file, context } = cropPending;
+    URL.revokeObjectURL(srcUrl);
+    setCropPending(null);
+    const uploadKey = context === "new" ? "new" : context;
     setError(null);
-    setUploadingImages((current) => ({ ...current, [id]: true }));
+    setUploadingImages((current) => ({ ...current, [uploadKey]: true }));
     try {
       const imageUrl = await compressImageFile(file);
-      updateDraft(id, { imageUrl, imageKey: "" });
+      if (context === "new") {
+        setForm((current) => ({ ...current, imageUrl, imageKey: "" }));
+      } else {
+        updateDraft(context, { imageUrl, imageKey: "" });
+      }
     } catch (caughtError) {
-      setError(`Impossible de preparer l'image. ${getErrorMessage(caughtError)}`);
+      setError(`Impossible de préparer l'image. ${getErrorMessage(caughtError)}`);
     } finally {
-      setUploadingImages((current) => ({ ...current, [id]: false }));
+      setUploadingImages((current) => ({ ...current, [uploadKey]: false }));
     }
+  }
+
+  function handleCropCancel() {
+    if (!cropPending) return;
+    URL.revokeObjectURL(cropPending.srcUrl);
+    setCropPending(null);
   }
 
   function resetDraft(id: string) {
@@ -519,6 +741,14 @@ export default function AdminEvents() {
 
   return (
     <div className="confPage adminEventsPage">
+      {cropPending && (
+        <ImageCropModal
+          srcUrl={cropPending.srcUrl}
+          onConfirm={handleCropConfirm}
+          onSkip={handleCropSkip}
+          onCancel={handleCropCancel}
+        />
+      )}
       <section className="confHero adminHero">
         <div className="confHeroOverlay" />
         <div className="confHeroInner adminHeroInner">
