@@ -28,6 +28,9 @@ export default function Footer() {
           <NavLink className="footerLink" to="/english-therapy">
             THERAPY IN ENGLISH
           </NavLink>
+          <NavLink className="footerLink" to="/contact">
+            Contact
+          </NavLink>
         </div>
 
         <div className="footerRight">

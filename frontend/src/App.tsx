@@ -8,6 +8,7 @@ import ConsultationDetail from "./pages/ConsultationDetail.tsx";
 import Conferences from "./pages/Conferences.tsx";
 import EnglishTherapy from "./pages/EnglishTherapy.tsx";
 import Teleconsultation from "./pages/Teleconsultation.tsx";
+import Contact from "./pages/Contact.tsx";
 
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminEvents from "./pages/AdminEvents.tsx";
@@ -28,6 +29,7 @@ export default function App() {
             <Route path="/teleconsultation" element={<Teleconsultation />} />
             <Route path="/conferences" element={<Conferences />} />
             <Route path="/english-therapy" element={<EnglishTherapy />} />
+            <Route path="/contact" element={<Contact />} />
 
              {/* Admin */}
             <Route path="/admin/login" element={<AdminLogin />} />

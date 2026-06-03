@@ -44,6 +44,13 @@ export default function Header() {
           >
             THERAPY IN ENGLISH
           </NavLink>
+
+          <NavLink
+            to="/contact"
+            className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
+          >
+            CONTACT
+          </NavLink>
         </nav>
 
         <a
