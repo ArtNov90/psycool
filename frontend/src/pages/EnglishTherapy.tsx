@@ -1,4 +1,5 @@
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import Seo from "../components/Seo";
 import "./EnglishTherapy.css";
 
 const englishFaqItems = [
@@ -24,6 +25,21 @@ export default function EnglishTherapy() {
 
   return (
     <section className="englishTherapyPage" ref={revealRef}>
+      <Seo
+        title="Therapy in English with a Psychoanalyst | Chantal Novara, Montpellier"
+        description="English-speaking psychoanalyst based in Montpellier, France. Online and in-person sessions for expats and English speakers dealing with anxiety, grief, stress or relationship issues."
+        keywords={[
+          "therapy in English Montpellier",
+          "English speaking psychologist France",
+          "English speaking therapist Montpellier",
+          "online therapy in English",
+          "psychoanalyst for expats France",
+          "anxiety therapy English",
+          "couples therapy in English",
+          "English speaking counsellor France",
+        ]}
+        path="/english-therapy"
+      />
       <header className="englishTherapyHero">
         <div className="englishTherapyHeroInner">
           <p className="englishTherapyEyebrow" data-reveal data-reveal-delay="60ms">

@@ -2,6 +2,7 @@ import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useEffect, useMemo, useState } from "react";
 import { db } from "../firebase";
 import "./Conferences.css";
+import Seo from "../components/Seo";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import paperImage from "../../photos/papier.jpeg";
 import workshopImage from "../../photos/yumu-wIG0Hhre7Ms-unsplash.jpg";
@@ -258,6 +259,20 @@ export default function Conferences() {
 
   return (
     <div className="confPage" ref={revealRef}>
+      <Seo
+        title="Conférences & Ateliers Psycool | Café Psy et Masterclass Montpellier"
+        description="Participez aux conférences Café Psy et aux Masterclass animées par Chantal Novara, psychanalyste à Montpellier, pour explorer la psychologie et le mieux-être."
+        keywords={[
+          "conférence psychologie Montpellier",
+          "café psy",
+          "atelier psychanalyse Montpellier",
+          "masterclass psychologie",
+          "événement psychologie Montpellier",
+          "conférence bien-être Montpellier",
+          "atelier développement personnel Montpellier",
+        ]}
+        path="/conferences"
+      />
       <section className="confHero">
         <div className="confHeroOverlay" />
         <div className="confHeroInner">

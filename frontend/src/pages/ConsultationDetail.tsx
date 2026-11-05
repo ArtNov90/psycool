@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { consultationStyles } from "./consultationStyles";
+import Seo from "../components/Seo";
 import "./ConsultationDetail.css";
 import therapyImage from "../../photos/canva1.png";
 import coupleTherapyImage from "../../photos/psicoterapia-psicopsycouple.jpg";
@@ -223,6 +224,21 @@ export default function ConsultationDetail() {
   if (slug === "therapie-individuelle") {
     return (
       <section className="consultationDetail consultationDetailNoBg individualTherapyPage" ref={revealRef}>
+        <Seo
+          title="Thérapie individuelle à Montpellier | Chantal Novara Psychanalyste"
+          description="Un accompagnement personnalisé pour l'anxiété, le stress, le deuil ou les périodes de transition. Séances en cabinet à Maurin (Montpellier) ou en visio, avec Chantal Novara, psychanalyste."
+          keywords={[
+            "thérapie individuelle Montpellier",
+            "psychanalyste anxiété",
+            "thérapie du stress",
+            "accompagnement deuil psychologue",
+            "perte de confiance thérapie",
+            "psychologue transition de vie",
+            "psychanalyse individuelle Lattes",
+            "psychanalyste Maurin",
+          ]}
+          path="/consultations/therapie-individuelle"
+        />
         <div className="individualTherapyShell">
           <header className="individualTherapyHeader">
             <h1 className="individualTherapyTitle" data-reveal data-reveal-delay="60ms">
@@ -283,6 +299,21 @@ export default function ConsultationDetail() {
   if (slug === "therapie-couple") {
     return (
       <section className="consultationDetail consultationDetailAlt" ref={revealRef}>
+        <Seo
+          title="Thérapie de couple à Montpellier | Chantal Novara Psychanalyste"
+          description="Un espace neutre pour rétablir le dialogue, traverser une crise ou une infidélité et retrouver une communication saine en couple. Séances en cabinet à Maurin (Montpellier) ou en visio."
+          keywords={[
+            "thérapie de couple Montpellier",
+            "thérapie de couple Lattes",
+            "psychologue couple Montpellier",
+            "communication couple thérapie",
+            "crise de couple infidélité",
+            "conseiller conjugal Montpellier",
+            "thérapie couple visio",
+            "psychanalyste couple Maurin",
+          ]}
+          path="/consultations/therapie-couple"
+        />
         <section className="individualIntro">
           <div className="individualIntroInner">
             <div className="individualVisualCol">

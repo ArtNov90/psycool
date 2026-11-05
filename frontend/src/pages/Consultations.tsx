@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Consultations.css";
+import Seo from "../components/Seo";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { consultationStyles } from "./consultationStyles";
 import accompagnementImage from "../../photos/canva1.png";
@@ -27,6 +28,21 @@ export default function Consultations() {
 
   return (
     <section className="consultations" ref={revealRef}>
+      <Seo
+        title="Consultations de psychanalyse à Montpellier | Cabinet & visio"
+        description="Deux façons de consulter Chantal Novara, psychanalyste à Montpellier : en cabinet à Maurin (Lattes) ou en téléconsultation. Thérapie individuelle et thérapie de couple, premier échange sans engagement."
+        keywords={[
+          "consultation psychanalyste Montpellier",
+          "thérapie individuelle",
+          "thérapie de couple",
+          "premier rendez-vous psychologue",
+          "psychanalyste cabinet Montpellier",
+          "consultation visio psychologue",
+          "psy Maurin",
+          "psychologue Lattes",
+        ]}
+        path="/consultations"
+      />
       <header className="consultationsHeader">
         <div className="consultationsHeaderInner">
           <p className="consultationsEyebrow" data-reveal data-reveal-delay="70ms">

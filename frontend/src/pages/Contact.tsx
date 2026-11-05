@@ -1,4 +1,5 @@
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import Seo from "../components/Seo";
 import "./Contact.css";
 
 export default function Contact() {
@@ -6,6 +7,19 @@ export default function Contact() {
 
   return (
     <section className="contactPage" ref={revealRef}>
+      <Seo
+        title="Contact | Chantal Novara, Psychanalyste à Maurin (Montpellier)"
+        description="Prenez rendez-vous avec Chantal Novara, psychanalyste. Cabinet au 3 rue des genêts, 34970 Maurin, agglomération de Montpellier. Par téléphone, WhatsApp ou en téléconsultation."
+        keywords={[
+          "contact psychanalyste Montpellier",
+          "prendre rendez-vous psychologue Maurin",
+          "cabinet psychologue Lattes",
+          "adresse psychanalyste Montpellier",
+          "téléphone psychologue Montpellier",
+          "psychanalyste Maurin 34970",
+        ]}
+        path="/contact"
+      />
       <header className="contactHero">
         <div className="contactHeroInner">
           <p className="contactEyebrow" data-reveal data-reveal-delay="50ms">

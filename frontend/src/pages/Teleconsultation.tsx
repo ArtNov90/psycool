@@ -1,4 +1,5 @@
 ﻿import { useScrollReveal } from "../hooks/useScrollReveal";
+import Seo from "../components/Seo";
 import "./Teleconsultation.css";
 
 const keyBenefits = [
@@ -40,6 +41,21 @@ export default function Teleconsultation() {
 
   return (
     <section className="telePage" ref={revealRef}>
+      <Seo
+        title="Téléconsultation avec une psychanalyste | Visio Chantal Novara"
+        description="Consultations de psychanalyse en visioconférence, partout en France et à l'étranger. Idéal pour expatriés, zones rurales ou besoin de flexibilité, avec la même qualité thérapeutique qu'en cabinet."
+        keywords={[
+          "téléconsultation psychologue",
+          "psy en ligne",
+          "psychanalyste visio",
+          "thérapie à distance",
+          "consultation psy expatriés",
+          "psychologue en ligne francophone",
+          "séance psy WhatsApp",
+          "thérapie visioconférence Montpellier",
+        ]}
+        path="/teleconsultation"
+      />
       <header className="teleHero">
         <div className="teleHeroInner">
           <p className="teleEyebrow" data-reveal data-reveal-delay="50ms">

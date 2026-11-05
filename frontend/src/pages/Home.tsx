@@ -1,11 +1,12 @@
 ﻿import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./Home.css";
+import Seo from "../components/Seo";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import homeHeroImage from "../../photos/yumu-wIG0Hhre7Ms-unsplash.jpg";
 import accompagnementImage from "../../photos/canva1.png";
 import parcoursImage from "../../photos/chemin.png";
-import chantalPhoto from "../../photos/chantal.webp";
+import chantalPhoto from "../../photos/chantal-portrait.jpeg";
 
 export default function Home() {
   const revealRef = useScrollReveal<HTMLElement>();
@@ -42,6 +43,26 @@ export default function Home() {
 
   return (
     <section className="homePage" ref={revealRef}>
+      <Seo
+        title="Chantal Novara | Psychanalyste à Montpellier et téléconsultation"
+        description="Chantal Novara, psychanalyste à Montpellier (Maurin, Lattes). Thérapie individuelle et de couple, en cabinet ou en téléconsultation, ateliers et conférences Psycool, accompagnement en français et en anglais."
+        keywords={[
+          "psychanalyste Montpellier",
+          "psychologue Montpellier",
+          "psychanalyste Lattes",
+          "psychanalyste Maurin",
+          "thérapie individuelle Montpellier",
+          "thérapie de couple Montpellier",
+          "téléconsultation psychologue",
+          "psychanalyse jungienne",
+          "psychanalyse freudienne",
+          "psychanalyse lacanienne",
+          "Chantal Novara psychanalyste",
+          "psy en ligne",
+          "consultation psychologique Hérault",
+        ]}
+        path="/"
+      />
       <div className="homeShell">
         <header className="homeHero">
           <h1 className="homeTitle" data-reveal data-reveal-delay="80ms">
