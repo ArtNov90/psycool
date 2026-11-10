@@ -1,0 +1,313 @@
+.consultations {
+  width: 100%;
+  padding-bottom: 20px;
+  overflow-x: clip;
+}
+
+/* ---------- En-tête ---------- */
+
+.consultationsHeader {
+  padding: clamp(48px, 7vw, 96px) 0 clamp(28px, 4vw, 48px);
+  text-align: center;
+}
+
+.consultationsHeaderInner {
+  width: min(900px, 92%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.consultationsEyebrow {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  color: var(--color-accent);
+}
+
+.consultationsTitle {
+  margin: 14px 0 0;
+  font-size: clamp(44px, 5.6vw, 76px);
+  line-height: 1;
+  font-weight: 500;
+}
+
+.consultationsRule {
+  width: 120px;
+  height: 1px;
+  margin: 24px 0 18px;
+  background: var(--color-accent);
+}
+
+.consultationsLead {
+  margin: 0;
+  font-family: var(--font-script);
+  font-size: clamp(26px, 2.6vw, 36px);
+  line-height: 1.2;
+  color: var(--color-accent);
+}
+
+/* ---------- Cartes ---------- */
+
+.consultationsCardsWrap {
+  width: min(1180px, 92%);
+  margin: 0 auto;
+}
+
+.consultationsCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 36px);
+}
+
+.consultationCard {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #fffaf5;
+  box-shadow: var(--shadow-soft);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.consultationCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(31, 45, 74, 0.14);
+}
+
+.consultationCard img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.consultationCardBody {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 clamp(22px, 3vw, 40px) clamp(26px, 3vw, 38px);
+}
+
+.consultationCardIcon {
+  width: 72px;
+  height: 72px;
+  margin-top: -36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 4px solid #fffaf5;
+  color: var(--color-heading);
+}
+
+.consultationCardTitle {
+  margin: 16px 0 0;
+  font-size: clamp(30px, 2.8vw, 40px);
+  line-height: 1.05;
+  font-weight: 600;
+}
+
+.consultationCardText {
+  margin: 14px 0 0;
+  flex: 1;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.consultationCardLink {
+  margin-top: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 24px;
+  border-radius: 999px;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.consultationCardLink:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* ---------- FAQ ---------- */
+
+.consultationsFaq {
+  width: min(900px, 92%);
+  margin: clamp(64px, 8vw, 110px) auto 0;
+  text-align: center;
+}
+
+.consultationsFaqEyebrow {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  color: var(--color-accent);
+}
+
+.consultationsFaqTitle {
+  margin: 12px 0 0;
+  font-size: clamp(38px, 4.4vw, 58px);
+  line-height: 1;
+  font-weight: 500;
+}
+
+.consultationsFaqTitle::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 1px;
+  margin: 20px auto 0;
+  background: var(--color-accent);
+}
+
+.consultationsFaqList {
+  margin-top: 34px;
+  display: grid;
+  gap: 14px;
+  text-align: left;
+}
+
+.consultationsFaqItem {
+  border-radius: 20px;
+  background: #fffaf5;
+  border: 1px solid var(--color-border-soft);
+  transition: box-shadow 180ms ease;
+}
+
+.consultationsFaqItem[open] {
+  box-shadow: var(--shadow-soft);
+}
+
+.consultationsFaqItem summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px clamp(18px, 2.4vw, 28px);
+}
+
+.consultationsFaqItem summary::-webkit-details-marker {
+  display: none;
+}
+
+.consultationsFaqItem h3 {
+  margin: 0;
+  font-size: clamp(22px, 2vw, 27px);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.consultationsFaqToggle {
+  position: relative;
+  flex: 0 0 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-peach);
+}
+
+.consultationsFaqToggle::before,
+.consultationsFaqToggle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 1.5px;
+  background: var(--color-accent);
+  transform: translate(-50%, -50%);
+  transition: transform 200ms ease;
+}
+
+.consultationsFaqToggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.consultationsFaqItem[open] .consultationsFaqToggle::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.consultationsFaqItem p {
+  margin: 0;
+  padding: 0 clamp(18px, 2.4vw, 28px) 22px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-text);
+}
+
+/* ---------- Appel à l'action ---------- */
+
+.consultationsCta {
+  width: min(1000px, 92%);
+  margin: clamp(64px, 8vw, 110px) auto 0;
+  padding: clamp(36px, 5vw, 60px) clamp(20px, 4vw, 48px);
+  border-radius: 32px;
+  background: var(--color-surface);
+  text-align: center;
+}
+
+.consultationsCtaScript {
+  margin: 0;
+  font-family: var(--font-script);
+  font-size: clamp(24px, 2.4vw, 32px);
+  color: var(--color-accent);
+}
+
+.consultationsCta h2 {
+  margin: 8px 0 0;
+  font-size: clamp(36px, 4.2vw, 56px);
+  line-height: 1.05;
+  font-weight: 500;
+}
+
+.consultationsCta > p:not(.consultationsCtaScript) {
+  margin: 14px auto 0;
+  max-width: 520px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.consultationsCtaButton {
+  margin-top: 26px;
+  display: inline-flex;
+  align-items: center;
+  height: 52px;
+  padding: 0 30px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  box-shadow: 0 8px 18px rgba(180, 85, 47, 0.25);
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.consultationsCtaButton:hover {
+  background: var(--color-accent-dark);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 860px) {
+  .consultationsCardsGrid {
+    grid-template-columns: 1fr;
+  }
+}

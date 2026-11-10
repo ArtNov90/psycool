@@ -1,61 +1,86 @@
 .contactPage {
   width: 100%;
-  color: #151515;
-  background: var(--color-bg-page);
-  padding-bottom: 80px;
+  padding-bottom: 20px;
+  overflow-x: clip;
 }
 
+/* ---------- En-tête (même modèle que Conférences et Masterclass) ---------- */
+
 .contactHero {
-  padding: 36px 0 48px;
-  text-align: center;
+  position: relative;
+  padding: clamp(56px, 8vw, 110px) 0 clamp(28px, 4vw, 44px);
+}
+
+.contactLeaf {
+  position: absolute;
+  left: max(10px, calc(50% - 620px));
+  top: 50px;
+  width: 100px;
+  fill: none;
+  stroke: #9fae8e;
+  stroke-width: 1.6;
+  opacity: 0.55;
+  transform: rotate(-16deg);
+  pointer-events: none;
+}
+
+.contactLeaf path + path {
+  fill: rgba(159, 174, 142, 0.25);
 }
 
 .contactHeroInner {
-  width: min(980px, 92%);
+  width: min(820px, 92%);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .contactEyebrow {
   margin: 0;
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 14px;
-  border-radius: 999px;
-  font-size: 0.84rem;
-  color: #8b5a51;
-  background: #e4dede;
-  border: 1px solid #d7cbcc;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--color-accent);
 }
 
 .contactTitle {
-  margin: 18px auto 0;
-  color: var(--color-heading);
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-size: clamp(34px, 3.8vw, 56px);
+  margin: 14px 0 0;
+  font-size: clamp(40px, 4.6vw, 66px);
   line-height: 0.98;
   font-weight: 500;
 }
 
-.contactLead {
-  margin: 16px auto 0;
-  max-width: 58ch;
-  line-height: 1.75;
-  color: var(--color-text);
-  font-size: 1.05rem;
+.contactTitle::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 1px;
+  margin: 22px auto 0;
+  background: var(--color-accent);
 }
 
+.contactLead {
+  margin: 20px 0 0;
+  max-width: 620px;
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.75;
+  color: var(--color-text);
+}
+
+/* ---------- Cartes ---------- */
+
 .contactBody {
-  width: min(900px, 92%);
+  width: min(1000px, 92%);
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
 }
 
 .contactCards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.4vw, 28px);
 }
 
 .contactCard {
@@ -63,93 +88,140 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 10px;
-  padding: 36px 28px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid var(--color-border-soft);
-  border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  padding: clamp(30px, 4vw, 44px) 24px;
+  border-radius: 28px;
+  background: #fffaf5;
+  box-shadow: var(--shadow-soft);
+  transition: transform 200ms ease;
+}
+
+.contactCard:hover {
+  transform: translateY(-3px);
 }
 
 .contactCardIcon {
-  font-size: 2rem;
-  line-height: 1;
+  width: 82px;
+  height: 82px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--color-heading);
 }
 
 .contactCardTitle {
-  margin: 0;
-  font-size: 0.78rem;
-  font-weight: 700;
+  margin: 18px 0 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #8b5a51;
+  color: var(--color-heading);
 }
 
 .contactCardValue {
-  margin: 0;
-  font-size: 1.2rem;
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 2.8vw, 38px);
+  font-style: normal;
   font-weight: 600;
-  color: var(--color-heading);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  color: var(--color-accent);
   text-decoration: none;
 }
 
 a.contactCardValue:hover {
-  color: var(--color-accent);
-  text-decoration: underline;
-}
-
-.contactAddress {
-  font-style: normal;
-  line-height: 1.6;
+  color: var(--color-accent-dark);
 }
 
 .contactCardNote {
-  margin: 0;
-  font-size: 0.85rem;
-  color: var(--color-text);
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: var(--color-text-muted);
 }
 
-.contactCta {
-  display: flex;
-  flex-direction: column;
+.contactCardLink {
+  margin-top: 14px;
+  display: inline-flex;
   align-items: center;
-  gap: 18px;
-  padding: 40px 28px;
-  border-top: 1px solid var(--color-border-soft);
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-heading);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.contactCardLink:hover {
+  color: var(--color-accent);
+}
+
+/* ---------- Plan ---------- */
+
+.contactMap {
+  margin-top: clamp(24px, 3vw, 36px);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  background: var(--color-surface);
+}
+
+.contactMap iframe {
+  display: block;
+  width: 100%;
+  height: clamp(280px, 38vw, 420px);
+  border: 0;
+  filter: saturate(0.75) sepia(0.08);
+}
+
+/* ---------- Appel à l'action (bandeau pastel) ---------- */
+
+.contactCta {
+  margin-top: clamp(56px, 7vw, 96px);
+  padding: clamp(40px, 5vw, 64px) clamp(20px, 4vw, 56px);
+  border-radius: 32px;
+  background: var(--color-sky);
   text-align: center;
 }
 
 .contactCtaText {
-  margin: 0;
-  max-width: 54ch;
-  color: var(--color-text);
-  line-height: 1.7;
+  margin: 0 auto;
+  max-width: 560px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-heading);
 }
 
 .contactCtaBtn {
+  margin-top: 24px;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  padding: 13px 26px;
-  border-radius: 4px;
-  border: 2px solid var(--color-accent);
+  height: 52px;
+  padding: 0 30px;
+  border-radius: 999px;
   background: var(--color-accent);
   color: #fff;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  box-shadow: 0 8px 18px rgba(180, 85, 47, 0.25);
+  transition: background 180ms ease, transform 180ms ease;
 }
 
 .contactCtaBtn:hover {
   background: var(--color-accent-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.14);
+  transform: translateY(-1px);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .contactCards {
     grid-template-columns: 1fr;
+  }
+
+  .contactLeaf {
+    display: none;
   }
 }

@@ -1,0 +1,219 @@
+import { Link } from "react-router-dom";
+import "./Consultations.css";
+import Seo from "../components/Seo";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+import { consultationStyles } from "./consultationStyles";
+
+const faqItems = [
+  {
+    question: "Quand consulter un psy ?",
+    answer:
+      "Consultez si vous traversez une période difficile (deuil, séparation, perte d'emploi), si une souffrance persiste (anxiété, tristesse, irritabilité), ou si des schémas répétitifs vous bloquent. Il n'est pas nécessaire d'attendre une crise.",
+  },
+  {
+    question: "Comment se déroule une première consultation ?",
+    answer:
+      "La première consultation sert à faire connaissance et à clarifier ce qui vous amène. Nous évaluons ensemble vos besoins et si ma méthode vous convient. Il n'y a aucune obligation d'engagement.",
+  },
+  {
+    question: "Les consultations en visio sont-elles efficaces ?",
+    answer:
+      "Oui. Les études et mon expérience de plus de 10 ans en visioconférence montrent une efficacité comparable au présentiel dans la majorité des situations, avec plus de flexibilité.",
+  },
+];
+
+const iconProps = {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.2,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+};
+
+// Habillage visuel de chaque accompagnement (les textes viennent de consultationStyles)
+const offerVisuals = {
+  "therapie-individuelle": {
+    kicker: "Pour soi",
+    color: "var(--color-sage)",
+    blob: "var(--color-peach)",
+    keywords: ["Traverser", "Comprendre", "Se libérer"],
+    icon: (
+      <svg {...iconProps}>
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" />
+      </svg>
+    ),
+  },
+  "therapie-couple": {
+    kicker: "À deux",
+    color: "var(--color-peach)",
+    blob: "var(--color-sky)",
+    keywords: ["Retrouver le dialogue", "Apaiser les conflits", "Réinventer la relation"],
+    icon: (
+      <svg {...iconProps}>
+        <circle cx="8.5" cy="8" r="3.2" />
+        <circle cx="15.5" cy="8" r="3.2" />
+        <path d="M2.5 20c0-3.6 2.7-6 6-6 1.4 0 2.6.4 3.5 1.1" />
+        <path d="M21.5 20c0-3.6-2.7-6-6-6-1.4 0-2.6.4-3.5 1.1" />
+      </svg>
+    ),
+  },
+};
+
+const places = [
+  {
+    title: "Au cabinet",
+    text: "À Maurin (Lattes), aux portes de Montpellier",
+    color: "var(--color-wheat)",
+    icon: (
+      <svg {...iconProps} strokeWidth={1.4}>
+        <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" />
+        <circle cx="12" cy="9.5" r="2.5" />
+      </svg>
+    ),
+  },
+  {
+    title: "En visio",
+    text: "Par WhatsApp ou Google Meet, où que vous soyez",
+    color: "var(--color-sky)",
+    to: "/teleconsultation",
+    icon: (
+      <svg {...iconProps} strokeWidth={1.4}>
+        <rect x="4" y="4.5" width="16" height="11" rx="1.5" />
+        <path d="M2 19.5h20" />
+      </svg>
+    ),
+  },
+];
+
+export default function Consultations() {
+  const revealRef = useScrollReveal<HTMLElement>();
+
+  return (
+    <section className="consultations" ref={revealRef}>
+      <Seo
+        title="Consultations de psychanalyse à Montpellier | Cabinet & visio"
+        description="Deux façons de consulter Chantal Novara, psychanalyste à Montpellier : en cabinet à Maurin (Lattes) ou en téléconsultation. Thérapie individuelle et thérapie de couple, premier échange sans engagement."
+        keywords={[
+          "consultation psychanalyste Montpellier",
+          "thérapie individuelle",
+          "thérapie de couple",
+          "premier rendez-vous psychologue",
+          "psychanalyste cabinet Montpellier",
+          "consultation visio psychologue",
+          "psy Maurin",
+          "psychologue Lattes",
+        ]}
+        path="/consultations"
+      />
+
+      <header className="consultationsHeader">
+        <p className="consultationsEyebrow" data-reveal data-reveal-delay="70ms">
+          THÉRAPIE
+        </p>
+        <h1 className="consultationsTitle" data-reveal data-reveal-delay="110ms">
+          Deux façons de me consulter
+        </h1>
+        <div className="consultationsRule" aria-hidden="true" />
+        <p className="consultationsLead" data-reveal data-reveal-delay="160ms">
+          Choisissez l&apos;accompagnement qui vous correspond
+        </p>
+      </header>
+
+      <div className="consultationsOffers">
+        {consultationStyles.map((style, index) => {
+          const visual = offerVisuals[style.slug];
+          return (
+            <article
+              key={style.slug}
+              className={`consultationsOffer ${index % 2 === 1 ? "is-reversed" : ""}`}
+            >
+              <div className="consultationsOfferVisual" data-reveal data-reveal-delay="80ms">
+                <span className="consultationsOfferBlob" style={{ background: visual.blob }} aria-hidden="true" />
+                <span className="consultationsOfferIcon" style={{ background: visual.color }} aria-hidden="true">
+                  {visual.icon}
+                </span>
+              </div>
+
+              <div className="consultationsOfferText" data-reveal data-reveal-delay="140ms">
+                <p className="consultationsOfferKicker">{visual.kicker}</p>
+                <h2 className="consultationsOfferTitle">{style.title}</h2>
+                <p className="consultationsOfferIntro">{style.intro}</p>
+                <p className="consultationsOfferShort">{style.shortDescription}</p>
+                <ul className="consultationsOfferKeywords">
+                  {visual.keywords.map((word) => (
+                    <li key={word}>{word}</li>
+                  ))}
+                </ul>
+                <Link className="consultationsOfferLink" to={`/consultations/${style.slug}`}>
+                  Découvrir <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <section className="consultationsPlaces" data-reveal>
+        <p className="consultationsEyebrow">OÙ CONSULTER</p>
+        <h2 className="consultationsSectionTitle">En présentiel ou en visio</h2>
+        <div className="consultationsPlacesGrid">
+          {places.map((place) => {
+            const content = (
+              <>
+                <span className="consultationsPlaceIcon" style={{ background: place.color }} aria-hidden="true">
+                  {place.icon}
+                </span>
+                <span className="consultationsPlaceTitle">{place.title}</span>
+                <span className="consultationsPlaceText">{place.text}</span>
+              </>
+            );
+            return place.to ? (
+              <Link key={place.title} className="consultationsPlace is-link" to={place.to}>
+                {content}
+              </Link>
+            ) : (
+              <div key={place.title} className="consultationsPlace">
+                {content}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="consultationsFaq" data-reveal>
+        <div className="consultationsFaqIntro">
+          <p className="consultationsEyebrow">QUESTIONS FRÉQUENTES</p>
+          <h2 className="consultationsSectionTitle">Avant de consulter</h2>
+          <p className="consultationsFaqScript">Il n&apos;est pas nécessaire d&apos;attendre une crise</p>
+        </div>
+        <div className="consultationsFaqList">
+          {faqItems.map((item, index) => (
+            <details key={item.question} className="consultationsFaqItem" open={index === 0}>
+              <summary>
+                <h3>{item.question}</h3>
+                <span className="consultationsFaqToggle" aria-hidden="true" />
+              </summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section className="consultationsCta" data-reveal>
+        <p className="consultationsCtaScript">La première étape est souvent la plus difficile</p>
+        <h2>Prêt(e) à faire le premier pas ?</h2>
+        <p>Je vous accompagne avec bienveillance, au cabinet ou en visio.</p>
+        <a
+          href="https://wa.me/33687216605"
+          className="consultationsCtaButton"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Prendre rendez-vous
+        </a>
+      </section>
+    </section>
+  );
+}

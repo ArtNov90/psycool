@@ -1,224 +1,415 @@
 .consultations {
   width: 100%;
-  color: #151515;
-  padding-bottom: 96px;
-  background: var(--color-bg-page);
+  padding-bottom: 20px;
+  overflow-x: clip;
 }
 
-.consultationsHeader {
-  padding: 84px 0 22px;
-}
-
-.consultationsHeaderInner {
-  width: min(980px, 92%);
-  margin: 0 auto;
-  text-align: center;
-}
+/* ---------- Éléments communs ---------- */
 
 .consultationsEyebrow {
   margin: 0;
-  display: inline-flex;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  color: var(--color-accent);
+}
+
+.consultationsSectionTitle {
+  margin: 12px 0 0;
+  font-size: clamp(38px, 4.4vw, 58px);
+  line-height: 1;
+  font-weight: 500;
+}
+
+/* ---------- En-tête ---------- */
+
+.consultationsHeader {
+  position: relative;
+  width: min(900px, 92%);
+  margin: 0 auto;
+  padding: clamp(48px, 7vw, 96px) 0 clamp(20px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 7px 14px;
-  border-radius: 999px;
-  color: #8b5a51;
-  background: #e4dede;
-  border: 1px solid #d7cbcc;
-  font-size: 0.84rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-weight: 600;
+  text-align: center;
 }
 
 .consultationsTitle {
-  margin: 18px auto 0;
-  max-width: 19ch;
-  color: #12131a;
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-weight: 500;
-  font-size: clamp(34px, 3.8vw, 56px);
+  margin: 14px 0 0;
+  font-size: clamp(40px, 4.6vw, 66px);
   line-height: 0.98;
+  font-weight: 500;
+}
+
+.consultationsRule {
+  width: 120px;
+  height: 1px;
+  margin: 22px 0 18px;
+  background: var(--color-accent);
 }
 
 .consultationsLead {
-  margin: 20px auto 0;
-  max-width: 62ch;
-  color: #2f3038;
-  font-size: clamp(16px, 1.2vw, 22px);
-  line-height: 1.55;
+  margin: 0;
+  font-family: var(--font-script);
+  font-size: clamp(26px, 2.6vw, 36px);
+  line-height: 1.2;
+  color: var(--color-accent);
 }
 
-.consultationsCardsWrap {
-  width: min(1220px, 94%);
-  margin: 34px auto 0;
+.consultationsLeaf {
+  position: absolute;
+  right: -90px;
+  top: 40px;
+  width: 100px;
+  fill: none;
+  stroke: #9fae8e;
+  stroke-width: 1.6;
+  opacity: 0.55;
+  transform: rotate(16deg) scaleX(-1);
+  pointer-events: none;
 }
 
-.consultationsCardsGrid {
+.consultationsLeaf path + path {
+  fill: rgba(159, 174, 142, 0.25);
+}
+
+/* ---------- Les deux panneaux en arche ---------- */
+
+.consultationsPanels {
+  width: min(1120px, 92%);
+  margin: clamp(28px, 4vw, 48px) auto 0;
   display: grid;
-  grid-template-columns: repeat(2, minmax(240px, 360px));
-  justify-content: center;
-  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 40px);
 }
 
-.consultationCard {
-  border-radius: 20px;
-  overflow: hidden;
-  background: #dcdcdc;
-  border: 1px solid #c8c8cd;
-  transition: transform 180ms ease, box-shadow 180ms ease;
-}
-
-.consultationCard:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 24px rgba(25, 25, 33, 0.12);
-}
-
-.consultationCard img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  display: block;
-}
-
-.consultationCardBody {
-  padding: 14px 16px 16px;
-}
-
-.consultationCardTitle {
-  margin: 0 0 10px;
-  font-size: 21px;
-  color: #111218;
-}
-
-.consultationCardText {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.45;
-  color: #2b2b33;
-}
-
-.consultationCardLink {
-  margin-top: 14px;
-  display: inline-block;
-  font-weight: 700;
-  color: #a34c45;
-  text-decoration: none;
-}
-
-.consultationCardLink:hover {
-  text-decoration: underline;
-}
-
-.consultationsFaq {
-  width: min(980px, 92%);
-  margin: 86px auto 0;
-}
-
-.consultationsFaqEyebrow {
-  margin: 0;
+.consultationsPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  color: #8b5a51;
-  font-size: 0.78rem;
-  letter-spacing: 0.2em;
-  font-weight: 700;
+  padding: clamp(56px, 7vw, 88px) clamp(28px, 4vw, 56px);
+  border-radius: 280px;
+  transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
-.consultationsFaqTitle {
-  margin: 14px 0 24px;
-  text-align: center;
-  color: #192135;
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-size: clamp(34px, 3.4vw, 52px);
-  line-height: 1.02;
+.consultationsPanel:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.consultationsPanelIcon {
+  width: 112px;
+  height: 112px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fffaf5;
+  color: var(--color-heading);
+  box-shadow: 0 10px 24px rgba(31, 45, 74, 0.08);
+}
+
+.consultationsPanelIcon svg {
+  width: 46px;
+  height: 46px;
+}
+
+.consultationsPanelTitle {
+  margin: 26px 0 0;
+  font-size: clamp(36px, 3.6vw, 52px);
+  line-height: 1;
   font-weight: 500;
 }
 
+.consultationsPanelRule {
+  width: 80px;
+  height: 1px;
+  margin: 20px 0;
+  background: var(--color-accent);
+}
+
+.consultationsPanelText {
+  margin: 0;
+  max-width: 420px;
+  flex: 1;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--color-heading);
+}
+
+.consultationsPanelKeywords {
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 4px;
+}
+
+.consultationsPanelKeywords li {
+  font-family: var(--font-script);
+  font-size: clamp(24px, 2.2vw, 30px);
+  line-height: 1.25;
+  color: var(--color-accent);
+}
+
+.consultationsPanelLink {
+  margin-top: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 50px;
+  padding: 0 28px;
+  border-radius: 999px;
+  background: var(--color-heading);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.consultationsPanelLink:hover {
+  background: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+/* ---------- Étapes ---------- */
+
+.consultationsSteps {
+  width: min(1120px, 92%);
+  margin: clamp(72px, 9vw, 120px) auto 0;
+  text-align: center;
+}
+
+.consultationsSectionTitle::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 1px;
+  margin: 20px auto 0;
+  background: var(--color-accent);
+}
+
+.consultationsStepsList {
+  margin: 44px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.consultationsStepsList li {
+  padding: 0 clamp(16px, 2.6vw, 36px);
+}
+
+.consultationsStepsList li + li {
+  border-left: 1px solid var(--color-border-soft);
+}
+
+.consultationsStepNumber {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(56px, 6vw, 80px);
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-accent);
+  font-variant-numeric: lining-nums;
+}
+
+.consultationsStepsList h3 {
+  margin: 14px 0 0;
+  font-size: clamp(24px, 2.2vw, 30px);
+  line-height: 1.15;
+}
+
+.consultationsStepsList p {
+  margin: 10px 0 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+/* ---------- FAQ ---------- */
+
+.consultationsFaq {
+  width: min(880px, 92%);
+  margin: clamp(72px, 9vw, 120px) auto 0;
+  text-align: center;
+}
+
 .consultationsFaqList {
-  border-top: 1px solid #c8c8cd;
+  margin-top: 34px;
+  display: grid;
+  gap: 14px;
+  text-align: left;
 }
 
 .consultationsFaqItem {
-  padding: 28px 0;
-  border-bottom: 1px solid #c8c8cd;
+  border-radius: 20px;
+  background: #fffaf5;
+  border: 1px solid var(--color-border-soft);
+  transition: box-shadow 180ms ease;
+}
+
+.consultationsFaqItem[open] {
+  box-shadow: var(--shadow-soft);
+}
+
+.consultationsFaqItem summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px clamp(18px, 2.4vw, 28px);
+}
+
+.consultationsFaqItem summary::-webkit-details-marker {
+  display: none;
 }
 
 .consultationsFaqItem h3 {
   margin: 0;
-  color: #ad4f49;
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-size: clamp(24px, 1.9vw, 32px);
-  line-height: 1.1;
-  font-weight: 500;
+  font-size: clamp(22px, 2vw, 27px);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.consultationsFaqToggle {
+  position: relative;
+  flex: 0 0 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-peach);
+}
+
+.consultationsFaqToggle::before,
+.consultationsFaqToggle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 1.5px;
+  background: var(--color-accent);
+  transform: translate(-50%, -50%);
+  transition: transform 200ms ease;
+}
+
+.consultationsFaqToggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.consultationsFaqItem[open] .consultationsFaqToggle::after {
+  transform: translate(-50%, -50%) rotate(0deg);
 }
 
 .consultationsFaqItem p {
-  margin: 14px 0 0;
-  color: #2f3038;
-  font-size: clamp(16px, 1.1vw, 20px);
-  line-height: 1.65;
+  margin: 0;
+  padding: 0 clamp(18px, 2.4vw, 28px) 22px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-text);
 }
 
+/* ---------- Appel à l'action (bandeau pastel) ---------- */
+
 .consultationsCta {
-  width: min(980px, 92%);
-  margin: 96px auto 0;
+  width: min(1120px, 92%);
+  margin: clamp(72px, 9vw, 120px) auto 0;
+  padding: clamp(44px, 6vw, 72px) clamp(20px, 4vw, 56px);
+  border-radius: 32px;
+  background: var(--color-sky);
   text-align: center;
-  padding: 28px 0 0;
+}
+
+.consultationsCtaScript {
+  margin: 0;
+  font-family: var(--font-script);
+  font-size: clamp(24px, 2.4vw, 32px);
+  color: var(--color-accent);
 }
 
 .consultationsCta h2 {
-  margin: 0;
-  color: #192135;
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-size: clamp(34px, 3.4vw, 52px);
-  line-height: 1.02;
+  margin: 8px 0 0;
+  font-size: clamp(36px, 4.2vw, 56px);
+  line-height: 1.05;
   font-weight: 500;
 }
 
-.consultationsCta p {
-  margin: 18px auto 0;
-  max-width: 40ch;
-  color: #2f3038;
-  font-size: clamp(16px, 1.15vw, 21px);
-  line-height: 1.5;
+.consultationsCta > p:not(.consultationsCtaScript) {
+  margin: 14px auto 0;
+  max-width: 520px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-heading);
+}
+
+.consultationsCtaActions {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px 28px;
 }
 
 .consultationsCtaButton {
-  margin-top: 30px;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-width: 260px;
-  padding: 14px 22px;
-  border-radius: 6px;
-  background: #ad4f49;
-  color: #ffffff;
+  height: 52px;
+  padding: 0 30px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-decoration: none;
-  font-size: clamp(18px, 1.25vw, 24px);
-  font-weight: 700;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 8px 18px rgba(180, 85, 47, 0.25);
+  transition: background 180ms ease, transform 180ms ease;
 }
 
 .consultationsCtaButton:hover {
-  background: #993f3a;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(60, 16, 21, 0.18);
+  background: var(--color-accent-dark);
+  transform: translateY(-1px);
 }
 
-@media (max-width: 980px) {
-  .consultationsCardsGrid {
+.consultationsCtaPhone {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 2.8vw, 36px);
+  font-weight: 600;
+  color: var(--color-heading);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.consultationsCtaPhone:hover {
+  color: var(--color-accent);
+}
+
+@media (max-width: 900px) {
+  .consultationsPanels {
     grid-template-columns: 1fr;
   }
 
-  .consultationsFaq {
-    margin-top: 62px;
+  .consultationsPanel {
+    border-radius: 200px;
   }
 
-  .consultationsCta {
-    margin-top: 74px;
+  .consultationsStepsList {
+    grid-template-columns: 1fr;
+    gap: 34px;
   }
 
-  .consultationsCtaButton {
-    min-width: 0;
-    width: 100%;
+  .consultationsStepsList li + li {
+    border-left: 0;
+  }
+
+  .consultationsLeaf {
+    display: none;
   }
 }

@@ -1,260 +1,424 @@
 .englishTherapyPage {
   width: 100%;
-  color: #151515;
-  padding-bottom: 72px;
-  background: var(--color-bg-page);
+  padding-bottom: 20px;
+  overflow-x: clip;
 }
+
+/* ---------- En-tête ---------- */
 
 .englishTherapyHero {
   position: relative;
-  min-height: clamp(180px, 26vh, 260px);
-  overflow: hidden;
-  border-bottom: 1px solid #b7b8bd;
-  background: var(--color-bg-page);
-  display: flex;
-  align-items: center;
-  padding: 20px 0;
+  padding: clamp(56px, 8vw, 110px) 0 clamp(20px, 3vw, 36px);
 }
 
-.englishTherapyHero::before {
-  content: "";
+.englishTherapyLeaf {
   position: absolute;
-  inset: 0;
-  background: transparent;
+  right: max(10px, calc(50% - 600px));
+  top: 50px;
+  width: 100px;
+  fill: none;
+  stroke: #9fae8e;
+  stroke-width: 1.6;
+  opacity: 0.55;
+  transform: rotate(16deg) scaleX(-1);
+  pointer-events: none;
+}
+
+.englishTherapyLeaf path + path {
+  fill: rgba(159, 174, 142, 0.25);
 }
 
 .englishTherapyHeroInner {
-  position: relative;
-  width: min(1100px, 92%);
+  width: min(900px, 92%);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
-.englishTherapyEyebrow {
+.englishTherapyEyebrow,
+.englishTherapyFaqEyebrow {
   margin: 0;
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 14px;
-  border-radius: 999px;
-  font-size: 0.84rem;
-  letter-spacing: 0.06em;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
-  color: #8b5a51;
-  background: #e4dede;
-  border: 1px solid #d7cbcc;
-  font-weight: 600;
+  color: var(--color-accent);
 }
 
 .englishTherapyTitle {
-  margin: 18px auto 0;
-  max-width: 19ch;
-  color: #12131a;
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-weight: 500;
-  font-size: clamp(34px, 3.8vw, 56px);
+  margin: 14px 0 0;
+  font-size: clamp(40px, 4.6vw, 66px);
   line-height: 0.98;
+  font-weight: 500;
+}
+
+.englishTherapyRule {
+  width: 120px;
+  height: 1px;
+  margin: 22px 0 18px;
+  background: var(--color-accent);
 }
 
 .englishTherapyLead {
-  margin: 12px auto 0;
-  max-width: 62ch;
-  font-size: 1.15rem;
-  line-height: 1.7;
-  color: #2f3038;
-}
-
-.englishTherapyBody {
-  width: min(980px, 92%);
-  margin: 34px auto 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.englishTherapyCard {
-  padding: 24px;
-  border-radius: 20px;
-  background: #dfdfe1;
-  border: 1px solid #c8c8cd;
-}
-
-.englishTherapyCard h2 {
-  margin: 0 0 12px;
-  font-size: 1.2rem;
-  color: #191a22;
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-size: clamp(32px, 3vw, 48px);
-  font-weight: 500;
-}
-
-.englishTherapyCard p {
   margin: 0;
-  line-height: 1.65;
+  font-family: var(--font-script);
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.2;
+  color: var(--color-accent);
+  transform: rotate(-2deg);
 }
 
-.englishTherapyCard ul {
-  margin: 0;
-  padding-left: 18px;
-  line-height: 1.7;
-}
-
-.englishTherapyActions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
-.englishTherapyBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 16px;
-  border-radius: 3px;
-  text-decoration: none;
-  font-weight: 700;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
-  border: 2px solid #ad4f49;
-  background: #ad4f49;
-  color: #fff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.englishTherapyBtn:hover {
-  background: #993f3a;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.14);
-}
-
-.englishTherapyBtnGhost {
-  background: transparent;
-  color: #ad4f49;
-}
-
-.englishTherapyBtnGhost:hover {
-  background: rgba(177, 74, 79, 0.08);
-}
+/* ---------- FAQ en accordéon ---------- */
 
 .englishTherapyFaq {
-  width: min(980px, 92%);
-  margin: 86px auto 0;
-}
-
-.englishTherapyFaqEyebrow {
-  margin: 0;
+  width: min(880px, 92%);
+  margin: clamp(48px, 6vw, 80px) auto 0;
   text-align: center;
-  color: #8b5a51;
-  font-size: 0.78rem;
-  letter-spacing: 0.2em;
-  font-weight: 700;
 }
 
 .englishTherapyFaqTitle {
-  margin: 14px 0 24px;
-  text-align: center;
-  color: #192135;
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-size: clamp(34px, 3.4vw, 52px);
-  line-height: 1.02;
+  margin: 12px 0 0;
+  font-size: clamp(38px, 4.4vw, 58px);
+  line-height: 1;
   font-weight: 500;
 }
 
+.englishTherapyFaqTitle::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 1px;
+  margin: 20px auto 0;
+  background: var(--color-accent);
+}
+
 .englishTherapyFaqList {
-  border-top: 1px solid #c8c8cd;
+  margin-top: 34px;
+  display: grid;
+  gap: 14px;
+  text-align: left;
 }
 
 .englishTherapyFaqItem {
-  padding: 28px 0;
-  border-bottom: 1px solid #c8c8cd;
+  border-radius: 20px;
+  background: #fffaf5;
+  border: 1px solid var(--color-border-soft);
+  transition: box-shadow 180ms ease;
+}
+
+.englishTherapyFaqItem[open] {
+  box-shadow: var(--shadow-soft);
+}
+
+.englishTherapyFaqItem summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px clamp(18px, 2.4vw, 28px);
+}
+
+.englishTherapyFaqItem summary::-webkit-details-marker {
+  display: none;
 }
 
 .englishTherapyFaqItem h3 {
   margin: 0;
-  color: #ad4f49;
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-size: clamp(24px, 1.9vw, 32px);
-  line-height: 1.1;
-  font-weight: 500;
+  font-size: clamp(22px, 2vw, 27px);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.englishTherapyFaqToggle {
+  position: relative;
+  flex: 0 0 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-peach);
+}
+
+.englishTherapyFaqToggle::before,
+.englishTherapyFaqToggle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 1.5px;
+  background: var(--color-accent);
+  transform: translate(-50%, -50%);
+  transition: transform 200ms ease;
+}
+
+.englishTherapyFaqToggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.englishTherapyFaqItem[open] .englishTherapyFaqToggle::after {
+  transform: translate(-50%, -50%) rotate(0deg);
 }
 
 .englishTherapyFaqItem p {
-  margin: 14px 0 0;
-  color: #2f3038;
-  font-size: clamp(16px, 1.1vw, 20px);
-  line-height: 1.65;
+  margin: 0;
+  padding: 0 clamp(18px, 2.4vw, 28px) 22px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-text);
 }
 
+/* ---------- Appel à l'action (bandeau pastel) ---------- */
+
 .englishTherapyCta {
-  width: min(980px, 92%);
-  margin: 96px auto 0;
+  width: min(1120px, 92%);
+  margin: clamp(64px, 8vw, 110px) auto 0;
+  padding: clamp(44px, 6vw, 72px) clamp(20px, 4vw, 56px);
+  border-radius: 32px;
+  background: var(--color-sky);
   text-align: center;
-  padding: 28px 0 0;
 }
 
 .englishTherapyCta h2 {
   margin: 0;
-  color: #192135;
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-size: clamp(34px, 3.4vw, 52px);
-  line-height: 1.02;
+  font-size: clamp(36px, 4.2vw, 56px);
+  line-height: 1.05;
   font-weight: 500;
 }
 
 .englishTherapyCta p {
-  margin: 18px auto 0;
-  max-width: 40ch;
-  color: #2f3038;
-  font-size: clamp(16px, 1.15vw, 21px);
-  line-height: 1.5;
+  margin: 14px auto 0;
+  max-width: 560px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-heading);
 }
 
 .englishTherapyCtaButton {
-  margin-top: 30px;
+  margin-top: 26px;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-width: 260px;
-  padding: 14px 22px;
-  border-radius: 6px;
-  background: #ad4f49;
-  color: #ffffff;
+  height: 52px;
+  padding: 0 30px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-decoration: none;
-  font-size: clamp(18px, 1.25vw, 24px);
-  font-weight: 700;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 8px 18px rgba(180, 85, 47, 0.25);
+  transition: background 180ms ease, transform 180ms ease;
 }
 
 .englishTherapyCtaButton:hover {
-  background: #993f3a;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(60, 16, 21, 0.18);
+  background: var(--color-accent-dark);
+  transform: translateY(-1px);
 }
 
-@media (max-width: 900px) {
-  .englishTherapyHeroInner {
-    text-align: center;
+@media (max-width: 700px) {
+  .englishTherapyLeaf {
+    display: none;
+  }
+}
+
+/* ---------- Contenus ajoutés ---------- */
+
+.englishTherapyIntro {
+  margin: 26px 0 0;
+  max-width: 640px;
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.75;
+  color: var(--color-text);
+}
+
+.englishTherapyHeroInner .englishTherapyCtaButton {
+  margin-top: 26px;
+}
+
+.englishTherapyIcon {
+  width: 76px;
+  height: 76px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--color-heading);
+  transition: transform 220ms ease;
+}
+
+/* Bandeau des 4 points forts, comme sur l'accueil */
+.englishTherapyServices {
+  width: min(1240px, 92%);
+  margin: clamp(36px, 5vw, 64px) auto 0;
+  padding: 34px clamp(12px, 2vw, 28px);
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: #fffaf5;
+  border-radius: 28px;
+  box-shadow: var(--shadow-soft);
+}
+
+.englishTherapyServices li {
+  padding: 6px clamp(10px, 1.6vw, 24px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.englishTherapyServices li + li {
+  border-left: 1px solid var(--color-border-soft);
+}
+
+.englishTherapyServices li:hover .englishTherapyIcon {
+  transform: scale(1.06);
+}
+
+.englishTherapyServiceTitle {
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-heading);
+}
+
+.englishTherapyServiceText {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+/* Sections */
+.englishTherapySection {
+  width: min(1120px, 92%);
+  margin: clamp(64px, 8vw, 110px) auto 0;
+  text-align: center;
+}
+
+.englishTherapySectionTitle {
+  margin: 12px 0 0;
+  font-size: clamp(38px, 4.4vw, 58px);
+  line-height: 1.05;
+  font-weight: 500;
+}
+
+.englishTherapySectionTitle::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 1px;
+  margin: 20px auto 0;
+  background: var(--color-accent);
+}
+
+.englishTherapyScript {
+  margin: 16px 0 0;
+  font-family: var(--font-script);
+  font-size: clamp(24px, 2.4vw, 32px);
+  color: var(--color-accent);
+}
+
+/* Pour qui */
+.englishTherapyAudience {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.englishTherapyAudienceCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px clamp(20px, 2.4vw, 30px);
+  border-radius: 24px;
+  background: #fffaf5;
+  border: 1px solid var(--color-border-soft);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.englishTherapyAudienceCard:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
+
+.englishTherapyAudienceCard h3 {
+  margin: 18px 0 0;
+  font-size: clamp(24px, 2.2vw, 28px);
+  line-height: 1.15;
+  font-weight: 600;
+}
+
+.englishTherapyAudienceCard p {
+  margin: 10px 0 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+/* À propos */
+.englishTherapyAbout {
+  padding: clamp(40px, 5vw, 64px) clamp(20px, 4vw, 56px);
+  border-radius: 32px;
+  background: var(--color-surface);
+}
+
+.englishTherapyCredentials {
+  width: min(900px, 100%);
+  margin: 32px auto 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  text-align: left;
+}
+
+.englishTherapyCredentials li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px;
+  border-radius: 18px;
+  background: #fffaf5;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+/* Le point reste centré sur le texte, sur une ou deux lignes */
+.englishTherapyCredentials li::before {
+  content: "";
+  flex: 0 0 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+@media (max-width: 1040px) {
+  .englishTherapyServices {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 30px;
   }
 
-  .englishTherapyLead {
-    margin-left: auto;
-    margin-right: auto;
+  .englishTherapyServices li + li {
+    border-left: 0;
   }
 
-  .englishTherapyBody {
+  .englishTherapyAudience {
     grid-template-columns: 1fr;
   }
+}
 
-  .englishTherapyFaq {
-    margin-top: 62px;
-  }
-
-  .englishTherapyCta {
-    margin-top: 74px;
-  }
-
-  .englishTherapyCtaButton {
-    min-width: 0;
-    width: 100%;
+@media (max-width: 600px) {
+  .englishTherapyServices,
+  .englishTherapyCredentials {
+    grid-template-columns: 1fr;
   }
 }

@@ -1,11 +1,19 @@
 :root {
-  --color-bg-page: #efece8;
-  --color-surface-muted: #e2dcd6;
-  --color-border-soft: #cfc4bb;
-  --color-heading: #2f2c2a;
-  --color-text: #4c4742;
-  --color-accent: #aa4f49;
-  --color-accent-dark: #993f3a;
+  /* Direction artistique inspirée du flyer */
+  --color-bg-page: #fbf6f0;      /* crème */
+  --color-surface: #f4ebe1;      /* sable clair */
+  --color-surface-muted: #efe3d6;
+  --color-border-soft: #e2d2c2;
+  --color-heading: #1f2d4a;      /* bleu nuit */
+  --color-text: #3e3a36;
+  --color-text-muted: #7a716a;
+  --color-accent: #b4552f;       /* terracotta */
+  --color-accent-dark: #933f20;
+  --color-sage: #dfe4d5;
+  --color-peach: #f6dccb;
+  --color-sky: #dce5ee;
+  --color-wheat: #f4e3c6;
+  --shadow-soft: 0 14px 34px rgba(31, 45, 74, 0.1);
 }
 
 #root {
@@ -45,50 +53,90 @@ body {
   }
 }
 
+/* ---------- En-tête ---------- */
+
 .siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   width: 100%;
-  padding: 26px 0 20px;
-  background: var(--color-bg-page);
+  padding: 16px 0;
+  background: rgba(251, 246, 240, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border-soft);
 }
 
 .headerMain {
-  width: min(1700px, 96%);
+  width: min(1500px, 94%);
   margin: 0 auto;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 26px;
+  gap: 28px;
+}
+
+.headerBrand {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
 }
 
 .brandName {
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-size: clamp(34px, 2.2vw, 46px);
+  font-family: var(--font-display);
+  font-size: clamp(28px, 2vw, 36px);
   font-weight: 500;
-  letter-spacing: 0.01em;
-  color: #111119;
+  color: var(--color-heading);
+}
+
+.brandName span {
+  color: var(--color-accent);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.brandRole {
+  margin-top: 6px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  color: var(--color-heading);
 }
 
 .headerNav {
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: clamp(16px, 2vw, 34px);
+  gap: 6px clamp(12px, 1.4vw, 26px);
   flex-wrap: wrap;
+  align-content: center;
 }
 
 .navLink {
-  color: #222229;
+  color: var(--color-heading);
   text-decoration: none;
-  font-size: clamp(16px, 1.1vw, 23px);
+  font-size: 12.5px;
   font-weight: 500;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
   padding: 8px 2px;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1px solid transparent;
   transition: border-color 180ms ease, color 180ms ease;
+}
+
+.navFlag {
+  width: 20px;
+  height: 10px;
+  margin-left: 7px;
+  vertical-align: -1px;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(31, 45, 74, 0.12);
 }
 
 .navLink:hover,
 .navLink.active {
-  color: #101015;
+  color: var(--color-accent);
   border-color: var(--color-accent);
 }
 
@@ -96,64 +144,148 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 56px;
-  min-width: 204px;
-  padding: 0 24px;
+  height: 48px;
+  padding: 0 26px;
   border-radius: 999px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 600;
+  letter-spacing: 0.06em;
   color: #fff;
   background: var(--color-accent);
-  transition: filter 180ms ease, transform 180ms ease;
+  box-shadow: 0 8px 18px rgba(180, 85, 47, 0.25);
+  transition: background 180ms ease, transform 180ms ease;
 }
 
 .headerContactCta:hover {
-  filter: brightness(0.94);
+  background: var(--color-accent-dark);
   transform: translateY(-1px);
 }
 
+/* ---------- Pied de page ---------- */
+
 .siteFooter {
-  margin-top: 0;
-  background: var(--color-bg-page);
+  position: relative;
+  margin-top: 60px;
+  background: var(--color-surface);
+}
+
+.footerWave {
+  position: absolute;
+  top: -59px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: block;
+  color: var(--color-surface);
+}
+
+.footerPhone {
+  width: min(1400px, 94%);
+  margin: 0 auto;
+  padding: 26px 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.footerPhoneIcon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+}
+
+.footerPhoneNumber {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.footerPhoneNumber:hover {
+  color: var(--color-accent-dark);
+}
+
+.footerPhoneSeparator {
+  width: 1px;
+  height: 52px;
+  margin: 0 clamp(8px, 2vw, 26px);
+  background: var(--color-border-soft);
+}
+
+.footerAddress {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.footerAddress span {
+  margin-top: 6px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.footerAddress:hover {
+  color: var(--color-accent-dark);
+}
+
+@media (max-width: 720px) {
+  .footerPhoneSeparator {
+    display: none;
+  }
 }
 
 .footerInner {
-  width: min(1700px, 96%);
+  width: min(1400px, 94%);
   margin: 0 auto;
-  padding: 28px 0 34px;
+  padding: 26px 0 30px;
   display: grid;
   grid-template-columns: 1fr auto auto;
-  gap: 18px 26px;
+  gap: 18px 30px;
   align-items: center;
 }
 
 .footerBrand {
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-size: 32px;
-  font-weight: 500;
-  color: #151518;
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--color-heading);
 }
 
+.psyName {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--color-heading);
+}
+
+.psyName span {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.nonconvention,
 .footerMeta {
-  font-size: 14px;
-  color: #55565c;
-}
-
-.footerLinks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.footerLink {
-  color: #26262c;
-  text-decoration: none;
-  font-size: 16px;
-}
-
-.footerLink:hover {
-  color: #000;
+  font-size: 13px;
+  color: var(--color-text-muted);
 }
 
 .footerRight {
@@ -161,12 +293,13 @@ body {
 }
 
 .footerWhatsappCta {
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   display: block;
   border-radius: 999px;
   overflow: hidden;
   border: 2px solid #fff;
+  box-shadow: var(--shadow-soft);
 }
 
 .footerWhatsappCta img {
@@ -176,16 +309,29 @@ body {
 }
 
 @media (max-width: 1200px) {
+  .siteHeader {
+    position: static;
+  }
+
   .headerMain {
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;
+    gap: 16px;
+  }
+
+  .headerBrand {
+    align-items: center;
   }
 
   .footerInner {
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;
+  }
+
+  .footerLinks {
+    justify-content: center;
   }
 
   .footerRight {

@@ -1,341 +1,343 @@
 .telePage {
   width: 100%;
-  color: #151515;
-  background: var(--color-bg-page);
-  padding-bottom: 72px;
+  padding-bottom: 20px;
+  overflow-x: clip;
 }
 
+.teleContainer {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+}
+
+/* ---------- Pastilles pastel avec pictogramme ---------- */
+
+.teleIcon {
+  width: 76px;
+  height: 76px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--color-heading);
+  transition: transform 220ms ease;
+}
+
+.teleIconSmall {
+  width: 60px;
+  height: 60px;
+}
+
+.teleIconSmall svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* ---------- En-tête ---------- */
+
 .teleHero {
-  padding: 36px 0 44px;
+  position: relative;
+  padding: clamp(56px, 8vw, 110px) 0 clamp(28px, 4vw, 48px);
+}
+
+.teleLeaf {
+  position: absolute;
+  left: max(10px, calc(50% - 640px));
+  top: 50px;
+  width: 100px;
+  fill: none;
+  stroke: #9fae8e;
+  stroke-width: 1.6;
+  opacity: 0.55;
+  transform: rotate(-16deg);
+  pointer-events: none;
+}
+
+.teleLeaf path + path {
+  fill: rgba(159, 174, 142, 0.25);
 }
 
 .teleHeroInner {
-  width: min(980px, 92%);
+  width: min(900px, 92%);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
 .teleEyebrow {
   margin: 0;
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 14px;
-  border-radius: 999px;
-  font-size: 0.84rem;
-  color: #8b5a51;
-  background: #e4dede;
-  border: 1px solid #d7cbcc;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--color-accent);
 }
 
 .teleTitle {
-  margin: 18px auto 0;
-  max-width: 19ch;
-  color: var(--color-heading);
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-size: clamp(34px, 3.8vw, 56px);
+  margin: 14px 0 0;
+  font-size: clamp(40px, 4.6vw, 66px);
   line-height: 0.98;
   font-weight: 500;
 }
 
+.teleRule {
+  width: 120px;
+  height: 1px;
+  margin: 22px 0 18px;
+  background: var(--color-accent);
+}
+
 .teleLead {
-  margin: 14px auto 0;
-  max-width: 60ch;
+  margin: 0;
+  max-width: 620px;
+  font-size: clamp(17px, 1.3vw, 19px);
   line-height: 1.7;
   color: var(--color-text);
 }
 
-.teleCta {
-  margin-top: 24px;
+.teleCta,
+.teleBottomCtaButton {
+  margin-top: 28px;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 4px;
-  border: 2px solid var(--color-accent);
+  height: 52px;
+  padding: 0 30px;
+  border-radius: 999px;
   background: var(--color-accent);
   color: #fff;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  box-shadow: 0 8px 18px rgba(180, 85, 47, 0.25);
+  transition: background 180ms ease, transform 180ms ease;
 }
 
-.teleCta:hover {
+.teleCta:hover,
+.teleBottomCtaButton:hover {
   background: var(--color-accent-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.14);
+  transform: translateY(-1px);
 }
+
+/* ---------- Bandeau des avantages (comme sur l'accueil) ---------- */
 
 .teleBenefits {
-  --tele-benefits-gap: 24px;
-  --tele-benefits-gap-bottom: 40px;
-  padding: 0 0 12px;
-  position: relative;
-}
-
-.teleBenefits::after {
-  content: "";
-  display: block;
-  width: min(1100px, 92%);
-  margin: var(--tele-benefits-gap-bottom) auto 0;
-  border-bottom: 1px solid var(--color-border-soft);
+  width: min(1240px, 92%);
+  margin: clamp(20px, 3vw, 40px) auto 0;
 }
 
 .teleBenefitsInner {
-  width: min(1100px, 92%);
-  margin: var(--tele-benefits-gap) auto 0;
+  padding: 34px clamp(12px, 2vw, 28px);
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 22px;
+  background: #fffaf5;
+  border-radius: 28px;
+  box-shadow: var(--shadow-soft);
 }
 
 .teleBenefitCard {
-  text-align: center;
-  min-height: 300px;
-  padding: 26px 18px;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
-    url("../../photos/canva1.png") center/cover no-repeat;
-  border: 1px solid #9e7d79;
-  border-radius: 20px;
+  padding: 6px clamp(10px, 1.6vw, 24px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  align-items: center;
+  text-align: center;
 }
 
-.teleBenefitCard:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 24px rgba(25, 25, 33, 0.12);
+.teleBenefitCard + .teleBenefitCard {
+  border-left: 1px solid var(--color-border-soft);
+}
+
+.teleBenefitCard:hover .teleIcon {
+  transform: scale(1.06);
 }
 
 .teleBenefitCard h2 {
-  margin: 0;
-  color: #111218;
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-size: clamp(21px, 1.8vw, 30px);
-  font-weight: 500;
-  line-height: 1.08;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.25);
+  margin: 16px 0 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-heading);
 }
 
 .teleBenefitCard p {
-  margin: 10px auto 0;
-  max-width: 25ch;
-  color: #2b2b33;
-  font-size: 16px;
-  line-height: 1.45;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
 }
 
-.teleAudience {
-  padding: 44px 0 52px;
-}
-
-.teleContainer {
-  width: min(980px, 92%);
-  margin: 0 auto;
-}
-
-.teleAudience .teleSectionTitle {
-  text-align: center;
-}
-
-.teleAudience .teleSectionTitle::after {
-  margin: 10px auto 0;
-}
-
-.teleAudience .teleSectionLead {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
+/* ---------- Titres de section ---------- */
 
 .teleSectionTitle {
   margin: 0;
-  color: var(--color-heading);
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-size: clamp(40px, 4vw, 62px);
-  line-height: 0.98;
+  font-size: clamp(38px, 4.4vw, 58px);
+  line-height: 1.05;
   font-weight: 500;
-}
-
-.teleSectionTitleCompact {
-  font-size: clamp(28px, 2.4vw, 40px);
+  text-align: center;
 }
 
 .teleSectionTitle::after {
   content: "";
   display: block;
-  width: min(520px, 72%);
-  margin-top: 10px;
-  border-bottom: 2px solid var(--color-accent);
+  width: 120px;
+  height: 1px;
+  margin: 20px auto 0;
+  background: var(--color-accent);
 }
 
 .teleSectionLead {
-  margin: 16px 0 0;
-  max-width: 76ch;
+  margin: 22px auto 0;
+  max-width: 720px;
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.75;
+  text-align: center;
   color: var(--color-text);
-  line-height: 1.7;
+}
+
+/* ---------- À qui s'adresse… ---------- */
+
+.teleAudience {
+  margin-top: clamp(64px, 8vw, 110px);
 }
 
 .teleAudienceList {
-  margin-top: 28px;
+  margin-top: 36px;
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .teleAudienceCard {
-  background: var(--color-surface-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 24px;
+  border-radius: 22px;
+  background: #fffaf5;
   border: 1px solid var(--color-border-soft);
-  border-radius: 12px;
-  padding: 18px;
+  transition: box-shadow 180ms ease, transform 180ms ease;
 }
 
-.teleAudienceCard:nth-child(odd) {
-  background: var(--color-surface-muted);
-}
-
-.teleAudienceCard:nth-child(even) {
-  background: var(--color-surface-muted);
+.teleAudienceCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
 }
 
 .teleAudienceCard h3 {
-  margin: 0;
-  color: var(--color-heading);
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-size: clamp(24px, 1.9vw, 32px);
-  font-weight: 500;
-  line-height: 1.05;
+  margin: 4px 0 0;
+  font-size: clamp(22px, 2vw, 26px);
+  line-height: 1.15;
+  font-weight: 600;
 }
 
 .teleAudienceCard p {
   margin: 8px 0 0;
-  color: var(--color-text);
+  font-size: 15px;
   line-height: 1.65;
+  color: var(--color-text);
 }
 
+/* ---------- Qualité ---------- */
+
 .teleQuality {
-  padding-top: 18px;
+  width: min(1120px, 92%);
+  margin: clamp(64px, 8vw, 110px) auto 0;
 }
 
 .teleQualityInner {
-  width: min(1020px, 92%);
-  margin: 0 auto;
-  background: var(--color-surface-muted);
-  border: 1px solid var(--color-border-soft);
-  border-radius: 14px;
-  padding: 24px;
+  padding: clamp(40px, 5vw, 64px) clamp(20px, 4vw, 56px);
+  border-radius: 32px;
+  background: var(--color-surface);
 }
 
 .teleQualityGrid {
-  margin-top: 18px;
+  margin-top: 36px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  gap: 20px;
+}
+
+.teleQualityGrid article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px clamp(20px, 3vw, 36px);
+  border-radius: 24px;
+  background: #fffaf5;
 }
 
 .teleQualityGrid h3 {
-  margin: 0;
-  color: var(--color-heading);
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-size: clamp(26px, 2vw, 34px);
-  font-weight: 500;
-  line-height: 1.05;
+  margin: 16px 0 0;
+  font-size: clamp(24px, 2.2vw, 30px);
+  line-height: 1.15;
+  font-weight: 600;
 }
 
 .teleQualityGrid p {
   margin: 10px 0 0;
-  color: var(--color-text);
+  font-size: 16px;
   line-height: 1.7;
+  color: var(--color-text);
 }
+
+/* ---------- Appel à l'action (bandeau pastel) ---------- */
 
 .teleBottomCta {
-  padding: 72px 0 24px;
-}
-
-.teleBottomCtaInner {
-  width: min(900px, 92%);
-  margin: 0 auto;
+  width: min(1120px, 92%);
+  margin: clamp(64px, 8vw, 110px) auto 0;
+  padding: clamp(44px, 6vw, 72px) clamp(20px, 4vw, 56px);
+  border-radius: 32px;
+  background: var(--color-sky);
   text-align: center;
 }
 
 .teleBottomCtaInner h2 {
   margin: 0;
-  color: #1f2943;
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  font-size: clamp(38px, 4.4vw, 62px);
+  font-size: clamp(36px, 4.2vw, 56px);
   line-height: 1.05;
   font-weight: 500;
 }
 
 .teleBottomCtaInner p {
-  margin: 22px auto 0;
-  max-width: 34ch;
-  color: #3f414b;
-  font-size: clamp(20px, 1.8vw, 24px);
-  line-height: 1.45;
+  margin: 14px auto 0;
+  max-width: 560px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-heading);
 }
 
-.teleBottomCtaButton {
-  margin-top: 30px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 280px;
-  min-height: 64px;
-  padding: 0 28px;
-  border-radius: 6px;
-  background: #bd5c4e;
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 700;
-  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
-}
-
-.teleBottomCtaButton:hover {
-  filter: brightness(0.96);
-  transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-}
-
-@media (max-width: 1100px) {
+@media (max-width: 1040px) {
   .teleBenefitsInner {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 30px;
   }
 
-  .teleBenefitCard {
-    min-height: 250px;
+  .teleBenefitCard + .teleBenefitCard {
+    border-left: 0;
+  }
+
+  .teleAudienceList {
+    grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 900px) {
-  .teleBenefitsInner,
+@media (max-width: 700px) {
   .teleQualityGrid {
     grid-template-columns: 1fr;
   }
 
-  .teleHeroInner,
-  .teleContainer,
-  .teleQualityInner {
-    width: min(1100px, 94%);
+  .teleLeaf {
+    display: none;
   }
+}
 
-  .teleSectionTitle::after {
-    width: 100%;
-  }
-
-  .teleBottomCta {
-    padding-top: 56px;
-  }
-
-  .teleBottomCtaInner p {
-    max-width: 30ch;
-  }
-
-  .teleBottomCtaButton {
-    min-width: min(280px, 100%);
+@media (max-width: 560px) {
+  .teleBenefitsInner {
+    grid-template-columns: 1fr;
   }
 }

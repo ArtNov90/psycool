@@ -1,9 +1,13 @@
 :root {
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
-  line-height: 1.5;
+  --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-body: "Montserrat", "Segoe UI", Arial, sans-serif;
+  --font-script: "Dancing Script", "Brush Script MT", cursive;
+
+  font-family: var(--font-body);
+  line-height: 1.6;
   font-weight: 400;
-  color: #15161d;
-  background-color: #efece8;
+  color: #3e3a36;
+  background-color: #fbf6f0;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -22,6 +26,15 @@ body,
   margin: 0;
   width: 100%;
   min-height: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-heading);
+  letter-spacing: 0.005em;
 }
 
 a {
