@@ -1,0 +1,155 @@
+import { Link } from "react-router-dom";
+import "./Consultations.css";
+import Seo from "../components/Seo";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+import { consultationStyles } from "./consultationStyles";
+import accompagnementImage from "../../photos/canva1.png";
+
+const faqItems = [
+  {
+    question: "Quand consulter un psy ?",
+    answer:
+      "Consultez si vous traversez une période difficile (deuil, séparation, perte d'emploi), si une souffrance persiste (anxiété, tristesse, irritabilité), ou si des schémas répétitifs vous bloquent. Il n'est pas nécessaire d'attendre une crise.",
+  },
+  {
+    question: "Comment se déroule une première consultation ?",
+    answer:
+      "La première consultation sert à faire connaissance et à clarifier ce qui vous amène. Nous évaluons ensemble vos besoins et si ma méthode vous convient. Il n'y a aucune obligation d'engagement.",
+  },
+  {
+    question: "Les consultations en visio sont-elles efficaces ?",
+    answer:
+      "Oui. Les études et mon expérience de plus de 10 ans en visioconférence montrent une efficacité comparable au présentiel dans la majorité des situations, avec plus de flexibilité.",
+  },
+];
+
+const iconProps = {
+  width: 30,
+  height: 30,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.4,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+};
+
+const cardVisuals = {
+  "therapie-individuelle": {
+    color: "var(--color-sage)",
+    icon: (
+      <svg {...iconProps}>
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" />
+      </svg>
+    ),
+  },
+  "therapie-couple": {
+    color: "var(--color-peach)",
+    icon: (
+      <svg {...iconProps}>
+        <circle cx="8.5" cy="8" r="3.2" />
+        <circle cx="15.5" cy="8" r="3.2" />
+        <path d="M2.5 20c0-3.6 2.7-6 6-6 1.4 0 2.6.4 3.5 1.1" />
+        <path d="M21.5 20c0-3.6-2.7-6-6-6-1.4 0-2.6.4-3.5 1.1" />
+      </svg>
+    ),
+  },
+};
+
+export default function Consultations() {
+  const revealRef = useScrollReveal<HTMLElement>();
+
+  return (
+    <section className="consultations" ref={revealRef}>
+      <Seo
+        title="Consultations de psychanalyse à Montpellier | Cabinet & visio"
+        description="Deux façons de consulter Chantal Novara, psychanalyste à Montpellier : en cabinet à Maurin (Lattes) ou en téléconsultation. Thérapie individuelle et thérapie de couple, premier échange sans engagement."
+        keywords={[
+          "consultation psychanalyste Montpellier",
+          "thérapie individuelle",
+          "thérapie de couple",
+          "premier rendez-vous psychologue",
+          "psychanalyste cabinet Montpellier",
+          "consultation visio psychologue",
+          "psy Maurin",
+          "psychologue Lattes",
+        ]}
+        path="/consultations"
+      />
+      <header className="consultationsHeader">
+        <div className="consultationsHeaderInner">
+          <p className="consultationsEyebrow" data-reveal data-reveal-delay="70ms">
+            CONSULTATIONS
+          </p>
+          <h1 className="consultationsTitle" data-reveal data-reveal-delay="110ms">
+            Deux façons de me consulter
+          </h1>
+          <div className="consultationsRule" aria-hidden="true" />
+          <p className="consultationsLead" data-reveal data-reveal-delay="160ms">
+            Choisissez l&apos;accompagnement qui vous correspond
+          </p>
+        </div>
+      </header>
+
+      <section className="consultationsCardsWrap">
+        <div className="consultationsCardsGrid">
+          {consultationStyles.map((style, index) => (
+            <article
+              key={style.slug}
+              className="consultationCard"
+              data-reveal
+              data-reveal-delay={`${Math.min(320, 80 + index * 80)}ms`}
+            >
+              <img src={accompagnementImage} alt="" loading="lazy" />
+              <div className="consultationCardBody">
+                <span
+                  className="consultationCardIcon"
+                  style={{ background: cardVisuals[style.slug].color }}
+                  aria-hidden="true"
+                >
+                  {cardVisuals[style.slug].icon}
+                </span>
+                <h2 className="consultationCardTitle">{style.title}</h2>
+                <p className="consultationCardText">{style.shortDescription}</p>
+                <Link className="consultationCardLink" to={`/consultations/${style.slug}`}>
+                  Découvrir <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="consultationsFaq" data-reveal data-reveal-delay="120ms">
+        <p className="consultationsFaqEyebrow">QUESTIONS FRÉQUENTES</p>
+        <h2 className="consultationsFaqTitle">Avant de consulter</h2>
+        <div className="consultationsFaqList">
+          {faqItems.map((item, index) => (
+            <details key={item.question} className="consultationsFaqItem" open={index === 0}>
+              <summary>
+                <h3>{item.question}</h3>
+                <span className="consultationsFaqToggle" aria-hidden="true" />
+              </summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section className="consultationsCta" data-reveal data-reveal-delay="140ms">
+        <p className="consultationsCtaScript">La première étape est souvent la plus difficile</p>
+        <h2>Prêt(e) à faire le premier pas ?</h2>
+        <p>Je vous accompagne avec bienveillance, au cabinet ou en visio.</p>
+        <a
+          href="https://wa.me/33687216605"
+          className="consultationsCtaButton"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Prendre rendez-vous
+        </a>
+      </section>
+    </section>
+  );
+}

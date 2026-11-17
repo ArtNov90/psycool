@@ -43,17 +43,17 @@
   font-size: 0.84rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #8b5a51;
-  background: #e4dede;
-  border: 1px solid #d7cbcc;
+  color: var(--color-accent-dark);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-soft);
   font-weight: 600;
 }
 
 .confHeroInner h1 {
   margin: 0;
   max-width: 19ch;
-  color: #12131a;
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
+  color: var(--color-heading);
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: clamp(34px, 3.8vw, 56px);
   line-height: 0.98;
@@ -62,7 +62,7 @@
 .confHeroLead {
   margin: 0;
   max-width: 60ch;
-  color: #2f3038;
+  color: var(--color-text);
   font-size: 1.15rem;
   line-height: 1.55;
 }
@@ -89,8 +89,8 @@
   justify-content: center;
   padding: 12px 20px;
   border-radius: 8px;
-  border: 2px solid #ad4f49;
-  color: #ad4f49;
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
   text-decoration: none;
   font-weight: 700;
   background: transparent;
@@ -104,8 +104,8 @@
 }
 
 .confHeroBtnPrimary {
-  background: #ad4f49;
-  border-color: #ad4f49;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
   color: #fff;
 }
 
@@ -158,8 +158,8 @@
   padding: 10px 16px;
   border-radius: 8px;
   text-decoration: none;
-  background: #b14a4f;
-  border: 2px solid #b14a4f;
+  background: var(--color-accent);
+  border: 2px solid var(--color-accent);
   color: #fff;
   font-weight: 700;
 }
@@ -213,8 +213,8 @@
   margin: 0;
   font-size: clamp(44px, 4.5vw, 76px);
   line-height: 0.95;
-  color: #15151d;
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
+  color: var(--color-heading);
+  font-family: var(--font-display);
   font-weight: 500;
 }
 
@@ -263,7 +263,7 @@
   max-height: none;
   border-radius: 50%;
   overflow: hidden;
-  background: #dedbd4;
+  background: var(--color-surface);
   border: 4px solid rgba(255, 255, 255, 0.94);
   box-shadow: 0 10px 22px rgba(20, 20, 28, 0.14);
 }
@@ -298,7 +298,7 @@
 .eventDate {
   margin: 0;
   font-weight: 700;
-  color: #12131a;
+  color: var(--color-heading);
 }
 
 .eventTime {
@@ -316,8 +316,8 @@
   margin: 10px 0 0;
   font-size: clamp(22px, 3vw, 30px);
   line-height: 1.15;
-  color: #ad4f49;
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
+  color: var(--color-accent);
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: clamp(34px, 3.1vw, 48px);
 }
@@ -381,8 +381,8 @@
   font-size: clamp(28px, 3vw, 42px);
   line-height: 1;
   font-weight: 600;
-  color: #15151d;
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
+  color: var(--color-heading);
+  font-family: var(--font-display);
 }
 
 .adminStatLabel {
@@ -437,16 +437,16 @@
 .adminComposerHeader h2,
 .adminListHeader h2 {
   margin: 6px 0 0;
-  color: #17171d;
+  color: var(--color-heading);
   font-size: clamp(30px, 3vw, 44px);
   line-height: 1;
-  font-family: "Pier", "Manrope", "Segoe UI", Arial, sans-serif;
+  font-family: var(--font-display);
   font-weight: 500;
 }
 
 .adminSectionEyebrow {
   margin: 0;
-  color: #8b5a51;
+  color: var(--color-accent-dark);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.78rem;
@@ -488,14 +488,14 @@
   border-radius: 12px;
   border: 1px solid #c8c5c0;
   background: rgba(255, 255, 255, 0.96);
-  color: #17171d;
+  color: var(--color-heading);
   font: inherit;
   box-sizing: border-box;
 }
 
 .adminInput:focus {
   outline: none;
-  border-color: #ad4f49;
+  border-color: var(--color-accent);
   box-shadow: 0 0 0 3px rgba(173, 79, 73, 0.14);
 }
 
@@ -531,7 +531,7 @@
   width: 128px;
   aspect-ratio: 16 / 9;
   object-fit: contain;
-  background: #dedbd4;
+  background: var(--color-surface);
   border-radius: 10px;
 }
 
@@ -564,8 +564,8 @@
 }
 
 .adminDeleteButton {
-  border-color: #8e4a46;
-  color: #8e4a46;
+  border-color: var(--color-accent-dark);
+  color: var(--color-accent-dark);
 }
 
 .adminDeleteButton:hover {
@@ -855,3 +855,259 @@
   margin-top: 4px;
 }
 
+
+/* ---------- Harmonisation avec la DA du flyer (disposition inchangée) ---------- */
+
+.confPage {
+  background: var(--color-bg-page);
+}
+
+/* En-tête */
+.confEyebrow {
+  margin: 0 0 4px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  color: var(--color-accent);
+}
+
+.confHeroInner h1 {
+  font-size: clamp(40px, 4.6vw, 66px);
+}
+
+.confHeroInner h1::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 1px;
+  margin: 22px auto 0;
+  background: var(--color-accent);
+}
+
+.confHeroLead {
+  color: var(--color-text);
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.7;
+}
+
+.confHeroNotice {
+  font-family: var(--font-script);
+  font-size: clamp(26px, 2.6vw, 34px);
+  font-weight: 500;
+  color: var(--color-accent);
+}
+
+/* Boutons en pilule */
+.confHeroBtn,
+.emptyStateBtn {
+  height: 50px;
+  padding: 0 28px;
+  border-radius: 999px;
+  border: 1px solid var(--color-accent);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  box-shadow: none;
+}
+
+.confHeroBtn:hover {
+  background: rgba(180, 85, 47, 0.08);
+  transform: translateY(-1px);
+  box-shadow: none;
+}
+
+.confHeroBtnPrimary,
+.emptyStateBtn {
+  background: var(--color-accent);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(180, 85, 47, 0.25);
+}
+
+.confHeroBtnPrimary:hover,
+.emptyStateBtn:hover {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+  box-shadow: 0 8px 18px rgba(180, 85, 47, 0.25);
+}
+
+/* Aucun événement */
+.emptyState {
+  border-radius: 28px;
+  background: #fffaf5;
+  border: 1px solid var(--color-border-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.emptyState h2 {
+  color: var(--color-heading);
+  font-size: clamp(30px, 3vw, 40px);
+  font-weight: 500;
+}
+
+.emptyState p {
+  color: var(--color-text);
+}
+
+/* Les deux colonnes : fonds pastel clairs */
+.confBlock-cafepsy {
+  background: #eef0e7;
+}
+
+.confBlock-masterclass {
+  background: #fbebe0;
+}
+
+.confBlockKicker {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+}
+
+.confBlockHeader h2 {
+  font-size: clamp(44px, 4.2vw, 68px);
+}
+
+.confBlockHeader h2::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 1px;
+  margin-top: 18px;
+  background: var(--color-accent);
+}
+
+.confBlockHeader p {
+  margin-top: 16px;
+  color: var(--color-text);
+}
+
+/* Cartes d'événements */
+.eventCard {
+  background-color: #fffaf5;
+  border: 1px solid var(--color-border-soft);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 10px 26px rgba(31, 45, 74, 0.06);
+}
+
+.eventCard:hover {
+  box-shadow: var(--shadow-soft);
+}
+
+.eventDate {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-heading);
+}
+
+.eventTime {
+  padding: 5px 12px;
+  background: var(--color-sky);
+  color: var(--color-heading);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.eventTitle {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.eventPlace {
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.eventDescription,
+.eventDescriptionList {
+  color: var(--color-text);
+}
+
+.eventDescriptionList li::marker {
+  color: var(--color-accent);
+}
+
+/* Espace d'administration */
+.adminStatCard,
+.adminComposer,
+.adminEventCard {
+  background: #fffaf5;
+  border-color: var(--color-border-soft);
+}
+
+.adminSectionEyebrow {
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+}
+
+.adminInput {
+  border-color: var(--color-border-soft);
+  background: #fff;
+}
+
+.adminInput:focus {
+  box-shadow: 0 0 0 3px rgba(180, 85, 47, 0.14);
+}
+
+/* ---------- Cartes d'événements : images grandes et lisibles ---------- */
+
+.confBlock .eventCard {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(200px, 45%) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.confBlock .eventMedia {
+  position: relative;
+  top: auto;
+  right: auto;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  border-radius: 14px;
+  border: 0;
+  background: #fffaf5;
+  box-shadow: 0 10px 22px rgba(31, 45, 74, 0.14);
+}
+
+/* Pas de voile sombre : l'image reste nette */
+.confBlock .eventMedia::after {
+  display: none;
+}
+
+/* Image affichée en entier, dans ses proportions d'origine */
+.confBlock .eventMedia img {
+  position: static;
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: contain;
+}
+
+.confBlock .eventCardBody {
+  min-height: 0;
+  padding: 4px 4px 4px 0;
+}
+
+@media (max-width: 720px) {
+  /* Sur mobile, l'image passe au-dessus du texte */
+  .confBlock .eventCard {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .confBlock .eventCardBody {
+    padding: 2px;
+  }
+}

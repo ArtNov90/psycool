@@ -1,56 +1,30 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { navItems } from "./navItems";
+import UkFlag from "./UkFlag";
 
 export default function Header() {
   return (
     <header className="siteHeader">
       <div className="headerMain">
-        <div className="headerBrand">
-          <div className="brandName">Chantal NOVARA</div>
-        </div>
+        <Link to="/" className="headerBrand" aria-label="Accueil - Chantal Novara">
+          <span className="brandName">
+            Chantal <span>NOVARA</span>
+          </span>
+          <span className="brandRole">PSYCHANALYSTE</span>
+        </Link>
 
         <nav className="headerNav" aria-label="Navigation principale">
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
-          >
-            ACCUEIL
-          </NavLink>
-
-          <NavLink
-            to="/consultations"
-            className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
-          >
-            THERAPIE
-          </NavLink>
-
-          <NavLink
-            to="/conferences"
-            className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
-          >
-            ATELIERS/PSYCOOL
-          </NavLink>
-
-          <NavLink
-            to="/teleconsultation"
-            className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
-          >
-            TELECONSULTATION
-          </NavLink>
-
-          <NavLink
-            to="/english-therapy"
-            className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
-          >
-            THERAPY IN ENGLISH
-          </NavLink>
-
-          <NavLink
-            to="/contact"
-            className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
-          >
-            CONTACT
-          </NavLink>
+          {navItems.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.end}
+              className={({ isActive }) => (isActive ? "navLink active" : "navLink")}
+            >
+              {item.label}
+              {item.flag === "uk" && <UkFlag />}
+            </NavLink>
+          ))}
         </nav>
 
         <a
